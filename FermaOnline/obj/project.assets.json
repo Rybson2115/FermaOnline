@@ -7100,27 +7100,27 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Rybson\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Users\\Kamil Matecki\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Rybson\\Desktop\\FermaOnline-20210710T130126Z-001\\FermaOnline\\FermaOnline\\FermaOnline.csproj",
+      "projectUniqueName": "X:\\Desktop\\Programowanie\\Inz\\FO\\FermaOnline\\FermaOnline.csproj",
       "projectName": "FermaOnline",
-      "projectPath": "C:\\Users\\Rybson\\Desktop\\FermaOnline-20210710T130126Z-001\\FermaOnline\\FermaOnline\\FermaOnline.csproj",
-      "packagesPath": "C:\\Users\\Rybson\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Rybson\\Desktop\\FermaOnline-20210710T130126Z-001\\FermaOnline\\FermaOnline\\obj\\",
+      "projectPath": "X:\\Desktop\\Programowanie\\Inz\\FO\\FermaOnline\\FermaOnline.csproj",
+      "packagesPath": "C:\\Users\\Kamil Matecki\\.nuget\\packages\\",
+      "outputPath": "X:\\Desktop\\Programowanie\\Inz\\FO\\FermaOnline\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Microsoft\\Xamarin\\NuGet\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Rybson\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Kamil Matecki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -7184,7 +7184,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
