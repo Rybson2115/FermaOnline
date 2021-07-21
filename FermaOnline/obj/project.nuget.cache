@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "El5BGSP2gn4aL0KII5rCOjkCw2udDlBIsh873rsfA5kNyCGFFg1pT2aaw3BsGwpG5FjQzlRXtyG3+HO1WkfAuQ==",
+  "dgSpecHash": "iOI9zSc9WMDC2QjtzU1DSVUTqADFAxgHPIde1Ra6ATVG5Whaa9N4PhhEYTs3wbR5k9Q9HVSfin7eudF33cUPPA==",
   "success": true,
-  "projectFilePath": "X:\\Desktop\\Programowanie\\Inz\\FO\\FermaOnline\\FermaOnline.csproj",
+  "projectFilePath": "X:\\Desktop\\Programowanie\\Inz\\Próba 3\\FermaOnline\\FermaOnline.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kamil Matecki\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Kamil Matecki\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",

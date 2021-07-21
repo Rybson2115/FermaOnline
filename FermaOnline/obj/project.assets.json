@@ -7107,11 +7107,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Desktop\\Programowanie\\Inz\\FO\\FermaOnline\\FermaOnline.csproj",
+      "projectUniqueName": "X:\\Desktop\\Programowanie\\Inz\\Próba 3\\FermaOnline\\FermaOnline.csproj",
       "projectName": "FermaOnline",
-      "projectPath": "X:\\Desktop\\Programowanie\\Inz\\FO\\FermaOnline\\FermaOnline.csproj",
+      "projectPath": "X:\\Desktop\\Programowanie\\Inz\\Próba 3\\FermaOnline\\FermaOnline.csproj",
       "packagesPath": "C:\\Users\\Kamil Matecki\\.nuget\\packages\\",
-      "outputPath": "X:\\Desktop\\Programowanie\\Inz\\FO\\FermaOnline\\obj\\",
+      "outputPath": "X:\\Desktop\\Programowanie\\Inz\\Próba 3\\FermaOnline\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

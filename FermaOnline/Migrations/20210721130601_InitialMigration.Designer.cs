@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FermaOnline.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210510152154_FirstMigration")]
-    partial class FirstMigration
+    [Migration("20210721130601_InitialMigration")]
+    partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,18 +21,12 @@ namespace FermaOnline.Migrations
                 .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("FermaOnline.Models.Cage", b =>
+            modelBuilder.Entity("FermaOnline.Models.CageSurvey", b =>
                 {
-                    b.Property<int>("SurveyId")
+                    b.Property<int>("CageId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<float>("AverageBodyWeight")
-                        .HasColumnType("real");
-
-                    b.Property<float>("AverageWeightGain")
-                        .HasColumnType("real");
 
                     b.Property<float>("AverageWeightGainFromStart")
                         .HasColumnType("real");
@@ -58,9 +52,27 @@ namespace FermaOnline.Migrations
                     b.Property<float>("WeightGainFromStart")
                         .HasColumnType("real");
 
-                    b.HasKey("SurveyId");
+                    b.HasKey("CageId");
 
                     b.ToTable("Cage");
+                });
+
+            modelBuilder.Entity("FermaOnline.Models.Experiment", b =>
+                {
+                    b.Property<int>("ExperymentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("bit");
+
+                    b.HasKey("ExperymentId");
+
+                    b.ToTable("Experiment");
                 });
 
             modelBuilder.Entity("FermaOnline.Models.Survey", b =>
@@ -70,16 +82,28 @@ namespace FermaOnline.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ASurveyId")
+                    b.Property<int?>("ACageId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("BSurveyId")
+                    b.Property<float>("AverageBodyWeight")
+                        .HasColumnType("real");
+
+                    b.Property<float>("AverageWeightGain")
+                        .HasColumnType("real");
+
+                    b.Property<int?>("BCageId")
                         .HasColumnType("int");
 
                     b.Property<int>("DayOfLife")
                         .HasColumnType("int");
 
                     b.Property<int>("DaysFromFirstWeight")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("ExperimentExperymentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExperymentId")
                         .HasColumnType("int");
 
                     b.Property<float>("FeedConversionRatio")
@@ -103,63 +127,39 @@ namespace FermaOnline.Migrations
                     b.Property<DateTime>("SurveyDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TestId")
-                        .HasColumnType("int");
-
                     b.HasKey("SurveyId");
 
-                    b.HasIndex("ASurveyId");
+                    b.HasIndex("ACageId");
 
-                    b.HasIndex("BSurveyId");
+                    b.HasIndex("BCageId");
+
+                    b.HasIndex("ExperimentExperymentId");
 
                     b.ToTable("Surveys");
                 });
 
-            modelBuilder.Entity("FermaOnline.Models.TemplateCurve", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("SurveyId")
-                        .HasColumnType("int");
-
-                    b.Property<float>("Value")
-                        .HasColumnType("real");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("SurveyId");
-
-                    b.ToTable("TemplateCurve");
-                });
-
             modelBuilder.Entity("FermaOnline.Models.Survey", b =>
                 {
-                    b.HasOne("FermaOnline.Models.Cage", "A")
+                    b.HasOne("FermaOnline.Models.CageSurvey", "A")
                         .WithMany()
-                        .HasForeignKey("ASurveyId");
+                        .HasForeignKey("ACageId");
 
-                    b.HasOne("FermaOnline.Models.Cage", "B")
+                    b.HasOne("FermaOnline.Models.CageSurvey", "B")
                         .WithMany()
-                        .HasForeignKey("BSurveyId");
+                        .HasForeignKey("BCageId");
+
+                    b.HasOne("FermaOnline.Models.Experiment", null)
+                        .WithMany("SurveysList")
+                        .HasForeignKey("ExperimentExperymentId");
 
                     b.Navigation("A");
 
                     b.Navigation("B");
                 });
 
-            modelBuilder.Entity("FermaOnline.Models.TemplateCurve", b =>
+            modelBuilder.Entity("FermaOnline.Models.Experiment", b =>
                 {
-                    b.HasOne("FermaOnline.Models.Survey", null)
-                        .WithMany("TemplateCurve")
-                        .HasForeignKey("SurveyId");
-                });
-
-            modelBuilder.Entity("FermaOnline.Models.Survey", b =>
-                {
-                    b.Navigation("TemplateCurve");
+                    b.Navigation("SurveysList");
                 });
 #pragma warning restore 612, 618
         }
