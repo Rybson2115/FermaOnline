@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Experiment>
+﻿@model IEnumerable<Survey>
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
@@ -18,10 +18,10 @@
                     <th>
                         Data
                     </th>
-                    @foreach (var experiment in Model)
+                    @foreach (var survey in Model)
                     {
                         <th>
-                            @experiment.Name
+                            @survey
                         </th>
                     }
 
@@ -31,10 +31,7 @@
 
                 <tr>
                     <td width="30%"> Name </td>
-                    @foreach (var experiment in Model)
-                    {
-                        <td width="30%"> @experiment  </td>
-                    }
+
                 </tr>
 
             </tbody>

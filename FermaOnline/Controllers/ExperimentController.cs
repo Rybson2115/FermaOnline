@@ -18,20 +18,14 @@ namespace FermaOnline.Controllers
             _db = db;
 
         }
-        public IActionResult Index()
-        {
-            //
-            IEnumerable<Experiment> ExperimentsList = _db.Experiment;//pobieranie danych z bazy 
-            //IEnumerable<Survey> SurveysList = _db.Surveys;//pobieranie danych z bazy 
-            //IEnumerable<CageSurvey> CagesList = _db.CageSurvey;//pobieranie danych z bazy 
 
-            //Experiment ShowExperyment = null;
-            //Wybierz z listy experymentów po id jeden do wyświetlenia 
-            //wyubierz i przypisz pomiary dla tego eksperymentu 
-            //przypisz pomiarą klatki po id 
+
+        public IActionResult ShowExperymentList()
+        {
+            IEnumerable<Experiment> ExperimentsList = _db.Experiment;//pobieranie danych z bazy 
             return View(ExperimentsList);
         }
-        
+
         /*
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -56,6 +50,8 @@ namespace FermaOnline.Controllers
             //var experiment =  
             return new JsonResult(experiment);
         }
+
+
 
         */
     }

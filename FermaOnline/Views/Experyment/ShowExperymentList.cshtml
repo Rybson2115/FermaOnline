@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Experiment>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lista pomiarow ExperymentName</h2>
+        </div>
+        <div class="col-6">
+            Dodaj Experyment
+        </div>
+    </div>
+    <br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Nazwa
+                    </th>
+                    <th>
+                        Data rozpoczęcia
+                    </th>
+                    <th>
+                        Data zakończenia
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var experiment in Model)
+                {
+                    var style = experiment.Status ? "btn btn-success btn-circle btn-sm" : "btn btn-warning btn-circle btn-sm";
+                    var start = DateTime.Compare(experiment.Start, new DateTime(1000, 01, 01, 00, 00, 00)) == -1 ? "-" : experiment.Start.ToString("MM/dd/yyyy");// porównaj czy nie jest null i wyświetl w dobrym formacie jak jest null to -
+                    var end = DateTime.Compare(experiment.End, new DateTime(1000, 01, 01, 00, 00, 00)) == -1 ? "-" : experiment.End.ToString("MM/dd/yyyy");
+
+                <tr>
+                    <td width="30%"> @experiment.Name  </td>
+                    <td width="30%"> @start</td>
+                    <td width="30%"> @end</td>
+                    <td width="30%"> <button type="button" class="@style"></button>
+                 </td>
+                </tr>
+                }
+                </tbody>
+        </table>
+    }
+    else
+    { <p>Brak prowadzonych badan </p>}
+</div>
