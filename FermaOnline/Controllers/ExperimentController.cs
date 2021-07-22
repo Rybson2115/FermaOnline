@@ -7,23 +7,36 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace FermaOnline.Controllers
-{
-    [ApiController]
-    [Route("[controller]")]
-    public class ExperymentController : Controller
+{ 
+    public class ExperimentController : Controller
     {
         private readonly ApplicationDbContext _db;//dostęp do bazy danych 
-        public ExperymentController(ApplicationDbContext db)
+        public ExperimentController(ApplicationDbContext db)
         {
             _db = db;
 
         }
 
-
-        public IActionResult ShowExperymentList()
+        
+        public IActionResult Index() //lista experymentów
         {
             IEnumerable<Experiment> ExperimentsList = _db.Experiment;//pobieranie danych z bazy 
             return View(ExperimentsList);
+        }
+        //GET-Create
+        public IActionResult Create()
+        { 
+            return View();
+        }
+
+        //POST-Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]//zabezpieczenie 
+        public IActionResult Create(string name)
+        {
+            _db.Experiment.Add(new Experiment(name));
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         /*

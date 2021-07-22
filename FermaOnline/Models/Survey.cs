@@ -27,11 +27,29 @@ namespace FermaOnline.Models
 
         public CageSurvey A { get; set; }  //kojec A
         public CageSurvey B { get; set; } //kojec B
-                                          // jest statyczną publiczną klasą    TemplateCurve  
+ 
 
         public Survey()
         {
+            ExperymentId = 0;
+            SurveyDate = new DateTime(0001, 01, 01, 00, 00, 00);
+            DayOfLife = 0;
+            AverageBodyWeight = 0.0f;
+            LoculusQuantity = 0;
+            GroupId = 0;
             DaysFromFirstWeight = 0;
+            LoculusFeedIntake = 0.0f;
+            FeedIntakeWeekly = 0.0f;
+            FeedIntakDaily = 0.0f;
+            FeedConversionRatio = 0.0f;
+            AverageWeightGain = 0.0f;
+            A = new CageSurvey();
+            B = new CageSurvey();
+        }
+        public Survey(int experymentId):base()
+        {
+            ExperymentId = experymentId;
+            
         }
     }
 }

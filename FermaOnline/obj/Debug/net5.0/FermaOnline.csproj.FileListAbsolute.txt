@@ -510,5 +510,6 @@ X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.d
 X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\ref\FermaOnline.dll
 X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.pdb
 X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.genruntimeconfig.cache
-X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experyment\showExperymentList.cshtml.g.cs
-X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Survey\index.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Create.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Index.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Show.cshtml.g.cs

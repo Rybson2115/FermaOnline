@@ -21,8 +21,17 @@ namespace FermaOnline.Models
 
         public CageSurvey()
         {
-            CageId = this.GetHashCode();
+            CageQuantity = 0;
+            CageQuantity = 0;
+            GroupWeight = 0.0f;
+            DeathCount = 0;
+            IndividualBodyWeight = 0.0f;
+            DifferenceInBodyWeight = 0.0f;
+            WeightGainFromStart = 0.0f;
+            WeightGainFromLastSurvey = 0.0f;
+            AverageWeightGainFromStart = 0.0f;
         }
+         
 
     }
 }
