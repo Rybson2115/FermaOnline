@@ -45,7 +45,7 @@
                         <td width="30%"> @start</td>
                         <td width="30%"> @end</td>
                         <td width="30%">
-                            <button type="button" class="@style"></button>
+                            <a  asp-controller="Experiment" asp-route-id="@experiment.Id" asp-action="Show" class="@style">Check</a>
                         </td>
                     </tr>
                 }

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Survey>
+﻿@model Experiment
+ 
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
@@ -10,7 +11,7 @@
     </div>
     <br />
 
-    @if (Model.Count() > 0)
+    @if (Model!=null)
     {
         <table class="table table-bordered table-striped" style="width:100%">
             <thead>
@@ -18,19 +19,18 @@
                     <th>
                         Data
                     </th>
-                    @foreach (var survey in Model)
-                    {
+                    
                         <th>
-                            @survey
+                            @Model.Name
                         </th>
-                    }
+                    
 
                 </tr>
             </thead>
             <tbody>
 
                 <tr>
-                    <td width="30%"> Name </td>
+                    <td width="30%">   </td>
 
                 </tr>
 

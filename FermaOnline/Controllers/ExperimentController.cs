@@ -38,35 +38,48 @@ namespace FermaOnline.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
-
-        /*
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        //GET-Show
+        public IActionResult Show(int id) //lista experymentów
         {
+            var experiment = _db.Experiment.Find(id);//pobieranie danych z bazy 
+            if (_db.Experiment.Find(id)==null)//sprawdza czy w bazie jest podane id
+                return NotFound();
 
-            var ExperymentList = await _db.Experiment.ToListAsync();//pobieranie danych z bazy 
-            return new JsonResult(ExperymentList);
+            experiment.SurveysList = _db.Surveys.Where(s => s.ExperymentId == id).ToList();
+            return View(experiment);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        // GET Delete
+        public IActionResult Delete(int? id)
         {
-            var experiment = await _db.Experiment.FirstOrDefaultAsync(e => e.ExperymentId == id);
 
-            //  var SurveysList = await _db.Surveys.Where(s => s experiment.SurveysList);//pobieranie danych z bazy 
+            if (id == null || id == 0)
+                return NotFound();
+           
+            var ToDelete = _db.Experiment.Find(id);
+            
+            if (ToDelete == null)
+                return NotFound();
+           
+            return View(ToDelete);
 
-            //IEnumerable<CageSurvey> CagesList = _db.CageSurvey;//pobieranie danych z bazy 
-
-            //Wybierz z listy experymentów po id jeden do wyświetlenia 
-            //wyubierz i przypisz pomiary dla tego eksperymentu 
-            //przypisz pomiarą klatki po id 
-            //var experiment =  
-            return new JsonResult(experiment);
         }
 
+        // POST Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var ToDelete = _db.Experiment.Find(id);
+            if (ToDelete == null)
+                return NotFound();
+            
+            _db.Surveys.RemoveRange(_db.Surveys.Where(s => s.ExperymentId== ToDelete.Id));
+            _db.Experiment.Remove(ToDelete);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
-
-        */
     }
 }
 

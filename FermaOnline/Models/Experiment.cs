@@ -10,7 +10,7 @@ namespace FermaOnline.Models
     public class Experiment
     {
         [Key]
-        public int ExperymentId { get; set; }
+        public int Id { get; set; }
         
         [DisplayName("Name")]
         public string Name { get; set; }
