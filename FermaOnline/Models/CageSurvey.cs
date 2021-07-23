@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +11,10 @@ namespace FermaOnline.Models
     {
         [Key]
         public int CageId { get; set; }
+        
+        [DisplayName("Cage quantity")]
         public int CageQuantity { get; set; } //Liczba sztuk w klatce 
+        [DisplayName("Group weight")]
         public float GroupWeight { get; set; } //Masa ciała grupy klatki, kg/grupę
         public int DeathCount { get; set; }
         public float IndividualBodyWeight { get; set; } // Masa ciała sztuki, kg/szt.

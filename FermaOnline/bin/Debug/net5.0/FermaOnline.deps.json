@@ -33,6 +33,7 @@
     ".NETCoreApp,Version=v5.0": {
       "FermaOnline/1.0.0": {
         "dependencies": {
+          "Bootstrap.Datepicker": "1.8.0.1",
           "Microsoft.EntityFrameworkCore.Design": "5.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.8",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.8",
@@ -326,6 +327,7 @@
           "FermaOnline.dll": {}
         }
       },
+      "Bootstrap.Datepicker/1.8.0.1": {},
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -3506,6 +3508,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Bootstrap.Datepicker/1.8.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/pKY2/KjIGQHmK2reK2iowG0Weu6w42VRjBT8vS5AMcsdKMMxQ4NBrvOxWHUpzf0idY+YaKGnjXyWb+Ba+/M3g==",
+      "path": "bootstrap.datepicker/1.8.0.1",
+      "hashPath": "bootstrap.datepicker.1.8.0.1.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

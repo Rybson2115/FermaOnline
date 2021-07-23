@@ -11,8 +11,7 @@ namespace FermaOnline.Models
     {
         [Key]
         public int Id { get; set; }
-        
-        [DisplayName("Name")]
+
         public string Name { get; set; }
         public bool Status { get; set; }
         
