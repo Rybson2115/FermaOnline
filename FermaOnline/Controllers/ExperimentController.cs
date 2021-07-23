@@ -17,12 +17,13 @@ namespace FermaOnline.Controllers
 
         }
 
-        
+        //GET
         public IActionResult Index() //lista experymentów
         {
             IEnumerable<Experiment> ExperimentsList = _db.Experiment;//pobieranie danych z bazy 
             return View(ExperimentsList);
         }
+        
         //GET-Create
         public IActionResult Create()
         { 
@@ -79,6 +80,8 @@ namespace FermaOnline.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
 
     }
 }

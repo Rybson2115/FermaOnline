@@ -3,7 +3,7 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">All experiments</h2>
+            <h2 class="text-primary">All experiments-Admin view</h2>
         </div>
         <div class="col-6 text-right">
             <a type="button" class="btn btn-primary" asp-controller="Experiment" asp-action="Create">Add experiment</a>
@@ -30,7 +30,7 @@
                         End date
                     </th>
                     <th>
-                        Status
+                       Action
                     </th>
                 </tr>
             </thead>
@@ -44,8 +44,12 @@
                         <td width="30%"> @experiment.Name  </td>
                         <td width="30%"> @start</td>
                         <td width="30%"> @end</td>
-                        <td width="30%">
-                            <a  asp-controller="Experiment" asp-route-id="@experiment.Id" asp-action="Show" class="@style">Check</a>
+                        <td width="40%">
+                            <div class="w-100 btn-group" role="group">
+                                <a asp-controller="Experiment" asp-route-id="@experiment.Id" asp-action="Show" class="@style mx-1">Check</a>
+                                <a asp-controller="Experiment" asp-action="Update" asp-route-Id="@experiment.Id" class="btn btn-primary mx-1">Update</a>
+                                <a asp-controller="Experiment" asp-action="Delete" asp-route-Id="@experiment.Id" class="btn btn-danger mx-1">Delete</a>
+                            </div>
                         </td>
                     </tr>
                 }

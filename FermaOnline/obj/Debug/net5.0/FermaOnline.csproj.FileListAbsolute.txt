@@ -513,3 +513,4 @@ X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.g
 X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Create.cshtml.g.cs
 X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Index.cshtml.g.cs
 X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Show.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Delete.cshtml.g.cs
