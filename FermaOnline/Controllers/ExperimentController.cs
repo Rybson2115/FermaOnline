@@ -46,7 +46,7 @@ namespace FermaOnline.Controllers
             if (_db.Experiment.Find(id)==null)//sprawdza czy w bazie jest podane id
                 return NotFound();
 
-            experiment.SurveysList = _db.Surveys.Where(s => s.ExperymentId == id).ToList();
+            experiment.SurveysList = _db.Surveys.Where(s => s.ExperymentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
             return View(experiment);
         }
 
@@ -81,7 +81,35 @@ namespace FermaOnline.Controllers
             return RedirectToAction("Index");
         }
 
-        
+        //GET-Update
+        public IActionResult Update(int? id)
+        {
+
+            if (id == null || id == 0)
+                return NotFound();
+
+            var ToUpdate = _db.Experiment.Find(id);
+
+            if (ToUpdate == null)
+                return NotFound();
+
+            return View(ToUpdate);
+
+        }
+
+        // POST UPDATE
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Experiment ToUpdate)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Experiment.Update(ToUpdate);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(ToUpdate);
+        }
 
     }
 }
