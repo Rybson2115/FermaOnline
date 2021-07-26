@@ -35,7 +35,22 @@ namespace FermaOnline.Models
             WeightGainFromLastSurvey = 0.0f;
             AverageWeightGainFromStart = 0.0f;
         }
-         
-
+         public float GetIndividualBodyWeight()
+         {
+            return GroupWeight / CageQuantity;
+         }
+        public float GetDifferenceInBodyWeight(float LastIndividualBodyWeight)
+        {
+            return IndividualBodyWeight - LastIndividualBodyWeight;
+        }
+        public float GetWeightGainFromStart(int DaysFromFirstWeight)
+        {
+            return DaysFromFirstWeight;
+        }
+        public float GetWeightGainFromLastSurvey(float LastIndividualBodyWeight,int DaysFromFirstWeight, int LastDaysFromFirstWeight)
+        {
+            return (IndividualBodyWeight-LastIndividualBodyWeight) / (DaysFromFirstWeight - LastDaysFromFirstWeight);
+        }
     }
 }
+

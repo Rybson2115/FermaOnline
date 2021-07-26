@@ -22,10 +22,10 @@ namespace FermaOnline.Models
         public int LoculusQuantity { get; set; } //Liczba sztuk na komorze
         public int GroupId { get; set; } //id grupy zwierząt 
         public int DaysFromFirstWeight { get; set; }  //Ilość dni od pierwszego ważenia
-        [DisplayName("Loculus feed Intake")]
+        [DisplayName("Loculus feed intake")]
         public float LoculusFeedInTake { get; set; } // Pobranie paszy przez komorę
         public float FeedIntakeWeekly { get; set; } //Pobranie paszy, kg/tydzień na komorę
-        public float FeedIntakDaily { get; set; } //Pobranie paszy, kg/tydzień na komorę
+        public float FeedIntakDaily { get; set; } //Pobranie paszy, kg/dzien na komorę
         public float FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
         public float AverageWeightGain { get; set; } //Średni przyrost z 2 klatek, kg/dzień
 
@@ -55,24 +55,52 @@ namespace FermaOnline.Models
         {
             ExperymentId = experymentId;
         }
-        public Survey(int experymentId, DateTime surveyDate,int loculusQuantity, int aQuantity, int bQuantity, int aGroupWeight, int bGroupWeight,int loculusFeeInTake, int dayOfLife = 0) :base()
+        public Survey(Survey newSurvey) :base()
         {
-            ExperymentId = experymentId;
-            SurveyDate = surveyDate;
-            LoculusQuantity = loculusQuantity;
-            A.CageQuantity = aQuantity;
-            B.CageQuantity = bQuantity;
-            A.GroupWeight = aGroupWeight;
-            B.GroupWeight = bGroupWeight;
-            DayOfLife = dayOfLife;
-            LoculusFeedInTake = loculusFeeInTake;
+            ExperymentId = newSurvey.ExperymentId;
+            SurveyDate = newSurvey.SurveyDate;
+            LoculusQuantity = newSurvey.LoculusQuantity;
+            A.CageQuantity = newSurvey.A.CageQuantity;
+            B.CageQuantity = newSurvey.B.CageQuantity;
+            A.GroupWeight = newSurvey.A.GroupWeight;
+            B.GroupWeight = newSurvey.B.GroupWeight;
+            DayOfLife = newSurvey.DayOfLife;
+            LoculusFeedInTake = newSurvey.LoculusFeedInTake;
         }
-        public Survey(Survey lastSurvey, int experymentId, DateTime surveyDate, int loculusQuantity, int aQuantity, int bQuantity, int aGroupWeight, int bGroupWeight, int loculusFeeInTake, int dayOfLife) 
-        :this(experymentId,surveyDate,loculusQuantity,aQuantity,bQuantity,aGroupWeight,bGroupWeight, loculusFeeInTake,dayOfLife)
+        public Survey(Survey newSurvey, Survey lastSurvey) :this(newSurvey)
         {
             LastSurvey = lastSurvey;
-            DayOfLife = LastSurvey.DayOfLife + (int)(SurveyDate - LastSurvey.SurveyDate).TotalDays;//Dzien zycia z ostatniego pomiaru + ilość dni między pomiarami 
-
+            DayOfLife = GetDayOfLife();
+            DaysFromFirstWeight = GetDaysFromFirstWeight();
+            A.IndividualBodyWeight = A.GetIndividualBodyWeight();
+            B.IndividualBodyWeight = B.GetIndividualBodyWeight();
+            AverageBodyWeight = GetAverageBodyWeight();
+            A.DifferenceInBodyWeight = A.GetDifferenceInBodyWeight(LastSurvey.A.IndividualBodyWeight);
+            B.DifferenceInBodyWeight = B.GetDifferenceInBodyWeight(LastSurvey.B.IndividualBodyWeight);
+            A.WeightGainFromLastSurvey = A.GetWeightGainFromLastSurvey(LastSurvey.A.IndividualBodyWeight, DaysFromFirstWeight, LastSurvey.DaysFromFirstWeight);
+            B.WeightGainFromLastSurvey = B.GetWeightGainFromLastSurvey(LastSurvey.B.IndividualBodyWeight, DaysFromFirstWeight, LastSurvey.DaysFromFirstWeight);
+            FeedIntakeWeekly = GetFeedIntakeWeekly();
+            FeedIntakDaily = GetFeedIntakDaily();
+        }
+        private int GetDayOfLife()
+        {
+            return LastSurvey.DayOfLife + (int)(SurveyDate - LastSurvey.SurveyDate).TotalDays;//Dzien zycia z ostatniego pomiaru + ilość dni między pomiarami 
+        }
+        private int GetDaysFromFirstWeight()
+        {
+            return LastSurvey.DaysFromFirstWeight + (int)(SurveyDate - LastSurvey.SurveyDate).TotalDays;//Ilość dni od pierwszego ważenia z ostatniego pomiaru + ilość dni między pomiarami 
+        }
+        private float GetAverageBodyWeight()
+        {
+            return (A.IndividualBodyWeight + B.IndividualBodyWeight) / 2;
+        }
+        private float GetFeedIntakeWeekly()
+        {
+            return LoculusFeedInTake- LastSurvey.LoculusFeedInTake;
+        }
+        private float GetFeedIntakDaily()
+        {
+            return FeedIntakeWeekly / LoculusQuantity / DaysFromFirstWeight;
         }
     }
 }

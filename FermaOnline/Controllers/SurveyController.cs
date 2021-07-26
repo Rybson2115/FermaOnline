@@ -31,12 +31,20 @@ namespace FermaOnline.Controllers
         //POST-Create
         [HttpPost]
         [ValidateAntiForgeryToken]//zabezpieczenie 
-        public IActionResult Create(int ExperymentId, Survey formData)
-        {
-         
-            //_db.Surveys.Add(new Survey(ExperymentId,formData.A.GroupWeight));
-            //_db.SaveChanges();
-            return RedirectToPage("Experiment/Show.cshtml");
+        public IActionResult Create( Survey formData)
+        { int id = formData.ExperymentId;
+            if (_db.Surveys.ToList().Exists(s => s.ExperymentId == id)) { 
+                Survey lastSurvey = _db.Surveys
+                                .Where(s => s.ExperymentId == id)
+                                .OrderByDescending(t => t.SurveyDate)
+                                .FirstOrDefault();
+            _db.Surveys.Add(new Survey(formData,lastSurvey));
+            }
+            else
+                _db.Surveys.Add(new Survey(formData));
+
+            _db.SaveChanges();
+            return RedirectToAction("Show", "Experiment", new { id = id });
         }
     }
 }

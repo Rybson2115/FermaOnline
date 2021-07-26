@@ -1,7 +1,7 @@
 ﻿@model Survey
 
-
 <form method="post" asp-action="Create">
+    <input type="hidden" asp-for="ExperymentId" value=@(ViewContext.RouteData.Values["id"]) />
     <div class="border p-3">
         <div class="form-group row">
             <h2 class="text-black-50 pl-3">Add survey</h2>
@@ -63,7 +63,7 @@
                                 <input type="submit" class="btn btn-primary w-75" value="create" />
                             </div>
                             <div class="col-4">
-                                <a asp-controller="Experiment" asp-action="Show" asp-route-Id="ExperimentId" class="btn btn-danger w-75">Back</a>
+                                <a asp-controller="Experiment" asp-action="Show" asp-route-Id=@(ViewContext.RouteData.Values["id"]) class="btn btn-danger w-75">Back</a>
                             </div>
                         </div>
                     </div>

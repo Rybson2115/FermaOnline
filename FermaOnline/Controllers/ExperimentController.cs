@@ -40,7 +40,7 @@ namespace FermaOnline.Controllers
             return RedirectToAction("Index");
         }
         //GET-Show
-        public IActionResult Show(int id) //lista experymentów
+        public IActionResult Show(int id) //Wyswietla eksperyment
         {
             var experiment = _db.Experiment.Find(id);//pobieranie danych z bazy 
             if (_db.Experiment.Find(id)==null)//sprawdza czy w bazie jest podane id
