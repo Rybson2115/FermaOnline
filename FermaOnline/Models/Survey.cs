@@ -28,6 +28,8 @@ namespace FermaOnline.Models
         public float FeedIntakDaily { get; set; } //Pobranie paszy, kg/dzien na komorę
         public float FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
         public float AverageWeightGain { get; set; } //Średni przyrost z 2 klatek, kg/dzień
+        public float AverageWeightGainFromStart { get; set; } //Średni przyrost z 2 klatek, od ost ważenia, kg/dzień
+
 
         public CageSurvey A { get; set; }  //kojec A
         public CageSurvey B { get; set; } //kojec B
@@ -49,7 +51,8 @@ namespace FermaOnline.Models
             AverageWeightGain = 0.0f;
             A = new CageSurvey();
             B = new CageSurvey();
-            LastSurvey = null;
+            LastSurvey =new Survey();
+            AverageWeightGainFromStart = 0.0f;
         }
         public Survey(int experymentId):base()
         {
@@ -67,7 +70,8 @@ namespace FermaOnline.Models
             DayOfLife = newSurvey.DayOfLife;
             LoculusFeedInTake = newSurvey.LoculusFeedInTake;
         }
-        public Survey(Survey newSurvey, Survey lastSurvey) :this(newSurvey)
+        
+        public void SetData(Survey newSurvey, Survey lastSurvey, float AFirstIndividualBodyWeight, float BFirstIndividualBodyWeight)
         {
             LastSurvey = lastSurvey;
             DayOfLife = GetDayOfLife();
@@ -79,8 +83,13 @@ namespace FermaOnline.Models
             B.DifferenceInBodyWeight = B.GetDifferenceInBodyWeight(LastSurvey.B.IndividualBodyWeight);
             A.WeightGainFromLastSurvey = A.GetWeightGainFromLastSurvey(LastSurvey.A.IndividualBodyWeight, DaysFromFirstWeight, LastSurvey.DaysFromFirstWeight);
             B.WeightGainFromLastSurvey = B.GetWeightGainFromLastSurvey(LastSurvey.B.IndividualBodyWeight, DaysFromFirstWeight, LastSurvey.DaysFromFirstWeight);
+            A.WeightGainFromStart = A.GetWeightGainFromStart(DaysFromFirstWeight, AFirstIndividualBodyWeight);
+            B.WeightGainFromStart = B.GetWeightGainFromStart(DaysFromFirstWeight, BFirstIndividualBodyWeight);
+            AverageWeightGain = GetAverageWeightGain();
             FeedIntakeWeekly = GetFeedIntakeWeekly();
             FeedIntakDaily = GetFeedIntakDaily();
+            FeedConversionRatio = GetFeedConversionRatio();
+            AverageWeightGainFromStart = GetAverageWeightGainFromStart();
         }
         private int GetDayOfLife()
         {
@@ -96,11 +105,23 @@ namespace FermaOnline.Models
         }
         private float GetFeedIntakeWeekly()
         {
-            return LoculusFeedInTake- LastSurvey.LoculusFeedInTake;
+            return LoculusFeedInTake - LastSurvey.LoculusFeedInTake;
         }
         private float GetFeedIntakDaily()
         {
             return FeedIntakeWeekly / LoculusQuantity / DaysFromFirstWeight;
+        }
+        private float GetAverageWeightGain()
+        {
+            return (A.WeightGainFromStart + B.WeightGainFromStart) / 2;
+        }
+        private float GetFeedConversionRatio()
+        {
+            return FeedIntakDaily / AverageWeightGain;
+        }
+        private float GetAverageWeightGainFromStart()
+        {
+            return (A.WeightGainFromLastSurvey +  B.WeightGainFromLastSurvey) / 2 ;
         }
     }
 }

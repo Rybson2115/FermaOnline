@@ -23,7 +23,8 @@ namespace FermaOnline.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime End { get; set; }//Data pomiaru
- 
+        public float AFirstIndividualBodyWeight { get; set; }
+        public float BFirstIndividualBodyWeight { get; set; }
         public List<Survey> SurveysList { get; set; }
 
         public Experiment()
@@ -33,6 +34,8 @@ namespace FermaOnline.Models
             Start = new DateTime(0001, 01, 01, 00, 00, 00);//ta data jako null
             End = new DateTime(0001, 01, 01, 00, 00, 00);
             SurveysList = null;
+            AFirstIndividualBodyWeight = 0.0f;
+            BFirstIndividualBodyWeight = 0.0f;
         }
         public Experiment(string name):base()
         {

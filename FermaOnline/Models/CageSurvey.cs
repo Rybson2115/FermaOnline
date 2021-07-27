@@ -21,11 +21,9 @@ namespace FermaOnline.Models
         public float DifferenceInBodyWeight { get; set; } // Różnica w wadze, kg tydzień
         public float WeightGainFromStart { get; set; } //Przyrost od wstawienia, kg/dzień
         public float WeightGainFromLastSurvey { get; set; } //Przyrost od poprzedniego ważenia, kg/dzień
-        public float AverageWeightGainFromStart { get; set; } //Średni przyrost z 2 klatek, od ost ważenia, kg/dzień
 
         public CageSurvey()
         {
-            CageQuantity = 0;
             CageQuantity = 0;
             GroupWeight = 0.0f;
             DeathCount = 0;
@@ -33,7 +31,7 @@ namespace FermaOnline.Models
             DifferenceInBodyWeight = 0.0f;
             WeightGainFromStart = 0.0f;
             WeightGainFromLastSurvey = 0.0f;
-            AverageWeightGainFromStart = 0.0f;
+
         }
          public float GetIndividualBodyWeight()
          {
@@ -43,9 +41,9 @@ namespace FermaOnline.Models
         {
             return IndividualBodyWeight - LastIndividualBodyWeight;
         }
-        public float GetWeightGainFromStart(int DaysFromFirstWeight)
+        public float GetWeightGainFromStart(int DaysFromFirstWeight,float FirstIndividualBodyWeight)
         {
-            return DaysFromFirstWeight;
+            return IndividualBodyWeight-FirstIndividualBodyWeight / DaysFromFirstWeight;
         }
         public float GetWeightGainFromLastSurvey(float LastIndividualBodyWeight,int DaysFromFirstWeight, int LastDaysFromFirstWeight)
         {
