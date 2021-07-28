@@ -21,7 +21,7 @@ namespace FermaOnline.Models
         public float DifferenceInBodyWeight { get; set; } // Różnica w wadze, kg tydzień
         public float WeightGainFromStart { get; set; } //Przyrost od wstawienia, kg/dzień
         public float WeightGainFromLastSurvey { get; set; } //Przyrost od poprzedniego ważenia, kg/dzień
-
+   
         public CageSurvey()
         {
             CageQuantity = 0;

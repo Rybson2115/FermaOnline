@@ -1,5 +1,5 @@
 ﻿@model Experiment
- 
+
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
@@ -11,36 +11,195 @@
     </div>
     <br />
 
-    @if (Model!=null)
+    @if (Model != null)
     {
 
+        <div class="table-responsive-md">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <th>@survey.SurveyDate</th>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cage</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>
+                                <table class="table mb-0">
+                                    <tr>
+                                        <td>A </td>
+                                        <td>B </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Loculus quantity </td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>@survey.LoculusQuantity </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Cage quantity </td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>
+                                <table class="table mb-0">
+                                    <tr>
+                                        <td>@survey.A.CageQuantity </td>
+                                        <td>@survey.B.CageQuantity </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Group Weight </td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>
+                                <table class="table mb-0">
+                                    <tr>
+                                        <td>@survey.A.GroupWeight </td>
+                                        <td>@survey.B.GroupWeight </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Days from first weight</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>@survey.DaysFromFirstWeight </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Day Of Life</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>@survey.DayOfLife </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Individual body weight </td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>
+                                <table class="table mb-0">
+                                    <tr>
+                                        <td>@survey.A.IndividualBodyWeight </td>
+                                        <td>@survey.B.IndividualBodyWeight </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Average body weight</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>@survey.AverageBodyWeight </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Difference in body weight </td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>
+                                <table class="table mb-0">
+                                    <tr>
+                                        <td>@survey.A.DifferenceInBodyWeight </td>
+                                        <td>@survey.B.DifferenceInBodyWeight </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Weight gain from start </td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>
+                                <table class="table mb-0">
+                                    <tr>
+                                        <td>@survey.A.WeightGainFromStart </td>
+                                        <td>@survey.B.WeightGainFromStart </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Average weight gain</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>@survey.AverageWeightGain </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Weight gain from last survey</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>
+                                <table class="table mb-0">
+                                    <tr>
+                                        <td>@survey.A.WeightGainFromLastSurvey </td>
+                                        <td>@survey.B.WeightGainFromLastSurvey </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Average weight gain from start</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>@survey.AverageWeightGainFromStart </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Loculus feed intake</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>@survey.LoculusFeedInTake </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Feed Intake Weekly</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>@survey.FeedIntakeWeekly </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>FeedIntakDaily</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>@survey.FeedIntakDaily </td>
+                        }
+                    </tr>
+                    <tr>
+                        <td>Feed Conversion Ratio</td>
+                        @foreach (var survey in Model.SurveysList)
+                        {
+                            <td>@survey.FeedConversionRatio </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-<table class="table table-bordered table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>
-                        Data
-                    </th>
-                   @foreach(var survey in @Model.SurveysList)
-                   {
-                <th>
-                   @survey.SurveyDate
-                </th>
-                   }
-                    
-                        
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr>
-                    <td width="30%">   </td>
-
-                </tr>
-
-            </tbody>
-        </table>
     }
     else
     { <p>Nie przeprowadzono jeszcze pomiarów </p>}
 </div>
+

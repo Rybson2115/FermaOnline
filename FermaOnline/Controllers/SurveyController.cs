@@ -22,26 +22,26 @@ namespace FermaOnline.Controllers
         }
 
         //GET-Create
-        public IActionResult Create()
-        {
+        public IActionResult Create(int id)
+        { 
+            bool SurveyExistInThisExperiment = _db.Surveys.Any(s => s.ExperymentId == id);
+            ViewBag.IsFirstSurvay = !SurveyExistInThisExperiment;
             return View();
         }
 
         //POST-Create
         [HttpPost]
-        [ValidateAntiForgeryToken]//zabezpieczenie 
         public IActionResult Create( Survey formData)
         { 
            int id = formData.ExperymentId;
           Experiment experiment = _db.Experiment.Find(id);
 
-            if (_db.Surveys.ToList().Exists(s => s.ExperymentId == id)) { 
+            if (_db.Surveys.Any(s => s.ExperymentId == id)) { 
                 Survey lastSurvey = _db.Surveys
                                 .Where(s => s.ExperymentId == id)
                                 .OrderByDescending(t => t.SurveyDate)
                                 .FirstOrDefault();
-                formData.SetData(formData, lastSurvey, experiment.AFirstIndividualBodyWeight, experiment.BFirstIndividualBodyWeight);
-                _db.Surveys.Add(formData);
+                _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.AFirstIndividualBodyWeight, experiment.BFirstIndividualBodyWeight));
             }
             else
             {
@@ -52,8 +52,39 @@ namespace FermaOnline.Controllers
                 _db.Experiment.Update(experiment);
             }
             _db.SaveChanges();
-            
+       
             return RedirectToAction("Show", "Experiment", new { id = id });
+        }
+        public IActionResult Delete(int? id)
+        {
+
+            if (id == null || id == 0)
+                return NotFound();
+
+            var ToDelete = _db.Surveys.Find(id);
+
+            if (ToDelete == null)
+                return NotFound();
+
+            return View(ToDelete);
+
+        }
+
+        // POST Delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int? id)
+        {
+            var ToDelete = _db.Surveys.Find(id);
+            if (ToDelete == null)
+                return NotFound();
+
+            _db.Cage.Remove(ToDelete.A);
+            _db.Cage.Remove(ToDelete.B);
+            _db.Surveys.Remove(ToDelete);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }
