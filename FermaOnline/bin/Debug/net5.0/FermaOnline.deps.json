@@ -34,6 +34,7 @@
       "FermaOnline/1.0.0": {
         "dependencies": {
           "Bootstrap.Datepicker": "1.8.0.1",
+          "Chart.js": "2.9.3",
           "Microsoft.EntityFrameworkCore.Design": "5.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.8",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.8",
@@ -328,6 +329,7 @@
         }
       },
       "Bootstrap.Datepicker/1.8.0.1": {},
+      "Chart.js/2.9.3": {},
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -3515,6 +3517,13 @@
       "sha512": "sha512-/pKY2/KjIGQHmK2reK2iowG0Weu6w42VRjBT8vS5AMcsdKMMxQ4NBrvOxWHUpzf0idY+YaKGnjXyWb+Ba+/M3g==",
       "path": "bootstrap.datepicker/1.8.0.1",
       "hashPath": "bootstrap.datepicker.1.8.0.1.nupkg.sha512"
+    },
+    "Chart.js/2.9.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SY8PuXOJANgsEGMtuXPb/gxazfXdySUuFwTPbQUbw/YKiltR6FJ3mXrLFpr6N2MSCS7oUtfOhTotxLifyJcQNA==",
+      "path": "chart.js/2.9.3",
+      "hashPath": "chart.js.2.9.3.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",

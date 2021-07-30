@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FermaOnline.Models
 {
@@ -9,6 +10,7 @@ namespace FermaOnline.Models
     {
         [Key]
         public int SurveyId { get; set; }
+ 
         public int ExperymentId { get; set; }
 
         [DataType(DataType.Date)]
@@ -29,10 +31,8 @@ namespace FermaOnline.Models
         public float FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
         public float AverageWeightGain { get; set; } //Średni przyrost z 2 klatek, kg/dzień
         public float AverageWeightGainFromStart { get; set; } //Średni przyrost z 2 klatek, od ost ważenia, kg/dzień
-
-        public int CageAId { get; set; }
-        public int CageBId { get; set; }
-
+       
+ 
         public CageSurvey A { get; set; }  //kojec A
         public CageSurvey B { get; set; } //kojec B
         private Survey LastSurvey { get; set; } //Ostatni pomiar
@@ -54,8 +54,6 @@ namespace FermaOnline.Models
             A = new CageSurvey();
             B = new CageSurvey();
             AverageWeightGainFromStart = 0.0f;
-            CageAId = A.CageId;
-            CageBId = B.CageId;
         }
         public Survey(int experymentId) : this()
         {

@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "e0ppV5uXfbtL2NuVw763a0jWDW0wca2tcB8bnVAbyz+PVxW8lPTTe6tjt/MvtaeQSJZnTbBUcEBVdpqKglHCJQ==",
+  "dgSpecHash": "f5QdxJiDaIl5RrPuxhx+SPW8g8dwqPoyUiAYdnKpUcNFLvL3Wn7fl00YC8l7XlQdFUybqiq4h14yZEkZD8xunQ==",
   "success": true,
   "projectFilePath": "X:\\Desktop\\Programowanie\\Inz\\Próba 3\\FermaOnline\\FermaOnline.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kamil Matecki\\.nuget\\packages\\bootstrap.datepicker\\1.8.0.1\\bootstrap.datepicker.1.8.0.1.nupkg.sha512",
+    "C:\\Users\\Kamil Matecki\\.nuget\\packages\\chart.js\\2.9.3\\chart.js.2.9.3.nupkg.sha512",
     "C:\\Users\\Kamil Matecki\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Kamil Matecki\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Kamil Matecki\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",

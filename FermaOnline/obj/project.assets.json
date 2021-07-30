@@ -5,6 +5,9 @@
       "Bootstrap.Datepicker/1.8.0.1": {
         "type": "package"
       },
+      "Chart.js/2.9.3": {
+        "type": "package"
+      },
       "Humanizer.Core/2.8.26": {
         "type": "package",
         "compile": {
@@ -2122,6 +2125,21 @@
         "content/Scripts/locales/bootstrap-datepicker.vi.min.js",
         "content/Scripts/locales/bootstrap-datepicker.zh-CN.min.js",
         "content/Scripts/locales/bootstrap-datepicker.zh-TW.min.js"
+      ]
+    },
+    "Chart.js/2.9.3": {
+      "sha512": "SY8PuXOJANgsEGMtuXPb/gxazfXdySUuFwTPbQUbw/YKiltR6FJ3mXrLFpr6N2MSCS7oUtfOhTotxLifyJcQNA==",
+      "type": "package",
+      "path": "chart.js/2.9.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "chart.js.2.9.3.nupkg.sha512",
+        "chart.js.nuspec",
+        "content/Content/Chart.css",
+        "content/Content/Chart.min.css",
+        "content/Scripts/Chart.js",
+        "content/Scripts/Chart.min.js"
       ]
     },
     "Humanizer.Core/2.8.26": {
@@ -7203,6 +7221,7 @@
   "projectFileDependencyGroups": {
     "net5.0": [
       "Bootstrap.Datepicker >= 1.8.0.1",
+      "Chart.js >= 2.9.3",
       "Microsoft.EntityFrameworkCore.Design >= 5.0.8",
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.8",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.8",
@@ -7258,6 +7277,10 @@
           "Bootstrap.Datepicker": {
             "target": "Package",
             "version": "[1.8.0.1, )"
+          },
+          "Chart.js": {
+            "target": "Package",
+            "version": "[2.9.3, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",

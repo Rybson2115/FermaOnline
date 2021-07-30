@@ -23,7 +23,7 @@ namespace FermaOnline.Controllers
 
         //GET-Create
         public IActionResult Create(int id)
-        { 
+        {
             bool SurveyExistInThisExperiment = _db.Surveys.Any(s => s.ExperymentId == id);
             ViewBag.IsFirstSurvay = !SurveyExistInThisExperiment;
             return View();
@@ -31,12 +31,12 @@ namespace FermaOnline.Controllers
 
         //POST-Create
         [HttpPost]
-        public IActionResult Create( Survey formData)
-        { 
-           int id = formData.ExperymentId;
-          Experiment experiment = _db.Experiment.Find(id);
-
-            if (_db.Surveys.Any(s => s.ExperymentId == id)) { 
+        public IActionResult Create(Survey formData)
+        {
+            int id = formData.ExperymentId;
+            Experiment experiment = _db.Experiment.Find(id);
+            if (_db.Surveys.Any(s => s.ExperymentId == id))
+            {
                 Survey lastSurvey = _db.Surveys
                                 .Where(s => s.ExperymentId == id)
                                 .OrderByDescending(t => t.SurveyDate)
@@ -45,14 +45,14 @@ namespace FermaOnline.Controllers
             }
             else
             {
-                _db.Surveys.Add(new Survey(formData));
                 experiment.Start = formData.SurveyDate;
                 experiment.AFirstIndividualBodyWeight = formData.A.IndividualBodyWeight;
                 experiment.BFirstIndividualBodyWeight = formData.B.IndividualBodyWeight;
+                _db.Surveys.Add(new Survey(formData));
                 _db.Experiment.Update(experiment);
             }
             _db.SaveChanges();
-       
+
             return RedirectToAction("Show", "Experiment", new { id = id });
         }
         public IActionResult Delete(int? id)

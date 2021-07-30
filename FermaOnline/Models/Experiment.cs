@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace FermaOnline.Models
@@ -14,17 +15,21 @@ namespace FermaOnline.Models
 
         public string Name { get; set; }
         public bool Status { get; set; }
-        
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime Start { get; set; }//Data pomiaru
- 
+        //Data pomiaru
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime End { get; set; }//Data pomiaru
+        public DateTime Start { get; set; }//Data pomiaru
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime End { get; set; }
+
+
+
         public float AFirstIndividualBodyWeight { get; set; }
         public float BFirstIndividualBodyWeight { get; set; }
+
         public List<Survey> SurveysList { get; set; }
 
         public Experiment()
@@ -37,10 +42,11 @@ namespace FermaOnline.Models
             AFirstIndividualBodyWeight = 0.0f;
             BFirstIndividualBodyWeight = 0.0f;
         }
-        public Experiment(string name):base()
+        public Experiment(string name) : base()
         {
-           // ExperymentId = this.GetHashCode(); pokminic nad id czy my sami nadajemy? 
+
             Name = name;
         }
+
     }
 }

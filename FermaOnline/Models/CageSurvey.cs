@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,7 +12,9 @@ namespace FermaOnline.Models
     {
         [Key]
         public int CageId { get; set; }
-        
+       
+       
+
         [DisplayName("Cage quantity")]
         public int CageQuantity { get; set; } //Liczba sztuk w klatce 
         [DisplayName("Group weight")]
