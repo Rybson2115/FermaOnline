@@ -11,7 +11,7 @@ namespace FermaOnline.Controllers
 {
     public class SurveyController : Controller
     {
-        private readonly ApplicationDbContext _db;//dostęp do bazy danych 
+        private readonly ApplicationDbContext _db;//dostęp do bazy danych  /ja bym to jakoś repo nazwał 
         public SurveyController(ApplicationDbContext db)
         {
             _db = db;

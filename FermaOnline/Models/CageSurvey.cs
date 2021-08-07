@@ -18,7 +18,7 @@ namespace FermaOnline.Models
         public float GroupWeight { get; set; } //Masa ciała grupy klatki, kg/grupę
         public int DeathCount { get; set; }
         public float IndividualBodyWeight { get; set; } // Masa ciała sztuki, kg/szt.
-        public float DifferenceInBodyWeight { get; set; } // Różnica w wadze, kg tydzień
+        public float DifferenceInBodyWeight { get; set; } // Różnica w wadze, kg/tydzień
         public float WeightGainFromStart { get; set; } //Przyrost od wstawienia, kg/dzień
         public float WeightGainFromLastSurvey { get; set; } //Przyrost od poprzedniego ważenia, kg/dzień
    

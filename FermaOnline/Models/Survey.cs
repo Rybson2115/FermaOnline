@@ -29,12 +29,10 @@ namespace FermaOnline.Models
         public float FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
         public float AverageWeightGain { get; set; } //Średni przyrost z 2 klatek, kg/dzień
         public float AverageWeightGainFromStart { get; set; } //Średni przyrost z 2 klatek, od ost ważenia, kg/dzień
-
-        public int CageAId { get; set; }
-        public int CageBId { get; set; }
-
         public CageSurvey A { get; set; }  //kojec A
         public CageSurvey B { get; set; } //kojec B
+        public int ACageId { get; set; }
+        public int BCageId { get; set; }
         private Survey LastSurvey { get; set; } //Ostatni pomiar
 
         public Survey()
@@ -51,11 +49,11 @@ namespace FermaOnline.Models
             FeedIntakDaily = 0.0f;
             FeedConversionRatio = 0.0f;
             AverageWeightGain = 0.0f;
+            AverageWeightGainFromStart = 0.0f;
             A = new CageSurvey();
             B = new CageSurvey();
-            AverageWeightGainFromStart = 0.0f;
-            CageAId = A.CageId;
-            CageBId = B.CageId;
+            ACageId = A.CageId;
+            BCageId = B.CageId;
         }
         public Survey(int experymentId) : this()
         {

@@ -17,13 +17,13 @@ namespace FermaOnline.Models
         
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime Start { get; set; }//Data pomiaru
+        public DateTime Start { get; set; }//Data rozpoczęcia /Ryba
  
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime End { get; set; }//Data pomiaru
-        public float AFirstIndividualBodyWeight { get; set; }
+        public DateTime End { get; set; }//Data zakończenia /Ryba
+        public float AFirstIndividualBodyWeight { get; set; } //Co to, to chyba tutaj niekoniecznie chyba /Ryba
         public float BFirstIndividualBodyWeight { get; set; }
         public List<Survey> SurveysList { get; set; }
 
@@ -39,7 +39,8 @@ namespace FermaOnline.Models
         }
         public Experiment(string name):base()
         {
-           // ExperymentId = this.GetHashCode(); pokminic nad id czy my sami nadajemy? 
+            // ExperymentId = this.GetHashCode(); pokminic nad id czy my sami nadajemy?
+            // Można np  Guid.NewGuid() nie wiem jaka jest szansa na powtórzenie, Przykładowy guid: 2e63341a-e627-48ac-bb1a-9d56e2e9cc4f /Ryba
             Name = name;
         }
     }

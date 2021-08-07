@@ -47,8 +47,15 @@ namespace FermaOnline.Controllers
                 return NotFound();
 
             experiment.SurveysList = _db.Surveys.Where(s => s.ExperymentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
-             
+
             //pobierz cage 
+            for (int i = 0; i < experiment.SurveysList.Count; i++)
+            {
+                int idA = experiment.SurveysList[i].ACageId;
+                int idB = experiment.SurveysList[i].BCageId;
+                experiment.SurveysList[i].A = _db.Cage.Find(idA);
+                experiment.SurveysList[i].B = _db.Cage.Find(idB);
+            }
             return View(experiment);
         }
 

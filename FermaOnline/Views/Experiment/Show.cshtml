@@ -128,14 +128,16 @@
                         <td>Weight gain from start </td>
                         @foreach (var survey in Model.SurveysList)
                         {
-                            <td>
-                                <table class="table mb-0">
-                                    <tr>
-                                        <td>@survey.A.WeightGainFromStart </td>
-                                        <td>@survey.B.WeightGainFromStart </td>
-                                    </tr>
-                                </table>
-                            </td>
+                            
+                                <td>
+                                    <table class="table mb-0">
+                                        <tr>
+                                            <td>@survey.A.WeightGainFromStart </td>
+                                            <td>@survey.B.WeightGainFromStart </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            
                         }
                     </tr>
                     <tr>
