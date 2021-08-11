@@ -50,8 +50,8 @@ namespace FermaOnline.Controllers
             var test = experiment.SurveysList.Select(t=> t.ExperymentId);
             experiment.SurveysList.ForEach(s =>
             {
-                //s.A = _db.Cage.First(c => c.CageId == s.CageAId);
-               // s.B = _db.Cage.First(c => c.CageId == s.CageBId);
+                s.A = _db.Cage.First(c => c.CageId == s.ACageId);
+                 s.B = _db.Cage.First(c => c.CageId == s.BCageId);
             });  //pobierz cage
 
 

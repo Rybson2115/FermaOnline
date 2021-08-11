@@ -195,6 +195,7 @@
                         }
                     </tr>
                     <tr>
+                        <td></td>
                         @foreach (var survey in Model.SurveysList)
                         {
                             <td><a asp-controller="Survey" asp-action="Delete" asp-route-Id="@survey.SurveyId" class="btn btn-danger mx-1">Delete</a></td>
