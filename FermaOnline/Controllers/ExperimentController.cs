@@ -47,8 +47,13 @@ namespace FermaOnline.Controllers
                 return NotFound();
 
             experiment.SurveysList = _db.Surveys.Where(s => s.ExperymentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
-             
+
             //pobierz cage 
+            experiment.SurveysList.ForEach(s =>
+            {
+                s.A = _db.Cage.First(c => c.CageId == s.ACageId);
+                 s.B = _db.Cage.First(c => c.CageId == s.BCageId);
+            });
             return View(experiment);
         }
 
@@ -73,12 +78,23 @@ namespace FermaOnline.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
-            var ToDelete = _db.Experiment.Find(id);
-            if (ToDelete == null)
+            var ExperimetnToDelete = _db.Experiment.Find(id);
+            if (ExperimetnToDelete == null)
                 return NotFound();
-            
-            _db.Surveys.RemoveRange(_db.Surveys.Where(s => s.ExperymentId== ToDelete.Id));
-            _db.Experiment.Remove(ToDelete);
+
+            var SurveysToDelete = _db.Surveys.Where(s => s.ExperymentId == ExperimetnToDelete.Id);
+            _db.Surveys.RemoveRange(SurveysToDelete);
+          
+            //tworzenie listy cage do usunięcia dla wszystkich pomiarów do usuniecia 
+            var CageToDelete = new List<CageSurvey>();
+            SurveysToDelete.ToList().ForEach(s =>
+            {
+                CageToDelete.Add(_db.Cage.First(c => c.CageId == s.ACageId));
+                CageToDelete.Add(_db.Cage.First(c => c.CageId == s.BCageId));
+            });
+            _db.Cage.RemoveRange(CageToDelete);
+
+            _db.Experiment.Remove(ExperimetnToDelete);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

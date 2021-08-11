@@ -21,7 +21,7 @@
                         <th>Data</th>
                         @foreach (var survey in Model.SurveysList)
                         {
-                            <th>@survey.SurveyDate</th>
+                    <th>@survey.SurveyDate.ToString("dd/MM/yyyy")</th>
                         }
                     </tr>
                 </thead>
@@ -128,7 +128,6 @@
                         <td>Weight gain from start </td>
                         @foreach (var survey in Model.SurveysList)
                         {
-                            
                                 <td>
                                     <table class="table mb-0">
                                         <tr>

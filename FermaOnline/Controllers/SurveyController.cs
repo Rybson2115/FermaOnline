@@ -24,6 +24,7 @@ namespace FermaOnline.Controllers
         //GET-Create
         public IActionResult Create(int id)
         {
+            //sprawdzenie czy dodajemy pierwsze doświadczenie 
             bool SurveyExistInThisExperiment = _db.Surveys.Any(s => s.ExperymentId == id);
             ViewBag.IsFirstSurvay = !SurveyExistInThisExperiment;
             return View();
@@ -35,20 +36,28 @@ namespace FermaOnline.Controllers
         {
             int id = formData.ExperymentId;
             Experiment experiment = _db.Experiment.Find(id);
+
             if (_db.Surveys.Any(s => s.ExperymentId == id))
             {
                 Survey lastSurvey = _db.Surveys
                                 .Where(s => s.ExperymentId == id)
                                 .OrderByDescending(t => t.SurveyDate)
                                 .FirstOrDefault();
+                //pobranie A i B dla lastSurvey 
+                lastSurvey.A = _db.Cage.First(c => c.CageId == lastSurvey.ACageId);
+                lastSurvey.B = _db.Cage.First(c => c.CageId == lastSurvey.BCageId);
+
                 _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.AFirstIndividualBodyWeight, experiment.BFirstIndividualBodyWeight));
             }
             else
             {
-                experiment.Start = formData.SurveyDate;
-                experiment.AFirstIndividualBodyWeight = formData.A.IndividualBodyWeight;
-                experiment.BFirstIndividualBodyWeight = formData.B.IndividualBodyWeight;
-                _db.Surveys.Add(new Survey(formData));
+                formData.ExperymentId = id;
+                var DataToAdd = new Survey(formData);
+                experiment.Start = DataToAdd.SurveyDate;
+                experiment.AFirstIndividualBodyWeight = DataToAdd.A.IndividualBodyWeight;
+                experiment.BFirstIndividualBodyWeight = DataToAdd.B.IndividualBodyWeight;
+                experiment.Status = true;
+                _db.Surveys.Add(DataToAdd);
                 _db.Experiment.Update(experiment);
             }
             _db.SaveChanges();
@@ -73,7 +82,7 @@ namespace FermaOnline.Controllers
         // POST Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int? id)
+        public IActionResult DeletePost(int id)
         {
             var ToDelete = _db.Surveys.Find(id);
             if (ToDelete == null)
@@ -84,7 +93,7 @@ namespace FermaOnline.Controllers
             _db.Surveys.Remove(ToDelete);
             _db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Show", "Experiment", new { id = id });
         }
     }
 }
