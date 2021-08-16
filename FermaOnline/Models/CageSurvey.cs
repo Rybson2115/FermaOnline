@@ -46,7 +46,7 @@ namespace FermaOnline.Models
         }
         public float GetWeightGainFromStart(int DaysFromFirstWeight,float FirstIndividualBodyWeight)
         {
-            return IndividualBodyWeight-FirstIndividualBodyWeight / DaysFromFirstWeight;
+            return (IndividualBodyWeight-FirstIndividualBodyWeight) / DaysFromFirstWeight;
         }
         public float GetWeightGainFromLastSurvey(float LastIndividualBodyWeight,int DaysFromFirstWeight, int LastDaysFromFirstWeight)
         {

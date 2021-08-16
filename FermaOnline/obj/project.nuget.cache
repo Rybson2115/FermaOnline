@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "f5QdxJiDaIl5RrPuxhx+SPW8g8dwqPoyUiAYdnKpUcNFLvL3Wn7fl00YC8l7XlQdFUybqiq4h14yZEkZD8xunQ==",
+  "dgSpecHash": "Cj5Esrm0c8RQODdUtEwS2VPx4SBGMi8WOLeNYBQYIV20yvK1hSP5g3nJWNuHGPQ2fsX6FGdoJfdsY7E8SDjVqw==",
   "success": true,
   "projectFilePath": "X:\\Desktop\\Programowanie\\Inz\\Próba 3\\FermaOnline\\FermaOnline.csproj",
   "expectedPackageFiles": [
@@ -129,8 +129,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\Kamil Matecki\\.nuget\\packages\\microsoft.netcore.app.ref\\5.0.0\\microsoft.netcore.app.ref.5.0.0.nupkg.sha512"
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

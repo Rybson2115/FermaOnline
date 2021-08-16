@@ -80,9 +80,9 @@ namespace FermaOnline.Controllers
         }
 
         // POST Delete
-        [HttpPost]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int id)
+        public IActionResult DeletePost(int? id) //nie dostaje id id jest null
         {
             var ToDelete = _db.Surveys.Find(id);
             if (ToDelete == null)
@@ -93,7 +93,7 @@ namespace FermaOnline.Controllers
             _db.Surveys.Remove(ToDelete);
             _db.SaveChanges();
 
-            return RedirectToAction("Show", "Experiment", new { id = id });
+            return RedirectToAction("Index", "Experiment" );
         }
     }
 }
