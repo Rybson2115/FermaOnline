@@ -25,8 +25,7 @@ namespace FermaOnline.Models
         public int GroupId { get; set; } //id grupy zwierząt 
         public int DaysFromFirstWeight { get; set; }  //Ilość dni od pierwszego ważenia
         [DisplayName("Loculus feed intake")]
-        public float LoculusFeedInTake
-        { get; set; } // Pobranie paszy przez komorę
+        public float LoculusFeedInTake { get; set; } // Pobranie paszy przez komorę
         public float FeedIntakeWeekly { get; set; } //Pobranie paszy, kg/tydzień na komorę
         public float FeedIntakDaily { get; set; } //Pobranie paszy, kg/dzien na komorę
         public float FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
