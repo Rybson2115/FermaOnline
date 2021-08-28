@@ -26,7 +26,9 @@ namespace FermaOnline.Models
         public int DaysFromFirstWeight { get; set; }  //Ilość dni od pierwszego ważenia
         [DisplayName("Loculus feed intake")]
         public float LoculusFeedInTake { get; set; } // Pobranie paszy przez komorę
+        [DisplayName("Feed intake weekly")]
         public float FeedIntakeWeekly { get; set; } //Pobranie paszy, kg/tydzień na komorę
+        [DisplayName("Feed intak daily")]
         public float FeedIntakDaily { get; set; } //Pobranie paszy, kg/dzien na komorę
         public float FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
         public float AverageWeightGainFromCages { get; set; } //Średni przyrost z 2 klatek, kg/dzień
@@ -114,7 +116,7 @@ namespace FermaOnline.Models
         }
         private float GetFeedIntakDaily()
         {
-            return FeedIntakeWeekly / LoculusQuantity / DaysFromFirstWeight;
+            return (FeedIntakeWeekly / LoculusQuantity) / (DaysFromFirstWeight-LastSurvey.DaysFromFirstWeight);  
         }
         private float GetAverageWeightGain()
         {
