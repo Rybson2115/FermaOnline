@@ -2,8 +2,13 @@
 
 <div class="container p-3">
     <div class="row pt-4">
+        <a asp-action="Index" class="btn btn-primary btn-circle"><</a>
         <div class="col-6">
-            <h2 class="text-primary">Lista pomiarow @Model.Name</h2>
+            <h2 class="text-primary">@Model.Name</h2>
+            @{var TextSpecies = @Model.Status ? "This experiment is conduct on" : "This experiment was conducted on";
+                <p>@TextSpecies @Model.Species</p>
+            }
+            <p class="lh-base">@Model.Description</p>
         </div>
         <div class="col-6">
             <a type="button" class="btn btn-primary" asp-controller="Survey" asp-route-Id="@Model.Id" asp-action="Create">Add survey</a>
@@ -11,17 +16,17 @@
     </div>
     <br />
 
-    @if (Model != null)
+    @if (Model.SurveysList.Count != 0)
     {
 
-        <div class="table-responsive-md">
+        <div class="table-responsive">
             <table class="table ">
                 <thead>
                     <tr>
                         <th>Data</th>
                         @foreach (var survey in Model.SurveysList)
                         {
-                    <th>@survey.SurveyDate.ToString("dd/MM/yyyy")</th>
+                            <th>@survey.SurveyDate.ToString("dd/MM/yyyy")</th>
                         }
                     </tr>
                 </thead>
@@ -128,15 +133,15 @@
                         <td>Weight gain from start </td>
                         @foreach (var survey in Model.SurveysList)
                         {
-                                <td>
-                                    <table class="table mb-0">
-                                        <tr>
-                                            <td>@survey.A.WeightGainFromStart </td>
-                                            <td>@survey.B.WeightGainFromStart </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            
+                            <td>
+                                <table class="table mb-0">
+                                    <tr>
+                                        <td>@survey.A.WeightGainFromStart </td>
+                                        <td>@survey.B.WeightGainFromStart </td>
+                                    </tr>
+                                </table>
+                            </td>
+
                         }
                     </tr>
                     <tr>
@@ -210,7 +215,8 @@
 
         <canvas class="my-4 h-25" id="myChart"> </canvas>
 
- 
+        <script src="~/lib/chartjs/Chart.min.js" asp-append-version="true"></script>
+
         <script>
             var chartdata = [];
 
@@ -218,7 +224,7 @@
          {
               @: chartdata.push(@days.AverageBodyWeight);
         }
-         
+
 
             var ctx = document.getElementById('myChart').getContext('2d');
             var myChart = new Chart(ctx, {
@@ -267,7 +273,13 @@
             });
         </script>
     }
-    else
-    { <p>Nie przeprowadzono jeszcze pomiarów </p>}
+
+
+    @foreach (var img in @Model.Images)
+    {
+        <p>@img.FileName"</p>
+       // <img src="~/img/ExperimentImages/@img.FileName" alt="@img.FileName" />
+    }
+
 </div>
 

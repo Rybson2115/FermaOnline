@@ -25,7 +25,7 @@ namespace FermaOnline.Controllers
         public IActionResult Create(int id)
         {
             //sprawdzenie czy dodajemy pierwsze doświadczenie 
-            bool SurveyExistInThisExperiment = _db.Surveys.Any(s => s.ExperymentId == id);
+            bool SurveyExistInThisExperiment = _db.Surveys.Any(s => s.ExperimentId == id);
             ViewBag.IsFirstSurvay = !SurveyExistInThisExperiment;
             return View();
         }
@@ -34,13 +34,13 @@ namespace FermaOnline.Controllers
         [HttpPost]
         public IActionResult Create(Survey formData)
         {
-            int id = formData.ExperymentId;
+            int id = formData.ExperimentId;
             Experiment experiment = _db.Experiment.Find(id);
 
-            if (_db.Surveys.Any(s => s.ExperymentId == id))
+            if (_db.Surveys.Any(s => s.ExperimentId == id))
             {
                 Survey lastSurvey = _db.Surveys
-                                .Where(s => s.ExperymentId == id)
+                                .Where(s => s.ExperimentId == id)
                                 .OrderByDescending(t => t.SurveyDate)
                                 .FirstOrDefault();
                 //pobranie A i B dla lastSurvey 
@@ -51,7 +51,7 @@ namespace FermaOnline.Controllers
             }
             else
             {
-                formData.ExperymentId = id;
+                formData.ExperimentId = id;
                 var DataToAdd = new Survey(formData);
                 experiment.Start = DataToAdd.SurveyDate;
                 experiment.AFirstIndividualBodyWeight = DataToAdd.A.IndividualBodyWeight;

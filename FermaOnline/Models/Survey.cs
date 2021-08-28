@@ -11,7 +11,7 @@ namespace FermaOnline.Models
         [Key]
         public int SurveyId { get; set; }
  
-        public int ExperymentId { get; set; }
+        public int ExperimentId { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -40,7 +40,7 @@ namespace FermaOnline.Models
 
         public Survey()
         {
-            ExperymentId = 0;
+            ExperimentId = 0;
             SurveyDate = new DateTime(0001, 01, 01, 00, 00, 00);
             DayOfLife = 0;
             AverageBodyWeight = 0.0f;
@@ -60,11 +60,11 @@ namespace FermaOnline.Models
         }
         public Survey(int experymentId) : this()
         {
-            ExperymentId = experymentId;
+            ExperimentId = experymentId;
         }
         public Survey(Survey newSurvey) : this()
         {
-            ExperymentId = newSurvey.ExperymentId;
+            ExperimentId = newSurvey.ExperimentId;
             SurveyDate = newSurvey.SurveyDate;
             LoculusQuantity = newSurvey.LoculusQuantity;
             A.CageQuantity = newSurvey.A.CageQuantity;

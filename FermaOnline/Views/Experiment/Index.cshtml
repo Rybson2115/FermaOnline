@@ -8,10 +8,7 @@
         <div class="col-6 text-right">
             <a type="button" class="btn btn-primary" asp-controller="Experiment" asp-action="Create">Add experiment</a>
         </div>
-        <div class="col-6">
-            <button type="button" class="btn btn-success btn-circle btn-s">Active</button>  
-            <button type="button" class="btn btn-warning btn-circle btn-s">Completed</button> 
-        </div>
+  
 
     </div>
     <br />
@@ -37,7 +34,7 @@
             <tbody>
                 @foreach (var experiment in Model)
                 {
-                    var style = experiment.Status ? "btn btn-success btn-circle btn-sm" : "btn btn-warning btn-circle btn-sm";
+                    var style = experiment.Status ? "btn btn-success mx-1" : "btn btn-warning mx-1";
                     var start = DateTime.Compare(experiment.Start, new DateTime(0001, 01, 01, 00, 00, 00)) == 0 ? "-" : experiment.Start.ToString("dd/MM/yyyy");// porównaj czy nie jest null i wyświetl w dobrym formacie jak jest null to -
                     var end = DateTime.Compare(experiment.End, new DateTime(0001, 01, 01, 00, 00, 00)) == 0 ? "-" : experiment.End.ToString("dd/MM/yyyy");
                     <tr>

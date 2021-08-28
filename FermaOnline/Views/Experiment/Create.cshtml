@@ -8,16 +8,34 @@
         </div>
         <div class="row">
             <div class="col-12">
+
                 <div class="form-group row">
                     <div class="col-4">
                         <label asp-for="Name"></label>
+                        <input asp-for="Name" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
-                        <input asp-for="Name" class="form-control" />
+                        <label asp-for="Description"></label> <br />
+                        <textarea class="form-control" asp-for="Description" rows="3"></textarea>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label class="form-label" for="postedFiles">Upload image </label>
+                        <input class="form-control" type="file" id="fileSelect" name="postedFiles" multiple />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Species"></label> <br />
+                        <input type="radio" asp-for="Species" value="Pig" />Pig<br />
+                        <input type="radio" asp-for="Species" value="Poultry" />Poultry<br />
+                        <input type="radio" asp-for="Species" value="Ruminants" />Ruminants<br />
+                    </div>
+                </div>
+
                 <div class="form-group row">
                     <div class="col-8 offset-1 row">
                         <div class="col-4">
