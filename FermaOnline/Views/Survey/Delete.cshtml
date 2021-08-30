@@ -1,22 +1,21 @@
 ﻿@model Survey
 
-
-<form method="post" asp-action="DeletePost">
-    <input asp-for="@Model.SurveyId" hidden />      
+<form method="post" asp-controller="Survey" asp-action="DeletePost">
+    <input name="id" value="@Model.SurveyId" hidden />
     <div class="border p-3">
         <div class="form-group row">
-            <h2 class="text-black-50 pl-3">Delete experiment</h2>
+            <h2 class="text-black-50 pl-3">Delete survay</h2>
         </div>
         <div class="row">
             <div class="col-12">
                 <div class="form-group row">
                     <div class="col-4">
-                        <label asp-for="@Model.SurveyDate">@Model.SurveyId Are you sure you want to delete this survey?</label>
+                        <label asp-for="SurveyDate">Are you sure you want to delete survey from @Model.SurveyDate.Date?</label>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
-                        <input asp-for="@Model.SurveyDate" disabled class="form-control" />
+                        <input asp-for="SurveyDate" disabled hidden class="form-control"  />
                     </div>
                 </div>
                 <div class="form-group row">
@@ -25,7 +24,7 @@
                             <input type="submit" class="btn btn-danger w-75" value="Delete" />
                         </div>
                         <div class="col-4">
-                            <a asp-controller="Experiment" asp-action="Show" asp-route-Id=@(ViewContext.RouteData.Values["id"]) class="btn btn-danger w-75">Back</a>
+                            <a asp-controller="Experiment" asp-action="Show" asp-route-id="@Model.ExperimentId"  class="btn btn-success w-75">Back</a>
                         </div>
                     </div>
                 </div>
@@ -35,4 +34,3 @@
     </div>
 </form>
 
- 

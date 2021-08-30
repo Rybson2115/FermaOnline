@@ -64,6 +64,7 @@ namespace FermaOnline.Controllers
 
             return RedirectToAction("Show", "Experiment", new { id = id });
         }
+
         public IActionResult Delete(int? id)
         {
 
@@ -80,20 +81,25 @@ namespace FermaOnline.Controllers
         }
 
         // POST Delete
-        [HttpDelete]
-        [ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int? id) //nie dostaje id id jest null
+     
+        //[ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int id) //nie dostaje id id jest null
         {
-            var ToDelete = _db.Surveys.Find(id);
-            if (ToDelete == null)
+            var SurveysToDelete = _db.Surveys.Find(id);
+          
+            if (SurveysToDelete == null)
                 return NotFound();
 
-            _db.Cage.Remove(ToDelete.A);
-            _db.Cage.Remove(ToDelete.B);
-            _db.Surveys.Remove(ToDelete);
+            var CageToDelete = new List<CageSurvey>();
+          
+                CageToDelete.Add(_db.Cage.First(c => c.CageId == SurveysToDelete.ACageId));
+                CageToDelete.Add(_db.Cage.First(c => c.CageId == SurveysToDelete.BCageId));
+          
+            _db.Cage.RemoveRange(CageToDelete);
+            _db.Surveys.Remove(SurveysToDelete);
             _db.SaveChanges();
 
-            return RedirectToAction("Index", "Experiment" );
+            return RedirectToAction("Show", "Experiment", new { id = SurveysToDelete.ExperimentId });
         }
     }
 }
