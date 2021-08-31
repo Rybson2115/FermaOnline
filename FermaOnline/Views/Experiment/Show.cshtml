@@ -6,6 +6,7 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h2 class="text-primary">@Model.Name</h2>
+                <a type="button" class="btn btn-primary col-6 text-right" asp-controller="Survey" asp-route-Id="@Model.Id" asp-action="Create">Add survey</a>
             </div>
             <div class="card-body">
                 @{var TextSpecies = @Model.Status ? "This experiment is conduct on" : "This experiment was conducted on";
@@ -23,7 +24,6 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary">Surveys</h6>
-                <a type="button" class="btn btn-primary col-6 text-right" asp-controller="Survey" asp-route-Id="@Model.Id" asp-action="Create">Add survey</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
