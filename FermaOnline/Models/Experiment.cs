@@ -32,7 +32,7 @@ namespace FermaOnline.Models
 
         public List<Survey> SurveysList { get; set; }
         public List<Image> Images { get; set; }
-
+        public int CageNumber { get; set; }
         public Experiment()
         {
             Name = string.Empty;
@@ -45,16 +45,16 @@ namespace FermaOnline.Models
             AFirstIndividualBodyWeight = 0.0f;
             BFirstIndividualBodyWeight = 0.0f;
             Images = new List<Image>();
-
-
+            CageNumber = 0;
         }
-        public Experiment(string name,string description, string species) : base()
+        public Experiment(string name,string description, string species,int cageNumber) : base()
         {
             Name = name;
             Description = description;
             Species = species;
+            CageNumber = cageNumber;
         }
-        public Experiment(string name, string description, string species, List<Image> images) : this( name,  description,  species)
+        public Experiment(string name, string description, string species,int cageNumber, List<Image> images) : this( name,  description,  species, cageNumber)
         {
             Images = images;
         }

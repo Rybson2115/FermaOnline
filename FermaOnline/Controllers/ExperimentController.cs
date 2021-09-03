@@ -53,10 +53,10 @@ namespace FermaOnline.Controllers
                     imgList.Add(img);
                 }
          
-                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.Species, imgList));
+                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.Species, formData.CageNumber, imgList));
             }
             else
-                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.Species));
+                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.Species, formData.CageNumber));
             
             _db.SaveChanges();
             return RedirectToAction("Index");
