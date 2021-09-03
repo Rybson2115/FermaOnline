@@ -43,19 +43,18 @@ namespace FermaOnline.Controllers
                                 .Where(s => s.ExperimentId == id)
                                 .OrderByDescending(t => t.SurveyDate)
                                 .FirstOrDefault();
-                //pobranie A i B dla lastSurvey 
-                lastSurvey.A = _db.Cage.First(c => c.CageId == lastSurvey.ACageId);
-                lastSurvey.B = _db.Cage.First(c => c.CageId == lastSurvey.BCageId);
 
-                _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.AFirstIndividualBodyWeight, experiment.BFirstIndividualBodyWeight));
+                //pobranie cage dla lastSurvey 
+              lastSurvey.CagesIndex.ForEach(id => lastSurvey.Cages.Add(_db.Cage.Find(id.CageId)));
+
+                _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.CageFirstIndividualBodyWeight));
             }
             else
             {
                 formData.ExperimentId = id;
                 var DataToAdd = new Survey(formData);
                 experiment.Start = DataToAdd.SurveyDate;
-                experiment.AFirstIndividualBodyWeight = DataToAdd.A.IndividualBodyWeight;
-                experiment.BFirstIndividualBodyWeight = DataToAdd.B.IndividualBodyWeight;
+                DataToAdd.Cages.ForEach(c => experiment.CageFirstIndividualBodyWeight.Add(c.IndividualBodyWeight));
                 experiment.Status = true;
                 _db.Surveys.Add(DataToAdd);
                 _db.Experiment.Update(experiment);
@@ -91,10 +90,8 @@ namespace FermaOnline.Controllers
                 return NotFound();
 
             var CageToDelete = new List<CageSurvey>();
-          
-                CageToDelete.Add(_db.Cage.First(c => c.CageId == SurveysToDelete.ACageId));
-                CageToDelete.Add(_db.Cage.First(c => c.CageId == SurveysToDelete.BCageId));
-          
+            SurveysToDelete.CagesIndex.ForEach(c => CageToDelete.Add(_db.Cage.Find(c.CageId)));
+
             _db.Cage.RemoveRange(CageToDelete);
             _db.Surveys.Remove(SurveysToDelete);
             _db.SaveChanges();
