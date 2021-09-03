@@ -364,3 +364,462 @@ X:\Desktop\Programowanie\Inz\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnlin
 X:\Desktop\Programowanie\Inz\FermaOnline\FermaOnline\obj\Debug\net5.0\ref\FermaOnline.dll
 X:\Desktop\Programowanie\Inz\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.pdb
 X:\Desktop\Programowanie\Inz\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.genruntimeconfig.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\appsettings.Development.json
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\appsettings.json
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\FermaOnline.exe
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\FermaOnline.deps.json
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\FermaOnline.runtimeconfig.json
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\FermaOnline.runtimeconfig.dev.json
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\FermaOnline.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ref\FermaOnline.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\FermaOnline.pdb
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\FermaOnline.Views.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\FermaOnline.Views.pdb
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Humanizer.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\dotnet-aspnet-codegenerator-design.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\Newtonsoft.Json.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\System.Composition.Convention.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\System.Composition.Hosting.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\System.Composition.Runtime.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\System.Composition.TypedParts.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\System.Runtime.Caching.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.csprojAssemblyReference.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.GeneratedMSBuildEditorConfig.editorconfig
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.AssemblyInfoInputs.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.AssemblyInfo.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.csproj.CoreCompileInputs.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.MvcApplicationPartsAssemblyInfo.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorAssemblyInfo.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorAssemblyInfo.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\staticwebassets\FermaOnline.StaticWebAssets.Manifest.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\staticwebassets\FermaOnline.StaticWebAssets.xml
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\scopedcss\bundle\FermaOnline.styles.css
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.TagHelpers.input.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.TagHelpers.output.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorCoreGenerate.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorTargetAssemblyInfo.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorTargetAssemblyInfo.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.Views.pdb
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.csproj.CopyComplete
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\ref\FermaOnline.dll
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.pdb
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\FermaOnline.genruntimeconfig.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Create.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Index.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Show.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Delete.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Update.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Survey\Create.cshtml.g.cs
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\Survey\Delete.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\appsettings.json
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\FermaOnline.exe
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\FermaOnline.deps.json
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\FermaOnline.runtimeconfig.json
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\FermaOnline.runtimeconfig.dev.json
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\FermaOnline.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ref\FermaOnline.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\FermaOnline.pdb
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\FermaOnline.Views.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\FermaOnline.Views.pdb
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Humanizer.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\dotnet-aspnet-codegenerator-design.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\System.Composition.Convention.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\System.Composition.Hosting.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\System.Composition.Runtime.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\System.Composition.TypedParts.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\System.Runtime.Caching.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.csprojAssemblyReference.cache
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.AssemblyInfoInputs.cache
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.AssemblyInfo.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.csproj.CoreCompileInputs.cache
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorAssemblyInfo.cache
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorAssemblyInfo.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\staticwebassets\FermaOnline.StaticWebAssets.Manifest.cache
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\staticwebassets\FermaOnline.StaticWebAssets.xml
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\scopedcss\bundle\FermaOnline.styles.css
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.TagHelpers.input.cache
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.TagHelpers.output.cache
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorCoreGenerate.cache
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Create.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Delete.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Index.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Show.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Update.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Survey\Create.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\Survey\Delete.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorTargetAssemblyInfo.cache
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorTargetAssemblyInfo.cs
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.Views.pdb
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.csproj.CopyComplete
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\ref\FermaOnline.dll
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.pdb
+C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.genruntimeconfig.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.csprojAssemblyReference.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.AssemblyInfoInputs.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.AssemblyInfo.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.csproj.CoreCompileInputs.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorAssemblyInfo.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorAssemblyInfo.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\ref\FermaOnline.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.pdb
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\appsettings.Development.json
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\appsettings.json
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\FermaOnline.exe
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\FermaOnline.deps.json
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\FermaOnline.runtimeconfig.json
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\FermaOnline.runtimeconfig.dev.json
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\FermaOnline.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ref\FermaOnline.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\FermaOnline.pdb
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\FermaOnline.Views.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\FermaOnline.Views.pdb
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Humanizer.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.AspNetCore.Razor.Language.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.CSharp.Workspaces.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.Razor.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.CodeAnalysis.Workspaces.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.Data.SqlClient.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.Identity.Client.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Contracts.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Core.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\dotnet-aspnet-codegenerator-design.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\System.Composition.AttributedModel.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\System.Composition.Convention.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\System.Composition.Hosting.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\System.Composition.Runtime.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\System.Composition.TypedParts.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\System.Configuration.ConfigurationManager.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\System.Runtime.Caching.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\de\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\es\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\it\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win-arm64\lib\net5.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\staticwebassets\FermaOnline.StaticWebAssets.Manifest.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\staticwebassets\FermaOnline.StaticWebAssets.xml
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\scopedcss\bundle\FermaOnline.styles.css
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.TagHelpers.input.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.TagHelpers.output.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorCoreGenerate.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Create.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Delete.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Index.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Show.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Experiment\Update.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Survey\Create.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\Survey\Delete.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorTargetAssemblyInfo.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorTargetAssemblyInfo.cs
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.Views.pdb
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.csproj.CopyComplete
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.genruntimeconfig.cache
