@@ -7,12 +7,13 @@
 node_modules/
 dist/
 
-#Szymcio doda≈Ç
+#Szymcio doda≥
 *.dll
 *.pdv
 *.cache
 *.suo
-
+*.v2
+Startup.cs
 
 # Compiled Java class files
 *.class
