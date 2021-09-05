@@ -15,24 +15,30 @@ namespace FermaOnline.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime SurveyDate { get; set; }//Data pomiaru
+        [Required]
+        public DateTime? SurveyDate { get; set; }//Data pomiaru
         [DisplayName("Day of life")]
-        public int DayOfLife { get; set; }//Dzień życia zwierzęcia 
+        [Required]
+        [Range(0, int.MaxValue)]
+        public int? DayOfLife { get; set; }//Dzień życia zwierzęcia 
         public float AverageBodyWeight { get; set; } //Średnia masa ciała kg/szt 
-
         [DisplayName("Loculus quantity")]
-        public int LoculusQuantity { get; set; } //Liczba sztuk na komorze
+        [Required]
+        [Range(0, int.MaxValue)]
+        public int? LoculusQuantity { get; set; } //Liczba sztuk na komorze
         public int GroupId { get; set; } //id grupy zwierząt 
         public int DaysFromFirstWeight { get; set; }  //Ilość dni od pierwszego ważenia
         [DisplayName("Loculus feed intake")]
-        public float LoculusFeedInTake { get; set; } // Pobranie paszy przez komorę
+        [Required]
+        [Range(0, int.MaxValue)]
+        public float? LoculusFeedInTake { get; set; } // Pobranie paszy przez komorę
         [DisplayName("Feed intake weekly")]
-        public float FeedIntakeWeekly { get; set; } //Pobranie paszy, kg/tydzień na komorę
+        public float? FeedIntakeWeekly { get; set; } //Pobranie paszy, kg/tydzień na komorę
         [DisplayName("Feed intak daily")]
-        public float FeedIntakDaily { get; set; } //Pobranie paszy, kg/dzien na komorę
-        public float FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
-        public float AverageWeightGainFromCages { get; set; } //Średni przyrost z 2 klatek, kg/dzień
-        public float AverageWeightGainFromLastSurvey { get; set; } //Średni przyrost z 2 klatek, od ost ważenia, kg/dzień
+        public float? FeedIntakDaily { get; set; } //Pobranie paszy, kg/dzien na komorę
+        public float? FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
+        public float? AverageWeightGainFromCages { get; set; } //Średni przyrost z 2 klatek, kg/dzień
+        public float? AverageWeightGainFromLastSurvey { get; set; } //Średni przyrost z 2 klatek, od ost ważenia, kg/dzień
          public int ACageId { get; set; }
         public int BCageId { get; set; }
 
@@ -100,11 +106,11 @@ namespace FermaOnline.Models
 
         private int GetDayOfLife()
         {
-            return LastSurvey.DayOfLife + (int)(SurveyDate - LastSurvey.SurveyDate).TotalDays;//Dzien zycia z ostatniego pomiaru + ilość dni między pomiarami 
+            return (int)LastSurvey.DayOfLife + (int)((DateTime)SurveyDate - (DateTime)LastSurvey.SurveyDate).TotalDays;//Dzien zycia z ostatniego pomiaru + ilość dni między pomiarami 
         }
         private int GetDaysFromFirstWeight()
         {
-            return LastSurvey.DaysFromFirstWeight + (int)(SurveyDate - LastSurvey.SurveyDate).TotalDays;//Ilość dni od pierwszego ważenia z ostatniego pomiaru + ilość dni między pomiarami 
+            return LastSurvey.DaysFromFirstWeight + (int)((DateTime)SurveyDate - (DateTime)LastSurvey.SurveyDate).TotalDays;//Ilość dni od pierwszego ważenia z ostatniego pomiaru + ilość dni między pomiarami 
         }
         private float GetAverageBodyWeight()
         {
@@ -112,11 +118,11 @@ namespace FermaOnline.Models
         }
         private float GetFeedIntakeWeekly()
         {
-            return LoculusFeedInTake - LastSurvey.LoculusFeedInTake;
+            return (float)(LoculusFeedInTake - LastSurvey.LoculusFeedInTake);
         }
         private float GetFeedIntakDaily()
         {
-            return (FeedIntakeWeekly / LoculusQuantity) / (DaysFromFirstWeight-LastSurvey.DaysFromFirstWeight);  
+            return (float)((FeedIntakeWeekly / LoculusQuantity) / (DaysFromFirstWeight-LastSurvey.DaysFromFirstWeight));  
         }
         private float GetAverageWeightGain()
         {
@@ -124,7 +130,7 @@ namespace FermaOnline.Models
         }
         private float GetFeedConversionRatio()
         {
-            return FeedIntakDaily / AverageWeightGainFromCages;
+            return (float)(FeedIntakDaily / AverageWeightGainFromCages);
         }
         private float GetAverageWeightGainFromLastSurvey()
         {

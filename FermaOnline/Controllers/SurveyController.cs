@@ -34,35 +34,39 @@ namespace FermaOnline.Controllers
         [HttpPost]
         public IActionResult Create(Survey formData)
         {
-            int id = formData.ExperimentId;
-            Experiment experiment = _db.Experiment.Find(id);
-
-            if (_db.Surveys.Any(s => s.ExperimentId == id))
+            if (ModelState.IsValid)
             {
-                Survey lastSurvey = _db.Surveys
-                                .Where(s => s.ExperimentId == id)
-                                .OrderByDescending(t => t.SurveyDate)
-                                .FirstOrDefault();
-                //pobranie A i B dla lastSurvey 
-                lastSurvey.A = _db.Cage.First(c => c.CageId == lastSurvey.ACageId);
-                lastSurvey.B = _db.Cage.First(c => c.CageId == lastSurvey.BCageId);
+                int id = formData.ExperimentId;
+                Experiment experiment = _db.Experiment.Find(id);
 
-                _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.AFirstIndividualBodyWeight, experiment.BFirstIndividualBodyWeight));
-            }
-            else
-            {
-                formData.ExperimentId = id;
-                var DataToAdd = new Survey(formData);
-                experiment.Start = DataToAdd.SurveyDate;
-                experiment.AFirstIndividualBodyWeight = DataToAdd.A.IndividualBodyWeight;
-                experiment.BFirstIndividualBodyWeight = DataToAdd.B.IndividualBodyWeight;
-                experiment.Status = true;
-                _db.Surveys.Add(DataToAdd);
-                _db.Experiment.Update(experiment);
-            }
-            _db.SaveChanges();
+                if (_db.Surveys.Any(s => s.ExperimentId == id))
+                {
+                    Survey lastSurvey = _db.Surveys
+                                    .Where(s => s.ExperimentId == id)
+                                    .OrderByDescending(t => t.SurveyDate)
+                                    .FirstOrDefault();
+                    //pobranie A i B dla lastSurvey 
+                    lastSurvey.A = _db.Cage.First(c => c.CageId == lastSurvey.ACageId);
+                    lastSurvey.B = _db.Cage.First(c => c.CageId == lastSurvey.BCageId);
 
-            return RedirectToAction("Show", "Experiment", new { id = id });
+                    _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.AFirstIndividualBodyWeight, experiment.BFirstIndividualBodyWeight));
+                }
+                else
+                {
+                    formData.ExperimentId = id;
+                    var DataToAdd = new Survey(formData);
+                    experiment.Start = (DateTime)DataToAdd.SurveyDate;
+                    experiment.AFirstIndividualBodyWeight = DataToAdd.A.IndividualBodyWeight;
+                    experiment.BFirstIndividualBodyWeight = DataToAdd.B.IndividualBodyWeight;
+                    experiment.Status = true;
+                    _db.Surveys.Add(DataToAdd);
+                    _db.Experiment.Update(experiment);
+                }
+                _db.SaveChanges();
+
+                return RedirectToAction("Show", "Experiment", new { id = id });
+            }
+            return View(formData);
         }
 
         public IActionResult Delete(int? id)

@@ -12,13 +12,14 @@ namespace FermaOnline.Models
     {
         [Key]
         public int CageId { get; set; }
-       
-       
-
         [DisplayName("Cage quantity")]
-        public int CageQuantity { get; set; } //Liczba sztuk w klatce 
+        [Required]
+        [Range(0, int.MaxValue)]
+        public int? CageQuantity { get; set; } //Liczba sztuk w klatce 
         [DisplayName("Group weight")]
-        public float GroupWeight { get; set; } //Masa ciała grupy klatki, kg/grupę
+        [Required]
+        [Range(1, int.MaxValue)]
+        public float? GroupWeight { get; set; } //Masa ciała grupy klatki, kg/grupę
         public int DeathCount { get; set; }
         public float IndividualBodyWeight { get; set; } // Masa ciała sztuki, kg/szt.
         public float DifferenceInBodyWeight { get; set; } // Różnica w wadze, kg/tydzień
@@ -38,7 +39,7 @@ namespace FermaOnline.Models
         }
          public float GetIndividualBodyWeight()
          {
-            return GroupWeight / CageQuantity;
+            return (float)(GroupWeight / CageQuantity);
          }
         public float GetDifferenceInBodyWeight(float LastIndividualBodyWeight)
         {
