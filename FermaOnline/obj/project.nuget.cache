@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "W+aQPLYmzI9BmhHzofunBd1jhkY4fOeqePLc20jI2hCmg834NeGgucPrfGMcgY0N6soNchVawHLtZ638vV9OiA==",
+  "dgSpecHash": "P+IwUkkdZQpA+09AQwXSJFvdvJPKi7YzX/MRhLP7nDH0yRjYs3oIY2cf3/KNMRU1yBlZ8OBASLG/dDydNVmMeg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Rybson\\Source\\Repos\\ferma-online3\\FermaOnline\\FermaOnline.csproj",
   "expectedPackageFiles": [
@@ -56,6 +56,7 @@
     "C:\\Users\\Rybson\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Rybson\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Rybson\\.nuget\\packages\\quickmailer\\1.0.0.1\\quickmailer.1.0.0.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",

@@ -1,5 +1,8 @@
 ﻿@model Experiment
 
+<!DOCTYPE html>
+<html lang="en">
+<body>
 <div class="container p-3">
     <div class="row pt-4">
         <a asp-action="Index" class="btn btn-primary btn-circle"><</a>
@@ -12,7 +15,7 @@
                 @{var TextSpecies = @Model.Status ? "This experiment is conduct on" : "This experiment was conducted on";
                     <p>@TextSpecies @Model.Species</p>
                 }
-                <p class="lh-base">@Model.Description</p>
+                <div class="des">@Html.Raw(@Model.Description)</div>
             </div>
         </div>
 
@@ -235,8 +238,6 @@
             </div>
         </div>
 
-
-
         <script>
             var chartdata = [];
 
@@ -322,4 +323,6 @@
         </div>
     </div>
 </div>
+</body>
+</html>
 

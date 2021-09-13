@@ -1,6 +1,5 @@
 ﻿@model Experiment
 
-
 <form method="post" asp-action="Update">
     <input asp-for="Id" hidden />
     <div class="border p-3">
@@ -16,9 +15,6 @@
                     <div class="col-4">
                         <label asp-for="Status"></label>
                     </div>
-                    <div class="col-4">
-                        <label asp-for="Description"></label>
-                    </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
@@ -28,6 +24,7 @@
                         <input class="form-check-input" type="checkbox" asp-for="Status" />
                     </div>
                     <div class="col-4">
+                        <label asp-for="Description"></label>
                         <textarea class="form-control" asp-for="Description" rows="3"></textarea>
                     </div>
                     <div class="form-group row">
@@ -52,4 +49,15 @@
         </div>
     </div>
 </form>
-
+@section Scripts {
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#Description').summernote({
+                height: 250
+            });
+        });
+    </script>
+}

@@ -823,3 +823,4 @@ C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnl
 C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.Views.pdb
 C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.csproj.CopyComplete
 C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.genruntimeconfig.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\bin\Debug\net5.0\QuickMailer.dll

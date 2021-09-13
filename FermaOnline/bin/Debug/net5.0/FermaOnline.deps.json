@@ -39,6 +39,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.8",
           "Microsoft.EntityFrameworkCore.Tools": "5.0.8",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "5.0.2",
+          "QuickMailer": "1.0.0.1",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "5.0.0.0",
@@ -1085,6 +1086,17 @@
         },
         "compile": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "QuickMailer/1.0.0.1": {
+        "runtime": {
+          "lib/net5.0/QuickMailer.dll": {
+            "assemblyVersion": "1.0.0.1",
+            "fileVersion": "1.0.0.1"
+          }
+        },
+        "compile": {
+          "lib/net5.0/QuickMailer.dll": {}
         }
       },
       "runtime.native.System/4.3.0": {
@@ -3874,6 +3886,13 @@
       "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
       "path": "newtonsoft.json/11.0.2",
       "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+    },
+    "QuickMailer/1.0.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-AMKcB545uqkrC7vUmLap0rOBtma8ozsWEOxv+Q/kVDGySxQah984wkJnADrh2Th1YHoJG9G/EuLVjlmS2tQL3g==",
+      "path": "quickmailer/1.0.0.1",
+      "hashPath": "quickmailer.1.0.0.1.nupkg.sha512"
     },
     "runtime.native.System/4.3.0": {
       "type": "package",
