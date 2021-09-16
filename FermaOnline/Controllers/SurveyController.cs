@@ -27,6 +27,7 @@ namespace FermaOnline.Controllers
             //sprawdzenie czy dodajemy pierwsze doświadczenie 
             bool SurveyExistInThisExperiment = _db.Surveys.Any(s => s.ExperimentId == id);
             ViewBag.IsFirstSurvay = !SurveyExistInThisExperiment;
+            ViewBag.CageNumber = _db.Experiment.Find(id).CageNumber;
             return View();
         }
 
@@ -36,7 +37,7 @@ namespace FermaOnline.Controllers
         {
             int id = formData.ExperimentId;
             Experiment experiment = _db.Experiment.Find(id);
-
+         
             if (_db.Surveys.Any(s => s.ExperimentId == id))
             {
                 Survey lastSurvey = _db.Surveys
@@ -47,14 +48,14 @@ namespace FermaOnline.Controllers
                 //pobranie cage dla lastSurvey 
               lastSurvey.CagesIndex.ForEach(id => lastSurvey.Cages.Add(_db.Cage.Find(id.CageId)));
 
-                _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.CageFirstIndividualBodyWeight));
+                _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.CageFirstIndividualBodyWeight, experiment.CageNumber));
             }
             else
             {
                 formData.ExperimentId = id;
                 var DataToAdd = new Survey(formData);
                 experiment.Start = DataToAdd.SurveyDate;
-                DataToAdd.Cages.ForEach(c => experiment.CageFirstIndividualBodyWeight.Add(c.IndividualBodyWeight));
+                DataToAdd.Cages.ForEach(c => experiment.CageFirstIndividualBodyWeight.Add(c.IndividualBodyWeight)); //tu cos nie gra 
                 experiment.Status = true;
                 _db.Surveys.Add(DataToAdd);
                 _db.Experiment.Update(experiment);
@@ -82,7 +83,7 @@ namespace FermaOnline.Controllers
         // POST Delete
      
         //[ValidateAntiForgeryToken]
-        public IActionResult DeletePost(int id) //nie dostaje id id jest null
+        public IActionResult DeletePost(int id)  
         {
             var SurveysToDelete = _db.Surveys.Find(id);
           

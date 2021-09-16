@@ -1,5 +1,5 @@
 ﻿@model Survey
- 
+
 
 <form method="post" asp-action="Create">
     <input type="hidden" asp-for="ExperimentId" value=@(ViewContext.RouteData.Values["id"]) />
@@ -22,29 +22,27 @@
                             <input asp-for="LoculusQuantity" class="form-control " />
                         </div>
                     </div>
-                    <div class="sb-3 row">
-                        <label asp-for="A.CageQuantity">A quantity</label>
-                        <div class="col-sm-10">
-                            <input asp-for="A.CageQuantity" class="form-control " />
-                            <label asp-for="B.CageQuantity">B quantity</label>
-                            <div class="col-sm-10">
-                                <input asp-for="B.CageQuantity" class="form-control " />
+                    @{int count = 0;
+
+                        for (int i = 0; i < ViewBag.CageNumber; i++)
+                        {
+                            count++;
+           
+                            <div class="sb-3 row">
+                                <label asp-for="@Model.Cages[i].CageQuantity">@count cage quantity</label>
+                                <div class="col-sm-10">
+                                    <input asp-for="@Model.Cages[i].CageQuantity" class="form-control " />
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mb-3 row">
-                        <label asp-for="A.GroupWeight">A group weight</label>
-                        <div class="col-sm-10">
-                            <input type="number" step="0.01" asp-for="A.GroupWeight" class="form-control " />
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label asp-for="B.GroupWeight">B  group weight</label>
-                        <div class="col-sm-10">
-                            <input type="number" step="0.01" asp-for="B.GroupWeight" class="form-control" />
-                        </div>
-                    </div>
+                            <div class="mb-3 row">
+                                <label asp-for="@Model.Cages[i].GroupWeight">@count cage group weight</label>
+                                <div class="col-sm-10">
+                                    <input type="number" step="0.01" asp-for="@Model.Cages[i].GroupWeight" class="form-control " />
+                                </div>
+                            </div>
+
+                        }
+                    }
                     @if (ViewBag.IsFirstSurvay)
                     {
                         <div class="mb-3 row">
@@ -59,7 +57,7 @@
                         <div class="mb-3 row">
                             <label asp-for="LoculusFeedInTake"></label>
                             <div class="col-sm-10">
-                                <input asp-for="LoculusFeedInTake" class="form-control" /> <!-- NIE PRZYJMUJE FLOAT???-->
+                                <input asp-for="LoculusFeedInTake" class="form-control" />
                             </div>
                         </div>
                     }

@@ -11,7 +11,7 @@ namespace FermaOnline.Models
     {
         [Key]
         public int SurveyId { get; set; }
- 
+       
         public int ExperimentId { get; set; }
 
         [DataType(DataType.Date)]
@@ -34,7 +34,7 @@ namespace FermaOnline.Models
         public float FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
         public float AverageWeightGainFromCages { get; set; } //Średni przyrost z 2 klatek, kg/dzień
         public float AverageWeightGainFromLastSurvey { get; set; } //Średni przyrost z 2 klatek, od ost ważenia, kg/dzień
-                                                                   // public int ACageId { get; set; }
+                                                                  // public int ACageId { get; set; }
                                                                    //public int BCageId { get; set; }
         public List<CageIndex> CagesIndex { get; set; }
         public List<CageSurvey> Cages { get; set; }
@@ -74,12 +74,12 @@ namespace FermaOnline.Models
             AverageBodyWeight = GetAverageBodyWeight();
         }
 
-        public Survey(Survey newSurvey, Survey lastSurvey,List<float> cageFirstIndividualBodyWeight) : this(newSurvey)
+        public Survey(Survey newSurvey, Survey lastSurvey,List<float> cageFirstIndividualBodyWeight,int cageCount) : this(newSurvey)
         {
             LastSurvey = lastSurvey;
             DayOfLife = GetDayOfLife();
             DaysFromFirstWeight = GetDaysFromFirstWeight();
-            for (int i = 0; i < Cages.Count; i++)
+            for (int i = 0; i < cageCount; i++)
             {
                 Cages[i].DifferenceInBodyWeight= Cages[i].GetDifferenceInBodyWeight(LastSurvey.Cages[i].IndividualBodyWeight);
                 Cages[i].WeightGainFromLastSurvey = Cages[i].GetWeightGainFromLastSurvey(LastSurvey.Cages[i].IndividualBodyWeight, DaysFromFirstWeight, LastSurvey.DaysFromFirstWeight);

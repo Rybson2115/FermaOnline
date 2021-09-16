@@ -28,6 +28,7 @@ namespace FermaOnline.Models
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime End { get; set; }
         
+        [NotMapped]
         public List<float> CageFirstIndividualBodyWeight { get; set; }
     
      //public float AFirstIndividualBodyWeight { get; set; }
@@ -45,7 +46,7 @@ namespace FermaOnline.Models
             Start = new DateTime(0001, 01, 01, 00, 00, 00);//ta data jako null
             End = new DateTime(0001, 01, 01, 00, 00, 00);
             SurveysList = null;
-            CageFirstIndividualBodyWeight = null;
+            CageFirstIndividualBodyWeight = new List<float>();
             Images = new List<Image>();
             CageNumber = 0;
         }
