@@ -34,11 +34,9 @@ namespace FermaOnline.Models
         public float FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
         public float AverageWeightGainFromCages { get; set; } //Średni przyrost z 2 klatek, kg/dzień
         public float AverageWeightGainFromLastSurvey { get; set; } //Średni przyrost z 2 klatek, od ost ważenia, kg/dzień
-                                                                  // public int ACageId { get; set; }
-                                                                   //public int BCageId { get; set; }
-        public List<CageIndex> CagesIndex { get; set; }
+                                                 
         public List<CageSurvey> Cages { get; set; }
-    private Survey LastSurvey { get; set; } //Ostatni pomiar
+        private Survey LastSurvey { get; set; } //Ostatni pomiar
 
         public Survey()
         {
@@ -55,7 +53,7 @@ namespace FermaOnline.Models
             FeedConversionRatio = 0.0f;
             AverageWeightGainFromCages = 0.0f;
             Cages = new List<CageSurvey>();
-             
+      
             AverageWeightGainFromLastSurvey = 0.0f;
           
         }
@@ -69,6 +67,8 @@ namespace FermaOnline.Models
             SurveyDate = newSurvey.SurveyDate;
             LoculusQuantity = newSurvey.LoculusQuantity;
             Cages = newSurvey.Cages;
+            foreach (var cage in Cages)
+                cage.IndividualBodyWeight = cage.GetIndividualBodyWeight();
             DayOfLife = newSurvey.DayOfLife;
             LoculusFeedInTake = newSurvey.LoculusFeedInTake;
             AverageBodyWeight = GetAverageBodyWeight();

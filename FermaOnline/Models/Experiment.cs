@@ -30,11 +30,9 @@ namespace FermaOnline.Models
         
         [NotMapped]
         public List<float> CageFirstIndividualBodyWeight { get; set; }
-    
-     //public float AFirstIndividualBodyWeight { get; set; }
-    //public float BFirstIndividualBodyWeight { get; set; }
+ 
 
-    public List<Survey> SurveysList { get; set; }
+        public List<Survey> SurveysList { get; set; }
         public List<Image> Images { get; set; }
         public int CageNumber { get; set; }
         public Experiment()

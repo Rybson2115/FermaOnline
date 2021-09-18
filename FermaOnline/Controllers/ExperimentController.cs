@@ -71,7 +71,7 @@ namespace FermaOnline.Controllers
                 experiment.SurveysList = _db.Surveys.Where(s => s.ExperimentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
 
                 //pobierz cage > dla każdego survey pobierz każdy cage 
-                experiment.SurveysList.ForEach(s => s.Cages.ForEach(c => c = _db.Cage.Find(c.CageId)));
+                experiment.SurveysList.ForEach(s => s.Cages = _db.Cage.Where(c => c.SurveyId == s.SurveyId).ToList()); 
            
             //pobierz img 
             
@@ -108,8 +108,10 @@ namespace FermaOnline.Controllers
             var SurveysToDelete = _db.Surveys.Where(s => s.ExperimentId == ExperimetnToDelete.Id);
            
             var CageToDelete = new List<CageSurvey>();
+            
             //tworzenie listy cage do usunięcia dla wszystkich pomiarów do usuniecia dla każdego survey dodaj każdy cage do listy usuń 
             SurveysToDelete.ToList().ForEach(s => s.Cages.ForEach(c => CageToDelete.Add(_db.Cage.Find(c.CageId))));
+           
 
             _db.Surveys.RemoveRange(SurveysToDelete);
             _db.Cage.RemoveRange(CageToDelete);
