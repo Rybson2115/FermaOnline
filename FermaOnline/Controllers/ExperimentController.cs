@@ -53,10 +53,10 @@ namespace FermaOnline.Controllers
                     imgList.Add(img);
                 }
          
-                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.Species, formData.CageNumber, imgList));
+                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber, imgList));
             }
             else
-                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.Species, formData.CageNumber));
+                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber));
             
             _db.SaveChanges();
             return RedirectToAction("Index");
@@ -73,8 +73,7 @@ namespace FermaOnline.Controllers
                 //pobierz cage > dla każdego survey pobierz każdy cage 
                 experiment.SurveysList.ForEach(s => s.Cages = _db.Cage.Where(c => c.SurveyId == s.SurveyId).ToList()); 
            
-            //pobierz img 
-            
+                //pobierz img 
                 experiment.Images = _db.Image.Where(i => i.ExperimentId == id).ToList();
            
                 return View(experiment);

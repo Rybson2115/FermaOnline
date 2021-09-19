@@ -15,10 +15,12 @@ namespace FermaOnline.Models
         [Key]
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Code { get; set; } //kod doświadczenia 
+        public string Name { get; set; } //tutuł
         public bool Status { get; set; }
         public string Species { get; set; }  
-        public string Description { get; set; }
+        public string Description { get; set; } // opis 
+        public string ShortDescription { get; set; } // streszczenie 
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -47,15 +49,19 @@ namespace FermaOnline.Models
             CageFirstIndividualBodyWeight = new List<float>();
             Images = new List<Image>();
             CageNumber = 0;
+            Code = string.Empty;
+            ShortDescription = string.Empty;
         }
-        public Experiment(string name,string description, string species,int cageNumber) : base()
+        public Experiment(string name,string description, string shortDescription, string species,int cageNumber) : base()
         {
             Name = name;
             Description = description;
             Species = species;
             CageNumber = cageNumber;
+            Code = $"{Id}/{Species}/{DateTime.Today.Year}";
+            ShortDescription = shortDescription;
         }
-        public Experiment(string name, string description, string species,int cageNumber, List<Image> images) : this( name,  description,  species, cageNumber)
+        public Experiment(string name, string description, string shortDescription, string species,int cageNumber, List<Image> images) : this( name,  description, shortDescription,  species, cageNumber)
         {
             Images = images;
         }
