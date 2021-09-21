@@ -12,8 +12,7 @@ namespace FermaOnline.Models
     {
         [Key]
         public int CageId { get; set; }
-       
-       
+        public int SurveyId { get; set; }
 
         [DisplayName("Cage quantity")]
         public int CageQuantity { get; set; } //Liczba sztuk w klatce 

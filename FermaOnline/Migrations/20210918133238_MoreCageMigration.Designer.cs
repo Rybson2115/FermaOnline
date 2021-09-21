@@ -10,15 +10,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FermaOnline.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210827112121_NewPropInExperimentMigration")]
-    partial class NewPropInExperimentMigration
+    [Migration("20210918133238_MoreCageMigration")]
+    partial class MoreCageMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.8")
+                .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("FermaOnline.Models.CageSurvey", b =>
@@ -43,6 +43,9 @@ namespace FermaOnline.Migrations
                     b.Property<float>("IndividualBodyWeight")
                         .HasColumnType("real");
 
+                    b.Property<int>("SurveyId")
+                        .HasColumnType("int");
+
                     b.Property<float>("WeightGainFromLastSurvey")
                         .HasColumnType("real");
 
@@ -50,6 +53,8 @@ namespace FermaOnline.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("CageId");
+
+                    b.HasIndex("SurveyId");
 
                     b.ToTable("Cage");
                 });
@@ -61,11 +66,8 @@ namespace FermaOnline.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<float>("AFirstIndividualBodyWeight")
-                        .HasColumnType("real");
-
-                    b.Property<float>("BFirstIndividualBodyWeight")
-                        .HasColumnType("real");
+                    b.Property<int>("CageNumber")
+                        .HasColumnType("int");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -117,9 +119,6 @@ namespace FermaOnline.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ACageId")
-                        .HasColumnType("int");
-
                     b.Property<float>("AverageBodyWeight")
                         .HasColumnType("real");
 
@@ -129,19 +128,13 @@ namespace FermaOnline.Migrations
                     b.Property<float>("AverageWeightGainFromLastSurvey")
                         .HasColumnType("real");
 
-                    b.Property<int>("BCageId")
-                        .HasColumnType("int");
-
                     b.Property<int>("DayOfLife")
                         .HasColumnType("int");
 
                     b.Property<int>("DaysFromFirstWeight")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ExperimentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExperymentId")
+                    b.Property<int>("ExperimentId")
                         .HasColumnType("int");
 
                     b.Property<float>("FeedConversionRatio")
@@ -167,13 +160,18 @@ namespace FermaOnline.Migrations
 
                     b.HasKey("SurveyId");
 
-                    b.HasIndex("ACageId");
-
-                    b.HasIndex("BCageId");
-
                     b.HasIndex("ExperimentId");
 
                     b.ToTable("Surveys");
+                });
+
+            modelBuilder.Entity("FermaOnline.Models.CageSurvey", b =>
+                {
+                    b.HasOne("FermaOnline.Models.Survey", null)
+                        .WithMany("Cages")
+                        .HasForeignKey("SurveyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FermaOnline.Models.Image", b =>
@@ -187,25 +185,11 @@ namespace FermaOnline.Migrations
 
             modelBuilder.Entity("FermaOnline.Models.Survey", b =>
                 {
-                    b.HasOne("FermaOnline.Models.CageSurvey", "A")
-                        .WithMany()
-                        .HasForeignKey("ACageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FermaOnline.Models.CageSurvey", "B")
-                        .WithMany()
-                        .HasForeignKey("BCageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("FermaOnline.Models.Experiment", null)
                         .WithMany("SurveysList")
-                        .HasForeignKey("ExperimentId");
-
-                    b.Navigation("A");
-
-                    b.Navigation("B");
+                        .HasForeignKey("ExperimentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FermaOnline.Models.Experiment", b =>
@@ -213,6 +197,11 @@ namespace FermaOnline.Migrations
                     b.Navigation("Images");
 
                     b.Navigation("SurveysList");
+                });
+
+            modelBuilder.Entity("FermaOnline.Models.Survey", b =>
+                {
+                    b.Navigation("Cages");
                 });
 #pragma warning restore 612, 618
         }

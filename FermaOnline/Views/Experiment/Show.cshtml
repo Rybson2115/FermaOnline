@@ -12,6 +12,7 @@
                 @{var TextSpecies = @Model.Status ? "This experiment is conduct on" : "This experiment was conducted on";
                     <p>@TextSpecies @Model.Species</p>
                 }
+            <p>id:@Model.Code </p>
                 <p class="lh-base">@Model.Description</p>
             </div>
         </div>
@@ -28,7 +29,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table ">
-                        <thead>
+                        <thead> 
                             <tr>
                                 <th>Data</th>
                                 @foreach (var survey in Model.SurveysList)
@@ -40,16 +41,20 @@
                         <tbody>
                             <tr>
                                 <td>Cage</td>
-                                @foreach (var survey in Model.SurveysList)
-                                {
-                                    <td>
-                                        <table class="table mb-0">
-                                            <tr>
-                                                <td>A </td>
-                                                <td>B </td>
-                                            </tr>
-                                        </table>
-                                    </td>
+                                @{ char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
+                                    @foreach (var survey in Model.SurveysList)
+                                    {
+                                        <td>
+                                            <table class="table mb-0">
+                                                <tr>
+                                                    @for (int i = 0; i < Model.CageNumber; i++)
+                                                    {
+                                                    <td>@alphabet[i] </td>
+                                                    }
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    }
                                 }
                             </tr>
                             <tr>
@@ -66,8 +71,10 @@
                                     <td>
                                         <table class="table mb-0">
                                             <tr>
-                                                <td>@survey.A.CageQuantity </td>
-                                                <td>@survey.B.CageQuantity </td>
+                                                @foreach (var cage in survey.Cages)
+                                                {
+                                                    <td>@cage.CageQuantity</td>
+                                                }
                                             </tr>
                                         </table>
                                     </td>
@@ -80,8 +87,10 @@
                                     <td>
                                         <table class="table mb-0">
                                             <tr>
-                                                <td>@survey.A.GroupWeight </td>
-                                                <td>@survey.B.GroupWeight </td>
+                                                @foreach (var cage in survey.Cages)
+                                                {
+                                                    <td>@cage.GroupWeight </td>
+                                                }
                                             </tr>
                                         </table>
                                     </td>
@@ -108,8 +117,10 @@
                                     <td>
                                         <table class="table mb-0">
                                             <tr>
-                                                <td>@survey.A.IndividualBodyWeight </td>
-                                                <td>@survey.B.IndividualBodyWeight </td>
+                                                @foreach (var cage in survey.Cages)
+                                                {
+                                                    <td>@cage.IndividualBodyWeight </td>
+                                                }
                                             </tr>
                                         </table>
                                     </td>
@@ -129,8 +140,10 @@
                                     <td>
                                         <table class="table mb-0">
                                             <tr>
-                                                <td>@survey.A.DifferenceInBodyWeight </td>
-                                                <td>@survey.B.DifferenceInBodyWeight </td>
+                                                @foreach (var cage in survey.Cages)
+                                                {
+                                                    <td>@cage.DifferenceInBodyWeight </td>
+                                                }
                                             </tr>
                                         </table>
                                     </td>
@@ -143,8 +156,10 @@
                                     <td>
                                         <table class="table mb-0">
                                             <tr>
-                                                <td>@survey.A.WeightGainFromStart </td>
-                                                <td>@survey.B.WeightGainFromStart </td>
+                                                @foreach (var cage in survey.Cages)
+                                                {
+                                                    <td>@cage.WeightGainFromStart </td>
+                                                }
                                             </tr>
                                         </table>
                                     </td>
@@ -165,8 +180,10 @@
                                     <td>
                                         <table class="table mb-0">
                                             <tr>
-                                                <td>@survey.A.WeightGainFromLastSurvey </td>
-                                                <td>@survey.B.WeightGainFromLastSurvey </td>
+                                                @foreach (var cage in survey.Cages)
+                                                {
+                                                    <td>@cage.WeightGainFromLastSurvey </td>
+                                                }
                                             </tr>
                                         </table>
                                     </td>
