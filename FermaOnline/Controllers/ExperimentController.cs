@@ -53,10 +53,10 @@ namespace FermaOnline.Controllers
                     imgList.Add(img);
                 }
          
-                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.Species, imgList));
+                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.Species, formData.CageNumber, imgList));
             }
             else
-                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.Species));
+                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.Species, formData.CageNumber));
             
             _db.SaveChanges();
             return RedirectToAction("Index");
@@ -70,12 +70,8 @@ namespace FermaOnline.Controllers
          
                 experiment.SurveysList = _db.Surveys.Where(s => s.ExperimentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
 
-                //pobierz cage 
-                experiment.SurveysList.ForEach(s =>
-                {
-                    s.A = _db.Cage.First(c => c.CageId == s.ACageId);
-                     s.B = _db.Cage.First(c => c.CageId == s.BCageId);
-                });
+                //pobierz cage > dla każdego survey pobierz każdy cage 
+                experiment.SurveysList.ForEach(s => s.Cages.ForEach(c => c = _db.Cage.Find(c.CageId)));
            
             //pobierz img 
             
@@ -110,17 +106,13 @@ namespace FermaOnline.Controllers
                 return NotFound();
 
             var SurveysToDelete = _db.Surveys.Where(s => s.ExperimentId == ExperimetnToDelete.Id);
-            _db.Surveys.RemoveRange(SurveysToDelete);
-          
-            //tworzenie listy cage do usunięcia dla wszystkich pomiarów do usuniecia 
+           
             var CageToDelete = new List<CageSurvey>();
-            SurveysToDelete.ToList().ForEach(s =>
-            {
-                CageToDelete.Add(_db.Cage.First(c => c.CageId == s.ACageId));
-                CageToDelete.Add(_db.Cage.First(c => c.CageId == s.BCageId));
-            });
-            _db.Cage.RemoveRange(CageToDelete);
+            //tworzenie listy cage do usunięcia dla wszystkich pomiarów do usuniecia dla każdego survey dodaj każdy cage do listy usuń 
+            SurveysToDelete.ToList().ForEach(s => s.Cages.ForEach(c => CageToDelete.Add(_db.Cage.Find(c.CageId))));
 
+            _db.Surveys.RemoveRange(SurveysToDelete);
+            _db.Cage.RemoveRange(CageToDelete);
             _db.Experiment.Remove(ExperimetnToDelete);
             _db.SaveChanges();
             return RedirectToAction("Index");
