@@ -10,6 +10,7 @@ namespace FermaOnline.Data
 
         public DbSet<Survey> Surveys { get; set; }
         public DbSet<CageSurvey> Cage { get; set; }
+        public DbSet<CageIndex> CagesIndex { get; set; }
         public DbSet<Experiment> Experiment { get; set; }
         public DbSet<Image> Image { get; set; }
     }
