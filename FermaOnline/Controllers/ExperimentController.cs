@@ -39,6 +39,7 @@ namespace FermaOnline.Controllers
         public IActionResult Create(Experiment formData, List<IFormFile> postedFiles)
         {
             var imgList = new List<Image>();
+            Experiment ExperimentToAdd;
             if (postedFiles.Count > 0)
             {
                 foreach (IFormFile postedFile in postedFiles)
@@ -52,12 +53,14 @@ namespace FermaOnline.Controllers
                     _db.Image.Add(img);
                     imgList.Add(img);
                 }
-         
-                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber, imgList));
+
+                ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber, imgList);
             }
             else
-                _db.Experiment.Add(new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber));
-            
+                ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber);
+
+             _db.Experiment.Add(ExperimentToAdd); 
+             
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -65,6 +68,13 @@ namespace FermaOnline.Controllers
         public IActionResult Show(int id) //Wyswietla eksperyment
         {
             var experiment = _db.Experiment.Find(id);//pobieranie danych z bazy 
+            if (experiment.Code == null)
+            {
+                experiment.Code = $"{experiment.Id}/{experiment.Species}/{System.DateTime.Today.Year}";
+                _db.Experiment.Update(experiment);
+                _db.SaveChanges();
+            }
+            
             if (_db.Experiment.Find(id)==null)//sprawdza czy w bazie jest podane id
                 return NotFound();
          
@@ -75,8 +85,9 @@ namespace FermaOnline.Controllers
            
                 //pobierz img 
                 experiment.Images = _db.Image.Where(i => i.ExperimentId == id).ToList();
+        
            
-                return View(experiment);
+            return View(experiment);
         }
 
         // GET Delete

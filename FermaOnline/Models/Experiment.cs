@@ -14,7 +14,6 @@ namespace FermaOnline.Models
     {
         [Key]
         public int Id { get; set; }
-
         public string Code { get; set; } //kod doświadczenia 
         public string Name { get; set; } //tutuł
         public bool Status { get; set; }
@@ -58,7 +57,6 @@ namespace FermaOnline.Models
             Description = description;
             Species = species;
             CageNumber = cageNumber;
-            Code = $"{Id}/{Species}/{DateTime.Today.Year}";
             ShortDescription = shortDescription;
         }
         public Experiment(string name, string description, string shortDescription, string species,int cageNumber, List<Image> images) : this( name,  description, shortDescription,  species, cageNumber)
