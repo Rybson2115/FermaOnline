@@ -21,7 +21,17 @@
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design\5.0.9\build\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design\5.0.9\build\netcoreapp3.0\Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+<<<<<<< HEAD
     <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\Rybson\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0</PkgMicrosoft_CodeAnalysis_Analyzers>
     <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\Rybson\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.9</PkgMicrosoft_EntityFrameworkCore_Tools>
+=======
+<<<<<<< HEAD
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\Rybson\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\Rybson\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.8</PkgMicrosoft_EntityFrameworkCore_Tools>
+=======
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\Kamil Matecki\.nuget\packages\microsoft.codeanalysis.analyzers\3.0.0</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgMicrosoft_EntityFrameworkCore_Tools Condition=" '$(PkgMicrosoft_EntityFrameworkCore_Tools)' == '' ">C:\Users\Kamil Matecki\.nuget\packages\microsoft.entityframeworkcore.tools\5.0.9</PkgMicrosoft_EntityFrameworkCore_Tools>
+>>>>>>> origin/MoreCageInExperiment
+>>>>>>> d196befe41f45f1bbea0d4c6d57d2ec4e148b032
   </PropertyGroup>
 </Project>
