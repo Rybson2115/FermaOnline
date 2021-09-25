@@ -37,18 +37,22 @@
                     var style = experiment.Status ? "btn btn-success mx-1" : "btn btn-warning mx-1";
                     var start = DateTime.Compare(experiment.Start, new DateTime(0001, 01, 01, 00, 00, 00)) == 0 ? "-" : experiment.Start.ToString("dd/MM/yyyy");// porównaj czy nie jest null i wyświetl w dobrym formacie jak jest null to -
                     var end = DateTime.Compare(experiment.End, new DateTime(0001, 01, 01, 00, 00, 00)) == 0 ? "-" : experiment.End.ToString("dd/MM/yyyy");
-                    <tr>
-                        <td width="30%"> @experiment.Name  </td>
-                        <td width="30%"> @start</td>
-                        <td width="30%"> @end</td>
-                        <td width="40%">
-                            <div class="w-100 btn-group" role="group">
-                                <a asp-controller="Experiment" asp-route-id="@experiment.Id" asp-action="Show" class="@style mx-1">Check</a>
-                                <a asp-controller="Experiment" asp-action="Update" asp-route-Id="@experiment.Id" class="btn btn-primary mx-1">Update</a>
-                                <a asp-controller="Experiment" asp-action="Delete" asp-route-Id="@experiment.Id" class="btn btn-danger mx-1">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
+                <tr>
+                    <td width="30%">
+                        @experiment.Name<br>
+                        @experiment.ShortDescription
+                       
+                    </td>
+                    <td width="30%"> @start</td>
+                    <td width="30%"> @end</td>
+                    <td width="40%">
+                        <div class="w-100 btn-group" role="group">
+                            <a asp-controller="Experiment" asp-route-id="@experiment.Id" asp-action="Show" class="@style mx-1">Check</a>
+                            <a asp-controller="Experiment" asp-action="Update" asp-route-Id="@experiment.Id" class="btn btn-primary mx-1">Update</a>
+                            <a asp-controller="Experiment" asp-action="Delete" asp-route-Id="@experiment.Id" class="btn btn-danger mx-1">Delete</a>
+                        </div>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
