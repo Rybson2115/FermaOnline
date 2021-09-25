@@ -13,7 +13,7 @@
                     <p>@TextSpecies @Model.Species</p>
                 }
             <p>id:@Model.Code </p>
-                <p class="lh-base">@Model.Description</p>
+                <p class="lh-base">@Html.Raw(@Model.Description)</p> 
             </div>
         </div>
 
