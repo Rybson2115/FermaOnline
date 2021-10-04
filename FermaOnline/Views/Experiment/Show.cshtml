@@ -1,5 +1,6 @@
 ﻿@model Experiment
-   
+@using FermaOnline.Models
+
 <div class="container p-3">
     <div class="row pt-4">
         <div class="card shadow mb-4">
@@ -12,24 +13,26 @@
 
             </div>
             <div class="card-body">
+
                 <div class="d-flex justify-content-between">
                     <p class="align-text-bottom"><span class="fw-bold">id:</span> @Model.Code </p>
                     <p><span class="fw-bold">Author:</span> Jerzy Pastuszak</p>
                 </div>
-                @{var TextSpecies = @Model.Status ? "This experiment is conduct on" : "This experiment was conducted on";
-                    <p class="fst-italic">@TextSpecies @Model.Species</p>
-                }
+                <div class="d-flex justify-content-center">
+                    @{var TextSpecies = @Model.Status ? "This experiment is conduct on" : "This experiment was conducted on";
+                        <p class="fst-italic">@TextSpecies @Model.Species</p>
+                    }
+                </div>
+                    <p class=".fs-1 text fw-bold">Abstract:</p>
+                    <p>@Model.ShortDescription</p>
 
-                <p class=".fs-1 text fw-bold">Abstract:</p>
-                <p>@Model.ShortDescription</p>
-
-                <p class=".fs-1 text fw-bold">Description:</p>
-                <p class="lh-base">@Html.Raw(@Model.Description)</p>
+                    <p class=".fs-1 text fw-bold">Description:</p>
+                    <p class="lh-base">@Html.Raw(@Model.Description)</p>
 
 
 
+                </div>
             </div>
-        </div>
     </div>
     <br />
 
@@ -37,7 +40,7 @@
     {
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Surveys</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Table</h6>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -242,7 +245,6 @@
                                 @foreach (var survey in Model.SurveysList)
                                 {
                                     <td>  <a asp-controller="Survey" asp-action="Delete" asp-route-Id="@survey.SurveyId" class="btn btn-danger mx-1">Delete</a></td>
-
                                 }
 
                             </tr>
@@ -253,63 +255,65 @@
         </div>
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Charts</h6>
             </div>
             <div class="card-body">
-                <div class="chart-bar">
+                <div class="chart-line">
                     <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <canvas id="myChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"></canvas>
+                    <canvas id="myChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
                 </div>
                 <hr>
-                BioDose 2020
+               <span class="fw-bold float-right"> BioDose 2020 </span>
             </div>
         </div>
 
 
 
         <script>
-            var chartdata = [];
+            var Days = [];
+            var Weight = [];
 
-         @foreach (var days in Model.SurveysList)
-         {
-              @: chartdata.push(@days.AverageBodyWeight);
+            @{var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
+                var Weight = dict.Values.ToList();
+                var Days = dict.Keys.ToList();
+
+            @foreach (var day in Days)
+             {
+                  @: Days.push(@day);
+            }
+
+                 @foreach (var weight in Weight)
+             {
+                  @: Weight.push(parseFloat(@weight));
+            }
         }
-
-
-            var data = {
-                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
-                datasets: [{
-                    label: "Dataset #1",
-                    backgroundColor: "rgba(255,99,132,0.2)",
-                    borderColor: "rgba(255,99,132,1)",
-                    borderWidth: 2,
-                    hoverBackgroundColor: "rgba(255,99,132,0.4)",
-                    hoverBorderColor: "rgba(255,99,132,1)",
-                    data: [65, 59, 20, 81, 56, 55, 40],
-                }]
-            };
-
-            var options = {
-                maintainAspectRatio: false,
-                scales: {
-                    yAxes: [{
-                        stacked: true,
-                        gridLines: {
-                            display: true,
-                            color: "rgba(255,99,132,0.2)"
-                        }
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            display: false
-                        }
-                    }]
+            new Chart(document.getElementById('myChart'), {
+                type: 'line',
+                data: {
+                    labels: Days,
+                    datasets: [{
+                        data: Weight,
+                        label: "Standard curve",
+                        borderColor: "#3e95cd",
+                        fill: false
+                    }
+                    ]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        text: 'Weight gain over time (G/DAYS)'
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                max: 140,
+                                min: 5,
+                                stepSize: 0.5
+                            }
+                        }]
+                    }
                 }
-            };
-
-            Chart.Bar('myChart', {
-                options: options,
-                data: data
             });
 
         </script>

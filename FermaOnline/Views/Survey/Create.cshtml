@@ -48,7 +48,13 @@
                         <div class="mb-3 row">
                             <label asp-for="DayOfLife"></label>
                             <div class="col-sm-10">
-                                <input asp-for="DayOfLife" class="form-control" />
+                                <!-- <input asp-for="DayOfLife" class="form-control" />-->
+                                @{
+                                    //string value = (Model.Cages[0].GroupWeight > 500 ? "tak" : "nie");
+                                    //placeholder = @value
+                                <input  asp-for="DayOfLife" />
+
+                                }
                             </div>
                         </div>
                     }
