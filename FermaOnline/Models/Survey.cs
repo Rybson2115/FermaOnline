@@ -68,10 +68,10 @@ namespace FermaOnline.Models
             LoculusQuantity = newSurvey.LoculusQuantity;
             Cages = newSurvey.Cages;
             foreach (var cage in Cages)
-                cage.IndividualBodyWeight = cage.GetIndividualBodyWeight();
+                cage.IndividualBodyWeight = (float)Math.Round(cage.GetIndividualBodyWeight(), 2);  
             DayOfLife = newSurvey.DayOfLife;
-            LoculusFeedInTake = newSurvey.LoculusFeedInTake;
-            AverageBodyWeight = GetAverageBodyWeight();
+            LoculusFeedInTake = (float)Math.Round(newSurvey.LoculusFeedInTake, 2); 
+            AverageBodyWeight = (float)Math.Round(GetAverageBodyWeight(), 2);
         }
 
         public Survey(Survey newSurvey, Survey lastSurvey,List<float> cageFirstIndividualBodyWeight,int cageCount) : this(newSurvey)
@@ -81,15 +81,15 @@ namespace FermaOnline.Models
             DaysFromFirstWeight = GetDaysFromFirstWeight();
             for (int i = 0; i < cageCount; i++)
             {
-                Cages[i].DifferenceInBodyWeight= Cages[i].GetDifferenceInBodyWeight(LastSurvey.Cages[i].IndividualBodyWeight);
-                Cages[i].WeightGainFromLastSurvey = Cages[i].GetWeightGainFromLastSurvey(LastSurvey.Cages[i].IndividualBodyWeight, DaysFromFirstWeight, LastSurvey.DaysFromFirstWeight);
-                Cages[i].WeightGainFromStart = Cages[i].GetWeightGainFromStart(DaysFromFirstWeight, cageFirstIndividualBodyWeight[i]);
+                Cages[i].DifferenceInBodyWeight= (float)Math.Round(Cages[i].GetDifferenceInBodyWeight(LastSurvey.Cages[i].IndividualBodyWeight), 2); 
+                Cages[i].WeightGainFromLastSurvey = (float)Math.Round(Cages[i].GetWeightGainFromLastSurvey(LastSurvey.Cages[i].IndividualBodyWeight, DaysFromFirstWeight, LastSurvey.DaysFromFirstWeight), 2);
+                Cages[i].WeightGainFromStart = (float)Math.Round(Cages[i].GetWeightGainFromStart(DaysFromFirstWeight, cageFirstIndividualBodyWeight[i]), 2);
             }
-            AverageWeightGainFromCages = GetAverageWeightGain();
-            FeedIntakeWeekly = GetFeedIntakeWeekly();
-            FeedIntakDaily = GetFeedIntakDaily();
-            FeedConversionRatio = GetFeedConversionRatio();
-            AverageWeightGainFromLastSurvey = GetAverageWeightGainFromLastSurvey();
+            AverageWeightGainFromCages = (float)Math.Round(GetAverageWeightGain(), 2);
+            FeedIntakeWeekly = (float)Math.Round(GetFeedIntakeWeekly(), 2); 
+            FeedIntakDaily = (float)Math.Round(GetFeedIntakDaily(), 2); 
+            FeedConversionRatio = (float)Math.Round(GetFeedConversionRatio(), 2);  
+            AverageWeightGainFromLastSurvey = (float)Math.Round(GetAverageWeightGainFromLastSurvey(), 2);  
         }
 
         private int GetDayOfLife()
