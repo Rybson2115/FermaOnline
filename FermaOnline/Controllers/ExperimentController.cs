@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+ 
 
 namespace FermaOnline.Controllers
 {
@@ -36,32 +37,15 @@ namespace FermaOnline.Controllers
         //POST-Create
         [HttpPost]
         [ValidateAntiForgeryToken]//zabezpieczenie 
-        public IActionResult Create(Experiment formData, List<IFormFile> postedFiles)
+        public IActionResult Create(Experiment formData)
         {
-            var imgList = new List<Image>();
+ 
             Experiment ExperimentToAdd;
-            if (postedFiles.Count > 0)
-            {
-                foreach (IFormFile postedFile in postedFiles)
-                {
-                    string fileName = Path.GetFileName(postedFile.FileName);
-                    using (FileStream stream = new FileStream(Path.Combine("~/img/ExperimentImages/", fileName), FileMode.Create))
-                    {
-                        postedFile.CopyTo(stream);
-                    }
-                    var img = new Image(formData.Id, postedFile.FileName);
-                    _db.Image.Add(img);
-                    imgList.Add(img);
-                }
-
-                ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber, imgList);
-            }
-            else
-                ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber);
-
-             _db.Experiment.Add(ExperimentToAdd); 
-             
+            ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber);
+            
+            _db.Experiment.Add(ExperimentToAdd);
             _db.SaveChanges();
+         
             return RedirectToAction("Index");
         }
         //GET-Show
@@ -84,7 +68,7 @@ namespace FermaOnline.Controllers
                 experiment.SurveysList.ForEach(s => s.Cages = _db.Cage.Where(c => c.SurveyId == s.SurveyId).ToList()); 
            
                 //pobierz img 
-                experiment.Images = _db.Image.Where(i => i.ExperimentId == id).ToList();
+               // experiment.Files = _db.Files.Where(i => i.ExperimentId == id).ToList();
         
            
             return View(experiment);

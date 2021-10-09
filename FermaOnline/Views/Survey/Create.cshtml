@@ -10,7 +10,7 @@
 
         <div class="row center">
             <div class="col-8">
-
+                <p>Add data in time order</p>
                 <div class="mb-3 row">
                     <label asp-for="SurveyDate"></label>
                     <div class="col-sm-10">
@@ -26,8 +26,6 @@
                         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
                         for (int i = 0; i < ViewBag.CageNumber; i++)
                         {
-                            
-
                             <div class="sb-3 row">
                                 <label asp-for="@Model.Cages[i].CageQuantity">@alphabet[count] cage quantity</label>
                                 <div class="col-sm-10">

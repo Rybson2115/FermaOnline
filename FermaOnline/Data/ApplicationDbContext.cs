@@ -14,6 +14,6 @@ namespace FermaOnline.Data
         public DbSet<CageFirstIndividualBodyWeight> CFIBW { get; set; }
         
         public DbSet<Experiment> Experiment { get; set; }
-        public DbSet<Image> Image { get; set; }
+        public DbSet<FileModel> Files { get; set; }
     }
 }

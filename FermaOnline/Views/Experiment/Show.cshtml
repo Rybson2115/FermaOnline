@@ -270,23 +270,21 @@
 
 
         <script>
-            var Days = [];
+           var Days = [];
             var Weight = [];
 
             @{var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
                 var Weight = dict.Values.ToList();
-                var Days = dict.Keys.ToList();
+                //var Days = dict.Keys.ToList();
 
-            @foreach (var day in Days)
-             {
-                  @: Days.push(@day);
-            }
-
-                 @foreach (var weight in Weight)
-             {
-                  @: Weight.push(parseFloat(@weight));
-            }
+                  @foreach (var survey in Model.SurveysList)
+                   {
+                     @: Days.push(@survey.DayOfLife);
+                     @: Weight.push(parseFloat(@dict[@survey.DayOfLife])); //trzeba coś wymyślić bo robi tu int zamiast float
+                   }
+               
         }
+
             new Chart(document.getElementById('myChart'), {
                 type: 'line',
                 data: {
@@ -307,7 +305,7 @@
                     scales: {
                         yAxes: [{
                             ticks: {
-                                max: 140,
+                                max: Weight.at(-1),
                                 min: 5,
                                 stepSize: 0.5
                             }
@@ -317,7 +315,7 @@
             });
 
         </script>
-    }
+                }
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Nutrition Formula</h6>

@@ -28,13 +28,12 @@ namespace FermaOnline.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime End { get; set; }
-        
+ 
         [NotMapped]
         public List<float> CageFirstIndividualBodyWeight { get; set; }
- 
 
         public List<Survey> SurveysList { get; set; }
-        public List<Image> Images { get; set; }
+ 
         public int CageNumber { get; set; }
         public Experiment()
         {
@@ -46,7 +45,6 @@ namespace FermaOnline.Models
             End = new DateTime(0001, 01, 01, 00, 00, 00);
             SurveysList = null;
             CageFirstIndividualBodyWeight = new List<float>();
-            Images = new List<Image>();
             CageNumber = 0;
             Code = string.Empty;
             ShortDescription = string.Empty;
@@ -59,10 +57,5 @@ namespace FermaOnline.Models
             CageNumber = cageNumber;
             ShortDescription = shortDescription;
         }
-        public Experiment(string name, string description, string shortDescription, string species,int cageNumber, List<Image> images) : this( name,  description, shortDescription,  species, cageNumber)
-        {
-            Images = images;
-        }
-
     }
 }

@@ -5,6 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\img\ExperimentImages\**" />
+    <Content Remove="wwwroot\img\ExperimentImages\**" />
+    <EmbeddedResource Remove="wwwroot\img\ExperimentImages\**" />
+    <None Remove="wwwroot\img\ExperimentImages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Bootstrap.Datepicker" Version="1.8.0.1" />
     <PackageReference Include="Chart.js" Version="2.9.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
@@ -21,7 +28,7 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="wwwroot\img\ExperimentImages\" />
+    <Folder Include="wwwroot\UploadedFiles\" />
   </ItemGroup>
 
   <ItemGroup>
