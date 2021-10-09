@@ -50,7 +50,7 @@
                                 <th>Data</th>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <th>@survey.SurveyDate.ToString("dd/MM/yyyy")</th>
+                                    <th>@survey.SurveyDate.!?ToString("dd/MM/yyyy")</th>
                                 }
                             </tr>
                         </thead>

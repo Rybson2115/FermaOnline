@@ -4,6 +4,7 @@
 <form method="post" asp-action="Create">
     <input type="hidden" asp-for="ExperimentId" value=@(ViewContext.RouteData.Values["id"]) />
     <div class="border p-3">
+        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
         <div class="form-group row">
             <h2 class="text-black-50 pl-3">Add survey</h2>
         </div>
@@ -15,35 +16,37 @@
                     <label asp-for="SurveyDate"></label>
                     <div class="col-sm-10">
                         <input asp-for="SurveyDate" class=".form-control " />
+                        <span asp-validation-for="SurveyDate" class="text-danger"></span>
                     </div>
                     <div class="mb-3 row">
                         <label asp-for="LoculusQuantity"></label>
                         <div class="col-sm-10">
                             <input asp-for="LoculusQuantity" class="form-control " />
+                            <span asp-validation-for="LoculusQuantity" class="text-danger"></span>
                         </div>
                     </div>
                     @{int count = 0;
                         char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
                         for (int i = 0; i < ViewBag.CageNumber; i++)
                         {
-                            
-
                             <div class="sb-3 row">
                                 <label asp-for="@Model.Cages[i].CageQuantity">@alphabet[count] cage quantity</label>
                                 <div class="col-sm-10">
                                     <input asp-for="@Model.Cages[i].CageQuantity" class="form-control " />
+                                    <span asp-validation-for="@Model.Cages[i].CageQuantity" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <label asp-for="@Model.Cages[i].GroupWeight">@alphabet[count] cage group weight</label>
                                 <div class="col-sm-10">
                                     <input type="number" step="0.01" asp-for="@Model.Cages[i].GroupWeight" class="form-control " />
+                                    <span asp-validation-for="@Model.Cages[i].CageQuantity" class="text-danger"></span>
                                 </div>
                             </div>
                             count++;
                         }
                     }
-                    @if (ViewBag.IsFirstSurvay)
+                    @if (ViewBag.IsFirstSurvay == true)
                     {
                         <div class="mb-3 row">
                             <label asp-for="DayOfLife"></label>
@@ -52,8 +55,8 @@
                                 @{
                                     //string value = (Model.Cages[0].GroupWeight > 500 ? "tak" : "nie");
                                     //placeholder = @value
-                                <input  asp-for="DayOfLife" />
-
+                                    <input asp-for="DayOfLife" />
+                                    <span asp-validation-for="DayOfLife" class="text-danger"></span>
                                 }
                             </div>
                         </div>
@@ -64,6 +67,7 @@
                             <label asp-for="LoculusFeedInTake"></label>
                             <div class="col-sm-10">
                                 <input asp-for="LoculusFeedInTake" class="form-control" />
+                                <span asp-validation-for="LoculusFeedInTake" class="text-danger"></span>
                             </div>
                         </div>
                     }

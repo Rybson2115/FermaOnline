@@ -13,9 +13,10 @@ namespace FermaOnline.Models
         [Key]
         public int CageId { get; set; }
         public int SurveyId { get; set; }
-
+        [Required]
         [DisplayName("Cage quantity")]
         public int CageQuantity { get; set; } //Liczba sztuk w klatce 
+        [Required]
         [DisplayName("Group weight")]
         public float GroupWeight { get; set; } //Masa ciała grupy klatki, kg/grupę
         public int DeathCount { get; set; }
