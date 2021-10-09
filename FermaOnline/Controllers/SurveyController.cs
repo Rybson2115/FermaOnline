@@ -50,7 +50,7 @@ namespace FermaOnline.Controllers
                 //pobieranie CageFirstIndividualBodyWeight
                 experiment.CageFirstIndividualBodyWeight = _db.CFIBW.Where(f => f.ExperimentId == experiment.Id).Select(s=> s.FirstIndividualBodyWeight).ToList();
                //dodanie survey do bazy 
-                _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.CageFirstIndividualBodyWeight, experiment.CageNumber));
+                _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.CageFirstIndividualBodyWeight, (int)experiment.CageNumber));
             }
             else
             {

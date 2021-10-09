@@ -38,31 +38,34 @@ namespace FermaOnline.Controllers
         [ValidateAntiForgeryToken]//zabezpieczenie 
         public IActionResult Create(Experiment formData, List<IFormFile> postedFiles)
         {
-            var imgList = new List<Image>();
-            Experiment ExperimentToAdd;
-            if (postedFiles.Count > 0)
+            if (ModelState.IsValid)
             {
-                foreach (IFormFile postedFile in postedFiles)
+                var imgList = new List<Image>();
+                Experiment ExperimentToAdd;
+                if (postedFiles.Count > 0)
                 {
-                    string fileName = Path.GetFileName(postedFile.FileName);
-                    using (FileStream stream = new FileStream(Path.Combine("~/img/ExperimentImages/", fileName), FileMode.Create))
+                    foreach (IFormFile postedFile in postedFiles)
                     {
-                        postedFile.CopyTo(stream);
+                        string fileName = Path.GetFileName(postedFile.FileName);
+                        using (FileStream stream = new FileStream(Path.Combine("~/img/ExperimentImages/", fileName), FileMode.Create))
+                        {
+                            postedFile.CopyTo(stream);
+                        }
+                        var img = new Image(formData.Id, postedFile.FileName);
+                        _db.Image.Add(img);
+                        imgList.Add(img);
                     }
-                    var img = new Image(formData.Id, postedFile.FileName);
-                    _db.Image.Add(img);
-                    imgList.Add(img);
+                ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, (int)formData.CageNumber, imgList); 
                 }
-
-                ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber, imgList);
-            }
             else
-                ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber);
+                ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, (int)formData.CageNumber);
 
-             _db.Experiment.Add(ExperimentToAdd); 
-             
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+                _db.Experiment.Add(ExperimentToAdd);
+
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(formData);
         }
         //GET-Show
         public IActionResult Show(int id) //Wyswietla eksperyment

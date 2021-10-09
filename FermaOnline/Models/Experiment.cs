@@ -15,10 +15,15 @@ namespace FermaOnline.Models
         [Key]
         public int Id { get; set; }
         public string Code { get; set; } //kod doświadczenia 
+        [Required]
+        [StringLength(256), MinLength(5)]
         public string Name { get; set; } //tutuł
         public bool Status { get; set; }
-        public string Species { get; set; }  
+        [Required]
+        public string Species { get; set; }
+        [Required]
         public string Description { get; set; } // opis 
+        [Required]
         public string ShortDescription { get; set; } // streszczenie 
 
         [DataType(DataType.Date)]
@@ -35,7 +40,8 @@ namespace FermaOnline.Models
 
         public List<Survey> SurveysList { get; set; }
         public List<Image> Images { get; set; }
-        public int CageNumber { get; set; }
+        [Required]
+        public int? CageNumber { get; set; }
         public Experiment()
         {
             Name = string.Empty;
