@@ -20,11 +20,11 @@ namespace FermaOnline.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UploadToFileSystem(List<IFormFile> files, int experimentId)
+        public async Task UploadToFileSystem(List<IFormFile> files)
         {
             foreach (var file in files)
             {
-                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\UploadedFiles\\");
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\UserFiles\\");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
                 var fileName = Path.GetFileNameWithoutExtension(file.FileName);
@@ -38,7 +38,7 @@ namespace FermaOnline.Controllers
                     }
                     var fileModel = new FileModel
                     {
-                        ExperimentId =experimentId,
+                       // ExperimentId =experimentId,
                         Extension = extension,
                         Name = fileName,
                         FilePath = filePath
@@ -48,7 +48,6 @@ namespace FermaOnline.Controllers
                 }
             }
             TempData["Message"] = "File successfully uploaded to File System.";
-            return RedirectToAction("Index");
         }
         //private async Task<FileUploadViewModel> LoadAllFiles()
         //{

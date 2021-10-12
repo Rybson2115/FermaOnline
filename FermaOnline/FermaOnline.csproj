@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="wwwroot\UploadedFiles\" />
+    <Folder Include="UserFiles\" />
   </ItemGroup>
 
   <ItemGroup>

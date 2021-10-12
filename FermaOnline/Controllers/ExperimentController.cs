@@ -125,7 +125,11 @@ namespace FermaOnline.Controllers
 
             if (ToUpdate == null)
                 return NotFound();
-
+            //uzupelnianie inputu nie dziala 
+            ViewBag.Description = ToUpdate.Description;
+            ViewBag.ShortDescription = ToUpdate.ShortDescription;
+            ViewBag.Name = ToUpdate.Name;
+            ViewBag.Status = ToUpdate.Status;
             return View(ToUpdate);
 
         }
@@ -133,15 +137,50 @@ namespace FermaOnline.Controllers
         // POST UPDATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Experiment ToUpdate)
+        public IActionResult Update(int id, string name,bool status, string description, string shortDescription, List<IFormFile> files)
         {
-            if (ModelState.IsValid)
+           
+            if(files.Count > 0)
             {
+                foreach (var file in files)
+                {
+                    var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\UserFiles\\");
+                    bool basePathExists = System.IO.Directory.Exists(basePath);
+                    if (!basePathExists) Directory.CreateDirectory(basePath);
+                    var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                    var filePath = Path.Combine(basePath, file.FileName);
+                    var extension = Path.GetExtension(file.FileName);
+                    if (!System.IO.File.Exists(filePath))
+                    {
+                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        {
+                             file.CopyToAsync(stream);
+                        }
+                        var fileModel = new FileModel
+                        {
+                            // ExperimentId =experimentId,
+                            Extension = extension,
+                            Name = fileName,
+                            FilePath = filePath
+                        };
+                        _db.Files.Add(fileModel);
+                        _db.SaveChanges();
+                    }
+                }
+            }
+
+            Experiment ToUpdate =_db.Experiment.Find(id);
+
+            ToUpdate.Name = name;
+            ToUpdate.Status = status;
+            ToUpdate.Description = description;
+            ToUpdate.ShortDescription = shortDescription;
+              
                 _db.Experiment.Update(ToUpdate);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            return View(ToUpdate);
+             
+          //if not valid  return View(ToUpdate);
         }
 
     }
