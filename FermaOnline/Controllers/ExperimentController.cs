@@ -125,11 +125,14 @@ namespace FermaOnline.Controllers
 
             if (ToUpdate == null)
                 return NotFound();
+           
             //uzupelnianie inputu nie dziala 
             ViewBag.Description = ToUpdate.Description;
             ViewBag.ShortDescription = ToUpdate.ShortDescription;
             ViewBag.Name = ToUpdate.Name;
             ViewBag.Status = ToUpdate.Status;
+            ViewBag.Id = ToUpdate.Id;
+
             return View(ToUpdate);
 
         }
@@ -137,14 +140,14 @@ namespace FermaOnline.Controllers
         // POST UPDATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(int id, string name,bool status, string description, string shortDescription, List<IFormFile> files)
+        public IActionResult Update(List<IFormFile> files,int id, string name,bool status, string description, string shortDescription)
         {
            
             if(files.Count > 0)
             {
                 foreach (var file in files)
                 {
-                    var basePath = Path.Combine(Directory.GetCurrentDirectory() + "\\UserFiles\\");
+                    var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{id}");
                     bool basePathExists = System.IO.Directory.Exists(basePath);
                     if (!basePathExists) Directory.CreateDirectory(basePath);
                     var fileName = Path.GetFileNameWithoutExtension(file.FileName);
@@ -154,11 +157,11 @@ namespace FermaOnline.Controllers
                     {
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
-                             file.CopyToAsync(stream);
+                             file.CopyTo(stream);
                         }
                         var fileModel = new FileModel
                         {
-                            // ExperimentId =experimentId,
+                            ExperimentId =id,
                             Extension = extension,
                             Name = fileName,
                             FilePath = filePath
