@@ -125,13 +125,6 @@ namespace FermaOnline.Controllers
 
             if (ToUpdate == null)
                 return NotFound();
-           
-            //uzupelnianie inputu nie dziala 
-            ViewBag.Description = ToUpdate.Description;
-            ViewBag.ShortDescription = ToUpdate.ShortDescription;
-            ViewBag.Name = ToUpdate.Name;
-            ViewBag.Status = ToUpdate.Status;
-            ViewBag.Id = ToUpdate.Id;
 
             return View(ToUpdate);
 
@@ -140,14 +133,17 @@ namespace FermaOnline.Controllers
         // POST UPDATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(List<IFormFile> files,int id, string name,bool status, string description, string shortDescription)
+        public IActionResult Update(Experiment ToUpdate, List<IFormFile> files)
         {
-           
-            if(files.Count > 0)
+            if (ModelState.IsValid)
+            {
+                _db.Experiment.Update(ToUpdate);
+                 if (files.Count > 0)
             {
                 foreach (var file in files)
                 {
-                    var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{id}");
+                       // string typePath = type ? "\\Formula\\" : "\\Resorces\\";
+                    var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{ToUpdate.Id}" +  typePath );
                     bool basePathExists = System.IO.Directory.Exists(basePath);
                     if (!basePathExists) Directory.CreateDirectory(basePath);
                     var fileName = Path.GetFileNameWithoutExtension(file.FileName);
@@ -161,7 +157,7 @@ namespace FermaOnline.Controllers
                         }
                         var fileModel = new FileModel
                         {
-                            ExperimentId =id,
+                            ExperimentId = ToUpdate.Id,
                             Extension = extension,
                             Name = fileName,
                             FilePath = filePath
@@ -171,22 +167,14 @@ namespace FermaOnline.Controllers
                     }
                 }
             }
-
-            Experiment ToUpdate =_db.Experiment.Find(id);
-
-            ToUpdate.Name = name;
-            ToUpdate.Status = status;
-            ToUpdate.Description = description;
-            ToUpdate.ShortDescription = shortDescription;
-              
-                _db.Experiment.Update(ToUpdate);
-                _db.SaveChanges();
                 return RedirectToAction("Index");
-             
-          //if not valid  return View(ToUpdate);
+            }
+            return View(ToUpdate);
         }
-
+   
     }
+
+     
 }
 
 
