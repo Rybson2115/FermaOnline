@@ -23,16 +23,16 @@
                         <p class="fst-italic">@TextSpecies @Model.Species</p>
                     }
                 </div>
-                    <p class=".fs-1 text fw-bold">Abstract:</p>
-                    <p>@Model.ShortDescription</p>
+                <p class=".fs-1 text fw-bold">Abstract:</p>
+                <p>@Model.ShortDescription</p>
 
-                    <p class=".fs-1 text fw-bold">Description:</p>
-                    <p class="lh-base">@Html.Raw(@Model.Description)</p>
+                <p class=".fs-1 text fw-bold">Description:</p>
+                <p class="lh-base">@Html.Raw(@Model.Description)</p>
 
 
 
-                </div>
             </div>
+        </div>
     </div>
     <br />
 
@@ -45,7 +45,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table ">
-                        <thead>
+                        <thead class="thead-light">
                             <tr>
                                 <th>Data</th>
                                 @foreach (var survey in Model.SurveysList)
@@ -56,16 +56,16 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Cage</td>
+                                <td><b>Cage</b></td>
                                 @{ char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".ToCharArray();
                                     @foreach (var survey in Model.SurveysList)
                                     {
                                         <td>
-                                            <table class="table mb-0">
+                                            <table class="table mb-0  table-borderless">
                                                 <tr>
                                                     @for (int i = 0; i < Model.CageNumber; i++)
                                                     {
-                                                        <td>@alphabet[i] </td>
+                                                        <td class="text-center">@alphabet[i] </td>
                                                     }
                                                 </tr>
                                             </table>
@@ -74,22 +74,22 @@
                                 }
                             </tr>
                             <tr>
-                                <td>Loculus quantity </td>
+                                <td><b>Loculus quantity </b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <td>@survey.LoculusQuantity </td>
+                                    <td class="text-center">@survey.LoculusQuantity </td>
                                 }
                             </tr>
                             <tr>
-                                <td>Cage quantity </td>
+                                <td><b>Cage quantity </b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
                                     <td>
-                                        <table class="table mb-0">
+                                        <table class="table mb-0 table-borderless">
                                             <tr>
                                                 @foreach (var cage in survey.Cages)
                                                 {
-                                                    <td>@cage.CageQuantity</td>
+                                                    <td class="text-center">@cage.CageQuantity</td>
                                                 }
                                             </tr>
                                         </table>
@@ -97,15 +97,15 @@
                                 }
                             </tr>
                             <tr>
-                                <td>Group Weight </td>
+                                <td><b>Group Weight</b> </td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
                                     <td>
-                                        <table class="table mb-0">
+                                        <table class="table mb-0 table-borderless">
                                             <tr>
                                                 @foreach (var cage in survey.Cages)
                                                 {
-                                                    <td>@cage.GroupWeight </td>
+                                                    <td class="text-center">@cage.GroupWeight </td>
                                                 }
                                             </tr>
                                         </table>
@@ -113,29 +113,29 @@
                                 }
                             </tr>
                             <tr>
-                                <td>Days from first weight</td>
+                                <td><b>Days from first weight</b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <td>@survey.DaysFromFirstWeight </td>
+                                    <td class="text-center">@survey.DaysFromFirstWeight </td>
                                 }
                             </tr>
                             <tr>
-                                <td>Day Of Life</td>
+                                <td><b>Day Of Life</b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <td>@survey.DayOfLife </td>
+                                    <td class="text-center">@survey.DayOfLife </td>
                                 }
                             </tr>
                             <tr>
-                                <td>Individual body weight </td>
+                                <td><b>Individual body weight</b> </td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
                                     <td>
-                                        <table class="table mb-0">
+                                        <table class="table mb-0 table-borderless">
                                             <tr>
                                                 @foreach (var cage in survey.Cages)
                                                 {
-                                                    <td>@cage.IndividualBodyWeight </td>
+                                                    <td class="text-center">@cage.IndividualBodyWeight </td>
                                                 }
                                             </tr>
                                         </table>
@@ -143,22 +143,22 @@
                                 }
                             </tr>
                             <tr>
-                                <td>Average body weight</td>
+                                <td><b>Average body weight</b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <td>@survey.AverageBodyWeight </td>
+                                    <td class="text-center">@survey.AverageBodyWeight </td>
                                 }
                             </tr>
                             <tr>
-                                <td>Difference in body weight </td>
+                                <td><b>Difference in body weight</b> </td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
                                     <td>
-                                        <table class="table mb-0">
+                                        <table class="table mb-0 table-borderless">
                                             <tr>
                                                 @foreach (var cage in survey.Cages)
                                                 {
-                                                    <td>@cage.DifferenceInBodyWeight </td>
+                                                    <td class="text-center">@cage.DifferenceInBodyWeight </td>
                                                 }
                                             </tr>
                                         </table>
@@ -166,15 +166,15 @@
                                 }
                             </tr>
                             <tr>
-                                <td>Weight gain from start </td>
+                                <td><b>Weight gain from start</b> </td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
                                     <td>
-                                        <table class="table mb-0">
+                                        <table class="table mb-0 table-borderless">
                                             <tr>
                                                 @foreach (var cage in survey.Cages)
                                                 {
-                                                    <td>@cage.WeightGainFromStart </td>
+                                                    <td class="text-center">@cage.WeightGainFromStart </td>
                                                 }
                                             </tr>
                                         </table>
@@ -183,22 +183,22 @@
                                 }
                             </tr>
                             <tr>
-                                <td>Average weight gain</td>
+                                <td><b>Average weight gain</b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <td>@survey.AverageWeightGainFromCages </td>
+                                    <td class="text-center">@survey.AverageWeightGainFromCages </td>
                                 }
                             </tr>
                             <tr>
-                                <td>Weight gain from last survey</td>
+                                <td><b>Weight gain from last survey</b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
                                     <td>
-                                        <table class="table mb-0">
+                                        <table class="table mb-0 table-borderless">
                                             <tr>
                                                 @foreach (var cage in survey.Cages)
                                                 {
-                                                    <td>@cage.WeightGainFromLastSurvey </td>
+                                                    <td class="text-center">@cage.WeightGainFromLastSurvey </td>
                                                 }
                                             </tr>
                                         </table>
@@ -206,38 +206,38 @@
                                 }
                             </tr>
                             <tr>
-                                <td>Average weight gain from last survey</td>
+                                <td><b>Average weight gain from last survey</b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <td>@survey.AverageWeightGainFromLastSurvey </td>
+                                    <td class="text-center">@survey.AverageWeightGainFromLastSurvey </td>
                                 }
                             </tr>
                             <tr>
-                                <td>Loculus feed intake</td>
+                                <td><b>Loculus feed intake</b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <td>@survey.LoculusFeedInTake </td>
+                                    <td class="text-center">@survey.LoculusFeedInTake </td>
                                 }
                             </tr>
                             <tr>
-                                <td>Feed Intake Weekly</td>
+                                <td><b>Feed Intake Weekly</b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <td>@survey.FeedIntakeWeekly </td>
+                                    <td class="text-center">@survey.FeedIntakeWeekly </td>
                                 }
                             </tr>
                             <tr>
-                                <td>FeedIntakDaily</td>
+                                <td><b>FeedIntakDaily</b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <td>@survey.FeedIntakDaily </td>
+                                    <td class="text-center">@survey.FeedIntakDaily </td>
                                 }
                             </tr>
                             <tr>
-                                <td>Feed Conversion Ratio</td>
+                                <td><b>Feed Conversion Ratio</b></td>
                                 @foreach (var survey in Model.SurveysList)
                                 {
-                                    <td>@survey.FeedConversionRatio </td>
+                                    <td class="text-center">@survey.FeedConversionRatio </td>
                                 }
                             </tr>
                             <tr>
@@ -253,20 +253,24 @@
                 </div>
             </div>
         </div>
-        <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Charts</h6>
-            </div>
-            <div class="card-body">
-                <div class="chart-line">
-                    <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                    <canvas id="myChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
-                </div>
-                <hr>
-               <span class="fw-bold float-right"> BioDose 2020 </span>
-            </div>
-        </div>
 
+        @if (Model.SurveysList.Count > 0)
+        {
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Charts</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-line">
+                        <div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+                        <canvas id="myChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
+                    </div>
+                    <hr>
+                    <span class="fw-bold float-right"> BioDose 2020 </span>
+                </div>
+
+            </div>
+        }
 
 
         <script>
@@ -277,12 +281,13 @@
                 var Weight = dict.Values.ToList();
                 //var Days = dict.Keys.ToList();
 
+
                   @foreach (var survey in Model.SurveysList)
                    {
                      @: Days.push(@survey.DayOfLife);
                      @: Weight.push(parseFloat(@dict[@survey.DayOfLife])); //trzeba coś wymyślić bo robi tu int zamiast float
                    }
-               
+
         }
 
             new Chart(document.getElementById('myChart'), {
@@ -315,7 +320,7 @@
             });
 
         </script>
-                }
+    }
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Nutrition Formula</h6>

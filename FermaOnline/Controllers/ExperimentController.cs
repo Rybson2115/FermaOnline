@@ -133,7 +133,7 @@ namespace FermaOnline.Controllers
         // POST UPDATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Experiment ToUpdate, List<IFormFile> files)
+        public IActionResult Update(Experiment ToUpdate, List<IFormFile> files, bool fileType)
         {
             if (ModelState.IsValid)
             {
@@ -143,12 +143,12 @@ namespace FermaOnline.Controllers
                 foreach (var file in files)
                 {
                        // string typePath = type ? "\\Formula\\" : "\\Resorces\\";
-                    var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{ToUpdate.Id}" +  typePath );
+                    var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{ToUpdate.Id}"  );
                     bool basePathExists = System.IO.Directory.Exists(basePath);
                     if (!basePathExists) Directory.CreateDirectory(basePath);
                     var fileName = Path.GetFileNameWithoutExtension(file.FileName);
                     var filePath = Path.Combine(basePath, file.FileName);
-                    var extension = Path.GetExtension(file.FileName);
+                    var FileType = fileType ? "Materials" : "Formula";
                     if (!System.IO.File.Exists(filePath))
                     {
                         using (var stream = new FileStream(filePath, FileMode.Create))
@@ -158,7 +158,7 @@ namespace FermaOnline.Controllers
                         var fileModel = new FileModel
                         {
                             ExperimentId = ToUpdate.Id,
-                            Extension = extension,
+                            FileType = FileType,
                             Name = fileName,
                             FilePath = filePath
                         };

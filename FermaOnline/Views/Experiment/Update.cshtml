@@ -8,51 +8,67 @@
         <div class="form-group row">
             <h2 class="text-black-50 pl-3">Update experiment</h2>
         </div>
-        <div class="row">
+        <div class="d-flex justify-content-center">
             <div class="col-12">
                 <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="Name"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                    <div class="form-group row">
+                        <div class="col-4">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
                     </div>
-                    <div class="col-4 form-check form-switch">
-                        <label asp-for="Status"></label>
-                        <input class="form-check-input" type="checkbox" asp-for="Status" />
-                    </div>
-                    <div class="col-4">
-                        <label asp-for="Description"></label>
-                        <textarea class="form-control" asp-for="Description" rows="3"></textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                    <div class="col-4">
-                        <label class="form-label" for="postedFiles">Short description</label>
-                        <textarea class="form-control" asp-for="ShortDescription" rows="3"></textarea>
-                        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                        <div class="form-group ">
+                            <div class="col-4">
+                                <label asp-for="Status"></label>
+                                <input type="checkbox" asp-for="Status" checked data-toggle="toggle" data-on="Active" data-off="Ended" name="fileType" data-onstyle="success" data-offstyle="warning">
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-4">
+                                <label asp-for="Description"></label>
+                                <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-4">
+                                <label class="form-label" for="postedFiles">Short description</label>
+                                <textarea class="form-control" asp-for="ShortDescription" rows="3"></textarea>
+                                <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-4">
+                                <label class="form-label" for="files">Files</label>
+                                <input class="form-control" type="file" name="files" multiple />
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-4">
-                            <label class="form-label " for="files">Files</label>
-                            <input type="file" name="files" multiple />
+                            <label for="fileType">File type:</label>
+                            <input type="checkbox" checked data-toggle="toggle" data-on="Materials" data-off="Formula" name="fileType" data-onstyle="info" data-offstyle="secondary">
                         </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-8 offset-1 row">
-                        <div class="col-4">
-                            <input type="submit" class="btn btn-primary w-75" value="Update" />
-                        </div>
-                        <div class="col-4">
-                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                    <div class="form-group row">
+                        <div class="col-8 offset-1 row">
+                            <div class="col-4">
+                                <input type="submit" class="btn btn-primary w-75" value="Update" />
+                            </div>
+                            <div class="col-4">
+                                <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
         </div>
     </div>
 </form>
 @section Scripts {
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>

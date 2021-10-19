@@ -11,7 +11,7 @@ namespace FermaOnline.Models
         [Key]
         public int Id { get; set; }
         public int ExperimentId { get; set; }
-        public string Extension { get; set; }
+        public string FileType { get; set; }
         public string Name { get; set; }// path ~/img/ExperimentImages/@fileName 
         public string FilePath { get; set; }
     }
