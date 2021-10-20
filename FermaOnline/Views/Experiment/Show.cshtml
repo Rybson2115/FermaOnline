@@ -1,6 +1,20 @@
 ﻿@model Experiment
 @using FermaOnline.Models
 
+<style>
+    .hoverTable {
+        width: 100%;
+        border-collapse: collapse;
+    }
+ 
+ 
+            /* Define the hover highlight color for the table row */
+        .hoverTable tr:hover {
+            background-color: rgba(32, 60, 122, 0.1);
+            color: #000;
+        }
+</style>
+
 <div class="container p-3">
     <div class="row pt-4">
         <div class="card shadow mb-4">
@@ -43,7 +57,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Table</h6>
             </div>
             <div class="card-body">
-                <div class="table-responsive">
+                <div class="table-responsive hoverTable">
                     <table class="table ">
                         <thead class="thead-light">
                             <tr>
@@ -280,8 +294,7 @@
             @{var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
                 var Weight = dict.Values.ToList();
                 //var Days = dict.Keys.ToList();
-
-
+ 
                   @foreach (var survey in Model.SurveysList)
                    {
                      @: Days.push(@survey.DayOfLife);
@@ -327,8 +340,14 @@
         </div>
         <div class="card-body">
 
-            <button class="btn" style="width:100%"><i class="fa fa-download"></i> Download Formula</button>
 
+            @foreach (var file in Model.Files)
+            {
+                if (file.FileType == "Formula")
+                { 
+            <button href="@file.FilePath" target="_blank" class="btn" style="width:100%"><i class="fa fa-download"></i> Download Formula: @file.Name</button>
+                }
+            }
         </div>
     </div>
 
@@ -337,8 +356,14 @@
             <h6 class="m-0 font-weight-bold text-primary">Materials and Methods</h6>
         </div>
         <div class="card-body">
+            @foreach (var file in Model.Files)
+            {
+                if (file.FileType == "Materials")
+                {
+                <a href="@file.FilePath" >@file.Name</a> 
+                }
+            }
 
-            <a href="#">Preparation_of_CoProTex.pdf</a>
 
         </div>
     </div>

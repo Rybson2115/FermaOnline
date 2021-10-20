@@ -31,7 +31,9 @@ namespace FermaOnline.Models
  
         [NotMapped]
         public List<float> CageFirstIndividualBodyWeight { get; set; }
-
+        [NotMapped]
+        public List<FileModel> Files { get; set; }
+        
         public List<Survey> SurveysList { get; set; }
  
         public int CageNumber { get; set; }

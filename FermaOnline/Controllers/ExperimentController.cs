@@ -18,7 +18,6 @@ namespace FermaOnline.Controllers
         public ExperimentController(ApplicationDbContext db)
         {
             _db = db;
-
         }
 
         //GET
@@ -65,12 +64,11 @@ namespace FermaOnline.Controllers
                 experiment.SurveysList = _db.Surveys.Where(s => s.ExperimentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
 
                 //pobierz cage > dla każdego survey pobierz każdy cage 
-                experiment.SurveysList.ForEach(s => s.Cages = _db.Cage.Where(c => c.SurveyId == s.SurveyId).ToList()); 
-           
-                //pobierz img 
-               // experiment.Files = _db.Files.Where(i => i.ExperimentId == id).ToList();
-        
-           
+                experiment.SurveysList.ForEach(s => s.Cages = _db.Cage.Where(c => c.SurveyId == s.SurveyId).ToList());
+
+            //pobierz Files 
+            experiment.Files = _db.Files.Where(i => i.ExperimentId == id).ToList();
+
             return View(experiment);
         }
 
@@ -102,15 +100,21 @@ namespace FermaOnline.Controllers
             var SurveysToDelete = _db.Surveys.Where(s => s.ExperimentId == ExperimetnToDelete.Id);
            
             var CageToDelete = new List<CageSurvey>();
-            
+            var FilesToDelete = new List<FileModel>();
             //tworzenie listy cage do usunięcia dla wszystkich pomiarów do usuniecia dla każdego survey dodaj każdy cage do listy usuń 
             SurveysToDelete.ToList().ForEach(s => s.Cages.ForEach(c => CageToDelete.Add(_db.Cage.Find(c.CageId))));
-           
+            FilesToDelete = _db.Files.Where(i => i.ExperimentId == id).ToList();
 
+            var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{id}");
+            if (Directory.Exists(basePath))
+                Directory.Delete(basePath,true);
+            
             _db.Surveys.RemoveRange(SurveysToDelete);
             _db.Cage.RemoveRange(CageToDelete);
             _db.Experiment.Remove(ExperimetnToDelete);
+            _db.Files.RemoveRange(FilesToDelete);
             _db.SaveChanges();
+            
             return RedirectToAction("Index");
         }
 
@@ -141,8 +145,7 @@ namespace FermaOnline.Controllers
                  if (files.Count > 0)
             {
                 foreach (var file in files)
-                {
-                       // string typePath = type ? "\\Formula\\" : "\\Resorces\\";
+                { 
                     var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{ToUpdate.Id}"  );
                     bool basePathExists = System.IO.Directory.Exists(basePath);
                     if (!basePathExists) Directory.CreateDirectory(basePath);
