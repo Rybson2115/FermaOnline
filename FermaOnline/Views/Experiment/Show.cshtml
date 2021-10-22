@@ -20,7 +20,7 @@
                 <div class="d-flex justify-content-between">
                     <a asp-action="Index" class="btn btn-primary btn-lg ">Back</a>
                     <h2 class="text-primary center">@Model.Name</h2>
-                    <a type="button"  class="btn btn-primary btn-lg " asp-controller="Survey"  asp-route-Id="@Model.Id" asp-action="Create" disabled=@Model.Status >Add survey</a>
+                    <a type="button" class="btn btn-primary btn-lg " asp-controller="Survey" asp-route-Id="@Model.Id" asp-action="Create" disabled=@Model.Status>Add survey</a>
                 </div>
 
             </div>
@@ -262,7 +262,7 @@
             </div>
         </div>
 
-        @if (Model.SurveysList.Count > 0)
+        @if (Model.SurveysList.Count > 1)
         {
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -290,7 +290,7 @@
                 //var Days = dict.Keys.ToList();
 
                   @foreach (var survey in Model.SurveysList)
-                   {
+                  {
                      @: Days.push(@survey.DayOfLife);
                      @: Weight.push(parseFloat(@dict[@survey.DayOfLife])); //trzeba coś wymyślić bo robi tu int zamiast float
                    }
@@ -328,43 +328,48 @@
 
         </script>
     }
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Nutrition Formula</h6>
-        </div>
-        <div class="card-body">
+    @if (Model.Files.Any(x => x.FileType == "Formula"))
+    {
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Nutrition Formula</h6>
+            </div>
+            <div class="card-body">
 
 
-            @foreach (var file in Model.Files)
-            {
-                if (file.FileType == "Formula")
+                @foreach (var file in Model.Files)
                 {
-                    <div class="d-flex justify-content-between">
-                        <button href="@file.FilePath" target="_blank" class="btn" style="width:100%"><i class="fa fa-download"></i> Download Formula: @file.Name</button>
-                        <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>
-                    </div>
+                    if (file.FileType == "Formula")
+                    {
+                        <div class="d-flex justify-content-between">
+                            <button href="@file.FilePath" target="_blank" class="btn" style="width:100%"><i class="fa fa-download"></i> Download Formula: @file.Name</button>
+                            <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>
+                        </div>
+                    }
                 }
-            }
+            </div>
         </div>
-    </div>
-
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Materials and Methods</h6>
-        </div>
-        <div class="card-body">
-            @foreach (var file in Model.Files)
-            {
-                if (file.FileType == "Materials")
+    }
+    @if (Model.Files.Any(x => x.FileType == "Materials"))
+    {
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Materials and Methods</h6>
+            </div>
+            <div class="card-body">
+                @foreach (var file in Model.Files)
                 {
-                    <div class="d-flex justify-content-between">
+                    if (file.FileType == "Materials")
+                    {
+                        <div class="d-flex justify-content-between">
 
-                        <a href="@file.FilePath">@file.Name</a>
-                        <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>
-                    </div>
+                            <a href="@file.FilePath">@file.Name</a>
+                            <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>
+                        </div>
+                    }
                 }
-            }
+            </div>
         </div>
+    }
     </div>
-</div>
 
