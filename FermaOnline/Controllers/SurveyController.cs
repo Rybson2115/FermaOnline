@@ -26,8 +26,9 @@ namespace FermaOnline.Controllers
         {
             //sprawdzenie czy dodajemy pierwsze doświadczenie 
             bool SurveyExistInThisExperiment = _db.Surveys.Any(s => s.ExperimentId == id);
+            Experiment experiment = _db.Experiment.Find(id);
             ViewBag.IsFirstSurvay = !SurveyExistInThisExperiment;
-            ViewBag.CageNumber = _db.Experiment.Find(id).CageNumber;
+            ViewBag.CageNumber = experiment.CageNumber;
             return View();
         }
 

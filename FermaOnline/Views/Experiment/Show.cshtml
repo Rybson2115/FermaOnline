@@ -6,9 +6,7 @@
         width: 100%;
         border-collapse: collapse;
     }
- 
- 
-            /* Define the hover highlight color for the table row */
+
         .hoverTable tr:hover {
             background-color: rgba(32, 60, 122, 0.1);
             color: #000;
@@ -22,7 +20,7 @@
                 <div class="d-flex justify-content-between">
                     <a asp-action="Index" class="btn btn-primary btn-lg ">Back</a>
                     <h2 class="text-primary center">@Model.Name</h2>
-                    <a type="button" class="btn btn-primary btn-lg " asp-controller="Survey" asp-route-Id="@Model.Id" asp-action="Create">Add survey</a>
+                    <a type="button"  class="btn btn-primary btn-lg " asp-controller="Survey"  asp-route-Id="@Model.Id" asp-action="Create" disabled=@Model.Status >Add survey</a>
                 </div>
 
             </div>
@@ -41,10 +39,6 @@
                 <p>@Model.ShortDescription</p>
 
                 <p class=".fs-1 text fw-bold">Description:</p>
-                <p class="lh-base">@Html.Raw(@Model.Description)</p>
-
-
-
             </div>
         </div>
     </div>
@@ -294,7 +288,7 @@
             @{var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
                 var Weight = dict.Values.ToList();
                 //var Days = dict.Keys.ToList();
- 
+
                   @foreach (var survey in Model.SurveysList)
                    {
                      @: Days.push(@survey.DayOfLife);
@@ -344,8 +338,11 @@
             @foreach (var file in Model.Files)
             {
                 if (file.FileType == "Formula")
-                { 
-            <button href="@file.FilePath" target="_blank" class="btn" style="width:100%"><i class="fa fa-download"></i> Download Formula: @file.Name</button>
+                {
+                    <div class="d-flex justify-content-between">
+                        <button href="@file.FilePath" target="_blank" class="btn" style="width:100%"><i class="fa fa-download"></i> Download Formula: @file.Name</button>
+                        <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>
+                    </div>
                 }
             }
         </div>
@@ -360,11 +357,13 @@
             {
                 if (file.FileType == "Materials")
                 {
-                <a href="@file.FilePath" >@file.Name</a> 
+                    <div class="d-flex justify-content-between">
+
+                        <a href="@file.FilePath">@file.Name</a>
+                        <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>
+                    </div>
                 }
             }
-
-
         </div>
     </div>
 </div>

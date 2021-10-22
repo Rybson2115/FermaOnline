@@ -2,13 +2,14 @@
 using FermaOnline.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
- 
+
 
 namespace FermaOnline.Controllers
 {
@@ -38,13 +39,13 @@ namespace FermaOnline.Controllers
         [ValidateAntiForgeryToken]//zabezpieczenie 
         public IActionResult Create(Experiment formData)
         {
- 
+
             Experiment ExperimentToAdd;
             ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber);
-            
+
             _db.Experiment.Add(ExperimentToAdd);
             _db.SaveChanges();
-         
+
             return RedirectToAction("Index");
         }
         //GET-Show
@@ -57,14 +58,14 @@ namespace FermaOnline.Controllers
                 _db.Experiment.Update(experiment);
                 _db.SaveChanges();
             }
-            
-            if (_db.Experiment.Find(id)==null)//sprawdza czy w bazie jest podane id
-                return NotFound();
-         
-                experiment.SurveysList = _db.Surveys.Where(s => s.ExperimentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
 
-                //pobierz cage > dla każdego survey pobierz każdy cage 
-                experiment.SurveysList.ForEach(s => s.Cages = _db.Cage.Where(c => c.SurveyId == s.SurveyId).ToList());
+            if (_db.Experiment.Find(id) == null)//sprawdza czy w bazie jest podane id
+                return NotFound();
+
+            experiment.SurveysList = _db.Surveys.Where(s => s.ExperimentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
+
+            //pobierz cage > dla każdego survey pobierz każdy cage 
+            experiment.SurveysList.ForEach(s => s.Cages = _db.Cage.Where(c => c.SurveyId == s.SurveyId).ToList());
 
             //pobierz Files 
             experiment.Files = _db.Files.Where(i => i.ExperimentId == id).ToList();
@@ -78,12 +79,12 @@ namespace FermaOnline.Controllers
 
             if (id == null || id == 0)
                 return NotFound();
-           
+
             var ToDelete = _db.Experiment.Find(id);
-            
+
             if (ToDelete == null)
                 return NotFound();
-           
+
             return View(ToDelete);
 
         }
@@ -98,7 +99,7 @@ namespace FermaOnline.Controllers
                 return NotFound();
 
             var SurveysToDelete = _db.Surveys.Where(s => s.ExperimentId == ExperimetnToDelete.Id);
-           
+
             var CageToDelete = new List<CageSurvey>();
             var FilesToDelete = new List<FileModel>();
             //tworzenie listy cage do usunięcia dla wszystkich pomiarów do usuniecia dla każdego survey dodaj każdy cage do listy usuń 
@@ -107,14 +108,14 @@ namespace FermaOnline.Controllers
 
             var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{id}");
             if (Directory.Exists(basePath))
-                Directory.Delete(basePath,true);
-            
+                Directory.Delete(basePath, true);
+
             _db.Surveys.RemoveRange(SurveysToDelete);
             _db.Cage.RemoveRange(CageToDelete);
             _db.Experiment.Remove(ExperimetnToDelete);
             _db.Files.RemoveRange(FilesToDelete);
             _db.SaveChanges();
-            
+
             return RedirectToAction("Index");
         }
 
@@ -139,45 +140,57 @@ namespace FermaOnline.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Update(Experiment ToUpdate, List<IFormFile> files, bool fileType)
         {
-            if (ModelState.IsValid)
-            {
-                _db.Experiment.Update(ToUpdate);
-                 if (files.Count > 0)
-            {
-                foreach (var file in files)
-                { 
-                    var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{ToUpdate.Id}"  );
-                    bool basePathExists = System.IO.Directory.Exists(basePath);
-                    if (!basePathExists) Directory.CreateDirectory(basePath);
-                    var fileName = Path.GetFileNameWithoutExtension(file.FileName);
-                    var filePath = Path.Combine(basePath, file.FileName);
-                    var FileType = fileType ? "Materials" : "Formula";
-                    if (!System.IO.File.Exists(filePath))
+            //zeby działał checkbox który jest opcjonalny
+            //if(ModelState["fileType"].ValidationState== ModelValidationState.Invalid)
+            //    ModelState["fileType"].ValidationState = ModelValidationState.Valid;
+            //if (ModelState.IsValid){ 
+
+            var Update = _db.Experiment.Find(ToUpdate.Id);
+            
+            Update.Name = ToUpdate.Name;
+            Update.Status = ToUpdate.Status;
+            Update.Description = ToUpdate.Description;
+            Update.ShortDescription = ToUpdate.ShortDescription;
+
+            _db.Experiment.Update(Update);
+
+                if (files.Count > 0)
+                {
+                    foreach (var file in files)
                     {
-                        using (var stream = new FileStream(filePath, FileMode.Create))
+                        var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{ToUpdate.Id}");
+                        bool basePathExists = System.IO.Directory.Exists(basePath);
+                        if (!basePathExists) Directory.CreateDirectory(basePath);
+                        var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                        var filePath = Path.Combine(basePath, file.FileName);
+                        var FileType = fileType ? "Materials" : "Formula";
+                        if (!System.IO.File.Exists(filePath))
                         {
-                             file.CopyTo(stream);
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                file.CopyTo(stream);
+                            }
+                            var fileModel = new FileModel
+                            {
+                                ExperimentId = ToUpdate.Id,
+                                FileType = FileType,
+                                Name = fileName,
+                                FilePath = filePath
+                            };
+                            _db.Files.Add(fileModel);
                         }
-                        var fileModel = new FileModel
-                        {
-                            ExperimentId = ToUpdate.Id,
-                            FileType = FileType,
-                            Name = fileName,
-                            FilePath = filePath
-                        };
-                        _db.Files.Add(fileModel);
-                        _db.SaveChanges();
                     }
                 }
-            }
+
+                _db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            return View(ToUpdate);
+            //}
+            //return View(ToUpdate);
         }
-   
+
     }
 
-     
+
 }
 
 

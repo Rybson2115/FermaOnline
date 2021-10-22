@@ -10,13 +10,26 @@ using System.Threading.Tasks;
 
 namespace FermaOnline.Models
 {
-    public class Experiment
+    public class Experiment : PropertyChangedModel
     {
         [Key]
         public int Id { get; set; }
         public string Code { get; set; } //kod doświadczenia 
         public string Name { get; set; } //tutuł
-        public bool Status { get; set; }
+        private bool _status { get; set; }
+        public bool Status
+        {
+            get { return _status; }
+            set { 
+                _status = value;
+                if (_status)
+                    End = new DateTime(0001, 01, 01);
+                else
+                    End = DateTime.Today;
+                
+                OnPropertyChanged();
+            }
+        }
         public string Species { get; set; }  
         public string Description { get; set; } // opis 
         public string ShortDescription { get; set; } // streszczenie 
@@ -43,8 +56,8 @@ namespace FermaOnline.Models
             Status = false;//brak dodanych pomiarów nie rozpoczety
             Species = string.Empty;
             Description = string.Empty;
-            Start = new DateTime(0001, 01, 01, 00, 00, 00);//ta data jako null
-            End = new DateTime(0001, 01, 01, 00, 00, 00);
+            Start = new DateTime(0001, 01, 01);//ta data jako null
+            End = new DateTime(0001, 01, 01);
             SurveysList = null;
             CageFirstIndividualBodyWeight = new List<float>();
             CageNumber = 0;
