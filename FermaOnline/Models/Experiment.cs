@@ -30,6 +30,7 @@ namespace FermaOnline.Models
                 OnPropertyChanged();
             }
         }
+        public string Author { get; set; }
         public string Species { get; set; }  
         public string Description { get; set; } // opis 
         public string ShortDescription { get; set; } // streszczenie 
@@ -63,14 +64,16 @@ namespace FermaOnline.Models
             CageNumber = 0;
             Code = string.Empty;
             ShortDescription = string.Empty;
+            Author = string.Empty;
         }
-        public Experiment(string name,string description, string shortDescription, string species,int cageNumber) : base()
+        public Experiment(string name,string description, string shortDescription, string species,int cageNumber, string author) : base()
         {
             Name = name;
             Description = description;
             Species = species;
             CageNumber = cageNumber;
             ShortDescription = shortDescription;
+            Author = author;
         }
     }
 }

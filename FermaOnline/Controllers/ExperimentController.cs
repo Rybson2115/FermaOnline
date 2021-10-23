@@ -41,7 +41,7 @@ namespace FermaOnline.Controllers
         {
 
             Experiment ExperimentToAdd;
-            ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber);
+            ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber,formData.Author);
 
             _db.Experiment.Add(ExperimentToAdd);
             _db.SaveChanges();
@@ -141,7 +141,6 @@ namespace FermaOnline.Controllers
                 var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{id}");
                 bool basePathExists = System.IO.Directory.Exists(basePath);
                 if (!basePathExists) Directory.CreateDirectory(basePath);
-                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
                 var filePath = Path.Combine(basePath, file.FileName);
                 var FileType = fileType ? "Materials" : "Formula";
                 if (!System.IO.File.Exists(filePath))
@@ -154,7 +153,7 @@ namespace FermaOnline.Controllers
                     {
                         ExperimentId = id,
                         FileType = FileType,
-                        Name = fileName,
+                        Name = file.FileName,
                         FilePath = filePath
                     };
                     _db.Files.Add(fileModel);

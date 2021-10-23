@@ -29,7 +29,9 @@
 
                 <div class="d-flex justify-content-between">
                     <p class="align-text-bottom"><span class="fw-bold">id:</span> @Model.Code </p>
-                    <p><span class="fw-bold">Author:</span> Jerzy Pastuszak</p>
+                    @{var autor = String.IsNullOrEmpty(Model.Author) ? "" : $"<p><span class=\"fw-bold\" > Author:</span> {@Model.Author}</p>";
+                        @Html.Raw(autor)
+                    }
                 </div>
                 <div class="d-flex justify-content-center">
                     @{var TextSpecies = @Model.Status ? "This experiment is conduct on" : "This experiment was conducted on";
@@ -280,8 +282,6 @@
 
             </div>
         }
-
-
         <script>
            var Days = [];
             var Weight = [];
@@ -343,7 +343,7 @@
                     if (file.FileType == "Formula")
                     {
                         <div class="d-flex justify-content-between">
-                            <button href="@file.FilePath" target="_blank" class="btn" style="width:100%"><i class="fa fa-download"></i> Download Formula: @file.Name</button>
+                            <a href="@file.FilePath"  target="_blank" class="btn" style="width:100%"><i class="far fa-eye"></i> View Formula: @file.Name</a> <!-- nie działa otwieranie w nowym oknie-->
                             <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>
                         </div>
                     }
@@ -362,11 +362,11 @@
                 {
                     if (file.FileType == "Materials")
                     {
-                        <div class="d-flex justify-content-between">
+                <div class="d-flex justify-content-between">
 
-                            <a href="@file.FilePath">@file.Name</a>
-                            <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>
-                        </div>
+                    <a href="@file.FilePath">@file.Name</a>
+                    <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>  <!-- nie można pobrać?-->
+                </div>
                     }
                 }
             </div>

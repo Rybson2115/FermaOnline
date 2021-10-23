@@ -17,6 +17,12 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
+                        <label asp-for="Author"></label>
+                        <input asp-for="Author" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
                         <label asp-for="ShortDescription"></label> <br />
                         <textarea class="form-control" asp-for="ShortDescription" rows="3"></textarea>
                     </div>
@@ -30,10 +36,10 @@
                 <div class="form-group row">
                     <div class="col-4">
                         <label asp-for="CageNumber"></label> <br />
-                        <input class="form-control" asp-for="CageNumber">  
+                        <input class="form-control" asp-for="CageNumber">
                     </div>
                 </div>
-           
+
                 <div class="form-group row">
                     <div class="col-4">
                         <label asp-for="Species"></label> <br />
