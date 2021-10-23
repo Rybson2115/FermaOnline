@@ -18,39 +18,39 @@
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                     </div>
-                        <div class="form-group ">
-                            <div class="col-4">
-                                <label asp-for="Status"></label>
-                                <input  asp-for="Status" data-toggle="toggle">
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="col-4">
-                                <label asp-for="Description"></label>
-                                <textarea class="form-control" asp-for="Description" rows="3"></textarea>
-                                <span asp-validation-for="Description" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="col-4">
-                                <label class="form-label" for="postedFiles">Short description</label>
-                                <textarea class="form-control" asp-for="ShortDescription" rows="3"></textarea>
-                                <span asp-validation-for="ShortDescription" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group ">
-                            <div class="col-4">
-                                <label class="form-label" for="files">Files</label>
-                                <input class="form-control" type="file" name="files" multiple />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
+                    <div class="form-group ">
                         <div class="col-4">
-                            <label for="fileType">File type:</label>
-                            <input type="checkbox" name="fileType"  data-toggle="toggle" data-on="Materials" data-off="Formula"  data-onstyle="info" data-offstyle="secondary">
+                            <label asp-for="Status"></label>
+                            <input asp-for="Status" data-toggle="toggle">
                         </div>
                     </div>
+                    <div class="form-group ">
+                        <div class="col-4">
+                            <label asp-for="Description"></label>
+                            <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-4">
+                            <label class="form-label" for="postedFiles">Short description</label>
+                            <textarea class="form-control" asp-for="ShortDescription" rows="3"></textarea>
+                            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-4">
+                            <label class="form-label" for="files">Add Materials</label>
+                            <input class="form-control" type="file" name="Materials" multiple />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-4">
+                            <label class="form-label" for="files">Add Formula:</label>
+                            <input class="form-control" type="file" name="Formula" multiple />
+                        </div>
+                    </div>
+                </div>
                     <div class="form-group row">
                         <div class="col-8 offset-1 row">
                             <div class="col-4">

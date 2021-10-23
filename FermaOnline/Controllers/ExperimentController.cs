@@ -134,58 +134,64 @@ namespace FermaOnline.Controllers
             return View(ToUpdate);
 
         }
+        public void AddFile(List<IFormFile> files,int id,bool fileType)
+        {
+            foreach (var file in files)
+            {
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{id}");
+                bool basePathExists = System.IO.Directory.Exists(basePath);
+                if (!basePathExists) Directory.CreateDirectory(basePath);
+                var fileName = Path.GetFileNameWithoutExtension(file.FileName);
+                var filePath = Path.Combine(basePath, file.FileName);
+                var FileType = fileType ? "Materials" : "Formula";
+                if (!System.IO.File.Exists(filePath))
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    var fileModel = new FileModel
+                    {
+                        ExperimentId = id,
+                        FileType = FileType,
+                        Name = fileName,
+                        FilePath = filePath
+                    };
+                    _db.Files.Add(fileModel);
+                }
+            }
+        }
 
         // POST UPDATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Experiment ToUpdate, List<IFormFile> files, bool fileType)
+        public IActionResult Update(Experiment ToUpdate, List<IFormFile> Formula, List<IFormFile> Materials, bool fileType)
         {
-            //zeby działał checkbox który jest opcjonalny
-            //if(ModelState["fileType"].ValidationState== ModelValidationState.Invalid)
-            //    ModelState["fileType"].ValidationState = ModelValidationState.Valid;
-            //if (ModelState.IsValid){ 
 
-            var Update = _db.Experiment.Find(ToUpdate.Id);
-            
-            Update.Name = ToUpdate.Name;
-            Update.Status = ToUpdate.Status;
-            Update.Description = ToUpdate.Description;
-            Update.ShortDescription = ToUpdate.ShortDescription;
+            if (ModelState.IsValid)
+            {
 
-            _db.Experiment.Update(Update);
+                var Update = _db.Experiment.Find(ToUpdate.Id);
 
-                if (files.Count > 0)
-                {
-                    foreach (var file in files)
-                    {
-                        var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{ToUpdate.Id}");
-                        bool basePathExists = System.IO.Directory.Exists(basePath);
-                        if (!basePathExists) Directory.CreateDirectory(basePath);
-                        var fileName = Path.GetFileNameWithoutExtension(file.FileName);
-                        var filePath = Path.Combine(basePath, file.FileName);
-                        var FileType = fileType ? "Materials" : "Formula";
-                        if (!System.IO.File.Exists(filePath))
-                        {
-                            using (var stream = new FileStream(filePath, FileMode.Create))
-                            {
-                                file.CopyTo(stream);
-                            }
-                            var fileModel = new FileModel
-                            {
-                                ExperimentId = ToUpdate.Id,
-                                FileType = FileType,
-                                Name = fileName,
-                                FilePath = filePath
-                            };
-                            _db.Files.Add(fileModel);
-                        }
-                    }
-                }
+                Update.Name = ToUpdate.Name;
+                Update.Status = ToUpdate.Status;
+                Update.Description = ToUpdate.Description;
+                Update.ShortDescription = ToUpdate.ShortDescription;
+
+                _db.Experiment.Update(Update);
+
+
+                if (Materials.Count > 0)
+                    AddFile(Materials, ToUpdate.Id, true);
+
+                if (Formula.Count > 0)
+                    AddFile(Formula, ToUpdate.Id, false);
+
 
                 _db.SaveChanges();
                 return RedirectToAction("Index");
-            //}
-            //return View(ToUpdate);
+            }
+            return View(ToUpdate);
         }
 
     }
