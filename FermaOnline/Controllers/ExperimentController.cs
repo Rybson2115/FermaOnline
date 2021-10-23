@@ -70,6 +70,8 @@ namespace FermaOnline.Controllers
             //pobierz Files 
             experiment.Files = _db.Files.Where(i => i.ExperimentId == id).ToList();
 
+            ViewBag.IsFirstSurvay = experiment.SurveysList.Count == 0 ? true : false;
+            
             return View(experiment);
         }
 
@@ -130,6 +132,7 @@ namespace FermaOnline.Controllers
 
             if (ToUpdate == null)
                 return NotFound();
+ 
 
             return View(ToUpdate);
 
@@ -164,19 +167,28 @@ namespace FermaOnline.Controllers
         // POST UPDATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Experiment ToUpdate, List<IFormFile> Formula, List<IFormFile> Materials, bool fileType)
+        public IActionResult Update(Experiment ToUpdate, List<IFormFile> Formula, List<IFormFile> Materials, bool fileType, List<int> AreChecked)
         {
 
             if (ModelState.IsValid)
             {
 
                 var Update = _db.Experiment.Find(ToUpdate.Id);
+                string visible = "";
+                
+                for (int i = 0; i < 9; i++)
+                    if (AreChecked.Contains(i))
+                        visible += "1";
+                    else
+                        visible += "0";
 
-                Update.Name = ToUpdate.Name;
+
+
+                Update.Name = ToUpdate.Name;  
                 Update.Status = ToUpdate.Status;
                 Update.Description = ToUpdate.Description;
                 Update.ShortDescription = ToUpdate.ShortDescription;
-
+                Update.VisibleProperties = visible;
                 _db.Experiment.Update(Update);
 
 

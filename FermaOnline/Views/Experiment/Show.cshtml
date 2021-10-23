@@ -20,9 +20,9 @@
                 <div class="d-flex justify-content-between">
                     <a asp-action="Index" class="btn btn-primary btn-lg ">Back</a>
                     <h2 class="text-primary center">@Model.Name</h2>
- 
-                        <a type="button" class="btn btn-primary btn-lg" asp-controller="Survey" asp-route-Id="@Model.Id" asp-action="Create">Add survey</a>
-                    </div>
+
+                    <a type="button" class="btn btn-primary btn-lg" asp-controller="Survey" asp-route-Id="@Model.Id" asp-action="Create">Add survey</a>
+                </div>
 
             </div>
             <div class="card-body">
@@ -123,13 +123,16 @@
                                     </td>
                                 }
                             </tr>
-                            <tr>
-                                <td><b>Days from first weight</b></td>
-                                @foreach (var survey in Model.SurveysList)
-                                {
-                                    <td class="text-center">@survey.DaysFromFirstWeight </td>
-                                }
-                            </tr>
+                            @if (ViewBag.IsFirstSurvay)
+                            {
+                                <tr>
+                                    <td><b>Days from first weight</b></td>
+                                    @foreach (var survey in Model.SurveysList)
+                                    {
+                                        <td class="text-center">@survey.DaysFromFirstWeight </td>
+                                    }
+                                </tr>
+                            }
                             <tr>
                                 <td><b>Day Of Life</b></td>
                                 @foreach (var survey in Model.SurveysList)
@@ -160,97 +163,128 @@
                                     <td class="text-center">@survey.AverageBodyWeight </td>
                                 }
                             </tr>
-                            <tr>
-                                <td><b>Difference in body weight</b> </td>
-                                @foreach (var survey in Model.SurveysList)
-                                {
-                                    <td>
-                                        <table class="table mb-0 table-borderless">
-                                            <tr>
-                                                @foreach (var cage in survey.Cages)
-                                                {
-                                                    <td class="text-center">@cage.DifferenceInBodyWeight </td>
-                                                }
-                                            </tr>
-                                        </table>
-                                    </td>
-                                }
-                            </tr>
-                            <tr>
-                                <td><b>Weight gain from start</b> </td>
-                                @foreach (var survey in Model.SurveysList)
-                                {
-                                    <td>
-                                        <table class="table mb-0 table-borderless">
-                                            <tr>
-                                                @foreach (var cage in survey.Cages)
-                                                {
-                                                    <td class="text-center">@cage.WeightGainFromStart </td>
-                                                }
-                                            </tr>
-                                        </table>
-                                    </td>
+                            @{string Visible = Model.VisibleProperties;
+                                @Visible[0];
 
-                                }
-                            </tr>
-                            <tr>
-                                <td><b>Average weight gain</b></td>
-                                @foreach (var survey in Model.SurveysList)
+                                @if(Model.VisibleProperties[0] == 1)
                                 {
-                                    <td class="text-center">@survey.AverageWeightGainFromCages </td>
+                                    <tr>
+                                        <td><b>Difference in body weight</b> </td>
+                                        @foreach (var survey in Model.SurveysList)
+                                        {
+                                            <td>
+                                                <table class="table mb-0 table-borderless">
+                                                    <tr>
+                                                        @foreach (var cage in survey.Cages)
+                                                        {
+                                                            <td class="text-center">@cage.DifferenceInBodyWeight </td>
+                                                        }
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        }
+                                    </tr>
                                 }
-                            </tr>
-                            <tr>
-                                <td><b>Weight gain from last survey</b></td>
-                                @foreach (var survey in Model.SurveysList)
+                                @if(Model.VisibleProperties[1] == 1)
                                 {
-                                    <td>
-                                        <table class="table mb-0 table-borderless">
-                                            <tr>
-                                                @foreach (var cage in survey.Cages)
-                                                {
-                                                    <td class="text-center">@cage.WeightGainFromLastSurvey </td>
-                                                }
-                                            </tr>
-                                        </table>
-                                    </td>
+                                    <tr>
+                                        <td><b>Weight gain from start</b> </td>
+                                        @foreach (var survey in Model.SurveysList)
+                                        {
+                                            <td>
+                                                <table class="table mb-0 table-borderless">
+                                                    <tr>
+                                                        @foreach (var cage in survey.Cages)
+                                                        {
+                                                            <td class="text-center">@cage.WeightGainFromStart </td>
+                                                        }
+                                                    </tr>
+                                                </table>
+                                            </td>
+
+                                        }
+                                    </tr>
                                 }
-                            </tr>
-                            <tr>
-                                <td><b>Average weight gain from last survey</b></td>
-                                @foreach (var survey in Model.SurveysList)
+                                @if (Model.VisibleProperties[2] == 1)
                                 {
-                                    <td class="text-center">@survey.AverageWeightGainFromLastSurvey </td>
+                                    <tr>
+                                        <td><b>Average weight gain</b></td>
+                                        @foreach (var survey in Model.SurveysList)
+                                        {
+                                            <td class="text-center">@survey.AverageWeightGainFromCages </td>
+                                        }
+                                    </tr>
                                 }
-                            </tr>
-                            <tr>
-                                <td><b>Loculus feed intake</b></td>
-                                @foreach (var survey in Model.SurveysList)
+                                @if (Model.VisibleProperties[3] == 1)
                                 {
-                                    <td class="text-center">@survey.LoculusFeedInTake </td>
+                                    <tr>
+                                        <td><b>Weight gain from last survey</b></td>
+                                        @foreach (var survey in Model.SurveysList)
+                                        {
+                                            <td>
+                                                <table class="table mb-0 table-borderless">
+                                                    <tr>
+                                                        @foreach (var cage in survey.Cages)
+                                                        {
+                                                            <td class="text-center">@cage.WeightGainFromLastSurvey </td>
+                                                        }
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        }
+                                    </tr>
                                 }
-                            </tr>
-                            <tr>
-                                <td><b>Feed Intake Weekly</b></td>
-                                @foreach (var survey in Model.SurveysList)
+                                @if (Model.VisibleProperties[4] == 1)
                                 {
-                                    <td class="text-center">@survey.FeedIntakeWeekly </td>
+                                    <tr>
+                                        <td><b>Average weight gain from last survey</b></td>
+                                        @foreach (var survey in Model.SurveysList)
+                                        {
+                                            <td class="text-center">@survey.AverageWeightGainFromLastSurvey </td>
+                                        }
+                                    </tr>
                                 }
-                            </tr>
-                            <tr>
-                                <td><b>FeedIntakDaily</b></td>
-                                @foreach (var survey in Model.SurveysList)
+                                @if (Model.VisibleProperties[5] == 1)
                                 {
-                                    <td class="text-center">@survey.FeedIntakDaily </td>
+                                    <tr>
+                                        <td><b>Loculus feed intake</b></td>
+                                        @foreach (var survey in Model.SurveysList)
+                                        {
+                                            <td class="text-center">@survey.LoculusFeedInTake </td>
+                                        }
+                                    </tr>
                                 }
-                            </tr>
-                            <tr>
-                                <td><b>Feed Conversion Ratio</b></td>
-                                @foreach (var survey in Model.SurveysList)
+                                @if (Model.VisibleProperties[6] == 1)
                                 {
-                                    <td class="text-center">@survey.FeedConversionRatio </td>
+                                    <tr>
+                                        <td><b>Feed Intake Weekly</b></td>
+                                        @foreach (var survey in Model.SurveysList)
+                                        {
+                                            <td class="text-center">@survey.FeedIntakeWeekly </td>
+                                        }
+                                    </tr>
                                 }
-                            </tr>
+                                @if (Model.VisibleProperties[7] == 1)
+                                {
+                                    <tr>
+                                        <td><b>FeedIntakDaily</b></td>
+                                        @foreach (var survey in Model.SurveysList)
+                                        {
+                                            <td class="text-center">@survey.FeedIntakDaily </td>
+                                        }
+                                    </tr>
+                                }
+                                @if (Model.VisibleProperties[8] == 1)
+                                {
+                                    <tr>
+                                        <td><b>Feed Conversion Ratio</b></td>
+                                        @foreach (var survey in Model.SurveysList)
+                                        {
+                                            <td class="text-center">@survey.FeedConversionRatio </td>
+                                        }
+                                    </tr>
+                                }
+                            }
                             <tr>
                                 <td></td>
                                 @foreach (var survey in Model.SurveysList)
@@ -343,7 +377,7 @@
                     if (file.FileType == "Formula")
                     {
                         <div class="d-flex justify-content-between">
-                            <a href="@file.FilePath"  target="_blank" class="btn" style="width:100%"><i class="far fa-eye"></i> View Formula: @file.Name</a> <!-- nie działa otwieranie w nowym oknie-->
+                            <a href="@file.FilePath" target="_blank" class="btn" style="width:100%"><i class="far fa-eye"></i> View Formula: @file.Name</a> <!-- nie działa otwieranie w nowym oknie-->
                             <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>
                         </div>
                     }
@@ -362,15 +396,15 @@
                 {
                     if (file.FileType == "Materials")
                     {
-                <div class="d-flex justify-content-between">
+                        <div class="d-flex justify-content-between">
 
-                    <a href="@file.FilePath">@file.Name</a>
-                    <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>  <!-- nie można pobrać?-->
-                </div>
+                            <a href="@file.FilePath">@file.Name</a>
+                            <a asp-controller="File" asp-action="Delete" asp-route-Id="@file.Id" class="btn btn-danger mx-1">Delete</a>  <!-- nie można pobrać?-->
+                        </div>
                     }
                 }
             </div>
         </div>
     }
-    </div>
+</div>
 

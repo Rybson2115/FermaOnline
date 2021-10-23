@@ -49,7 +49,7 @@ namespace FermaOnline.Models
         public List<FileModel> Files { get; set; }
         
         public List<Survey> SurveysList { get; set; }
- 
+        public  string  VisibleProperties { get; set; }
         public int CageNumber { get; set; }
         public Experiment()
         {
@@ -65,6 +65,7 @@ namespace FermaOnline.Models
             Code = string.Empty;
             ShortDescription = string.Empty;
             Author = string.Empty;
+            VisibleProperties = string.Empty;
         }
         public Experiment(string name,string description, string shortDescription, string species,int cageNumber, string author) : base()
         {
@@ -74,6 +75,7 @@ namespace FermaOnline.Models
             CageNumber = cageNumber;
             ShortDescription = shortDescription;
             Author = author;
+            VisibleProperties = "111111111";
         }
     }
 }
