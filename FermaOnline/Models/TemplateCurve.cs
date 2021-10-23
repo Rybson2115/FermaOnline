@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace FermaOnline.Models
 {
@@ -26,6 +27,14 @@ namespace FermaOnline.Models
             { 171, 127.1286f }, { 172, 128.0714f }, { 173, 129.0143f }, { 174, 129.9571f }, { 175, 130.9f }, { 176, 131.8143f }, { 177, 132.7286f }, { 178, 133.6429f }, { 179, 134.5571f }, 
             { 180, 135.4714f }, { 181, 136.3857f } };//int-Dzień życia float-Masa ciała
         public static List<float> LiveTimeValue { get; set; } //dane wyliczane na podstawie średniej z doświadczeń 
+
+        public static int CloseDayByValue(Dictionary<int, float> Dict, float GivenValue)
+        {
+            List<KeyValuePair<int, float>> DictList = Dict.ToList();
+            var value = DictList.OrderBy(e => Math.Abs(e.Value - GivenValue)).FirstOrDefault();
+            return value.Key;
+        }
+
 
     }
 }
