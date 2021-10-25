@@ -4,14 +4,16 @@ using FermaOnline.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FermaOnline.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211007173730_AddFileMigration")]
+    partial class AddFileMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,9 +87,6 @@ namespace FermaOnline.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Author")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("CageNumber")
                         .HasColumnType("int");
 
@@ -115,9 +114,6 @@ namespace FermaOnline.Migrations
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
-                    b.Property<string>("VisibleProperties")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.ToTable("Experiment");
@@ -133,16 +129,18 @@ namespace FermaOnline.Migrations
                     b.Property<int>("ExperimentId")
                         .HasColumnType("int");
 
-                    b.Property<string>("FilePath")
+                    b.Property<string>("Extension")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FileType")
+                    b.Property<string>("FilePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ExperimentId");
 
                     b.ToTable("Files");
                 });
@@ -209,6 +207,15 @@ namespace FermaOnline.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("FermaOnline.Models.FileModel", b =>
+                {
+                    b.HasOne("FermaOnline.Models.Experiment", null)
+                        .WithMany("Images")
+                        .HasForeignKey("ExperimentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("FermaOnline.Models.Survey", b =>
                 {
                     b.HasOne("FermaOnline.Models.Experiment", null)
@@ -220,6 +227,8 @@ namespace FermaOnline.Migrations
 
             modelBuilder.Entity("FermaOnline.Models.Experiment", b =>
                 {
+                    b.Navigation("Images");
+
                     b.Navigation("SurveysList");
                 });
 

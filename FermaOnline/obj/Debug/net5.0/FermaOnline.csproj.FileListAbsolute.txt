@@ -823,3 +823,4 @@ C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnl
 C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.Views.pdb
 C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.csproj.CopyComplete
 C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.genruntimeconfig.cache
+X:\Desktop\Programowanie\Inz\Próba 3\FermaOnline\obj\Debug\net5.0\Razor\Views\File\Delete.cshtml.g.cs

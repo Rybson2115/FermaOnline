@@ -1,66 +1,103 @@
 ﻿@model Experiment
 
 
-<form method="post" asp-action="Update">
+<form method="post" enctype="multipart/form-data" asp-action="Update">
     <input asp-for="Id" hidden />
     <div class="border p-3">
         @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
         <div class="form-group row">
             <h2 class="text-black-50 pl-3">Update experiment</h2>
         </div>
-        <div class="row">
+        <div class="d-flex justify-content-center">
             <div class="col-12">
                 <div class="form-group row">
-                    <div class="col-4">
-                        <label asp-for="Name"></label>
-                    </div>
-                    <div class="col-4">
-                        <label asp-for="Status"></label>
-                    </div>
-                    <div class="col-4">
-                        <label asp-for="Description"></label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-4">
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
-                    </div>
-                    <div class="col-4 form-check form-switch">
-                        <input class="form-check-input" type="checkbox" asp-for="Status" />
-                    </div>
-                    <div class="col-4">
-                        <textarea class="form-control" asp-for="Description" rows="3"></textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                    <div class="col-4">
-                        <label class="form-label" for="postedFiles">Short description</label>
-                        <textarea class="form-control" asp-for="ShortDescription" rows="3"></textarea>
-                        <span asp-validation-for="ShortDescription" class="text-danger"></span>
-                    </div>
                     <div class="form-group row">
                         <div class="col-4">
-                            <label class="form-label" for="postedFiles">Upload image </label>
-                            <input type="file" name="postedFiles" class="form-control" multiple />
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <div class="col-8 offset-1 row">
+                    <div class="form-group ">
                         <div class="col-4">
-                            <input type="submit" class="btn btn-primary w-75" value="Update" />
-                        </div>
-                        <div class="col-4">
-                            <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                            <label asp-for="Status"></label>
+                            <input asp-for="Status" data-toggle="toggle">
                         </div>
                     </div>
-                </div>
+                    <div class="form-group ">
+                        <div class="col-4">
+                            <label class="form-label" for="postedFiles">Short description</label>
+                            <textarea class="form-control" asp-for="ShortDescription" rows="3"></textarea>
+                            <span asp-validation-for="ShortDescription" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-4">
+                            <label asp-for="Description"></label>
+                            <textarea class="form-control" asp-for="Description" rows="3"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-4">
+                            <label class="form-label" for="files">Add Materials</label>
+                            <input class="form-control" type="file" name="Materials" multiple />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-4">
+                            <label class="form-label" for="files">Add Formula:</label>
+                            <input class="form-control" type="file" name="Formula" multiple />
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <div class="col-4">
+                            <div class="accordion accordion-flush" id="accordionFlush">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="flush-headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                            Show or hide table row
+                                        </button>
+                                    </h2>
+                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
+                                        <div class="accordion-body">
+                                            @{
+                                                List<string> CheckBoxName = new List<string>() { "Difference in body weight"," Weight gain from start","Average weight gain","Weight gain from last survey","" +
+                                                "Average weight gain from last survey","Loculus feed intake","Feed Intake Weekly","FeedIntakDaily","Feed Conversion Ratio"};
+                                                for (int i = 0; i < CheckBoxName.Count; i++)
+                                                {
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" name="AreChecked" type="checkbox" value="@i" @((char)Model.VisibleProperties[i] == '1' ? "checked" : "") />
+                                                        <label class="form-check-label"> @CheckBoxName[i] </label>
+                                                    </div>
 
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-8 offset-1 row">
+                            <div class="col-4">
+                                <input type="submit" class="btn btn-primary w-75" value="Update" />
+                            </div>
+                            <div class="col-4">
+                                <a asp-action="Index" class="btn btn-danger w-75">Back</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
 </form>
 @section Scripts {
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>

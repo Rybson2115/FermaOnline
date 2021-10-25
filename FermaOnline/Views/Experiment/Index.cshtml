@@ -35,8 +35,8 @@
                 @foreach (var experiment in Model)
                 {
                     var style = experiment.Status ? "btn btn-success mx-1" : "btn btn-warning mx-1";
-                    var start = DateTime.Compare(experiment.Start, new DateTime(0001, 01, 01, 00, 00, 00)) == 0 ? "-" : experiment.Start.ToString("dd/MM/yyyy");// porównaj czy nie jest null i wyświetl w dobrym formacie jak jest null to -
-                    var end = DateTime.Compare(experiment.End, new DateTime(0001, 01, 01, 00, 00, 00)) == 0 ? "-" : experiment.End.ToString("dd/MM/yyyy");
+                    var start = DateTime.Compare(experiment.Start, new DateTime(0001, 01, 01)) == 0 ? "-" : experiment.Start.ToString("dd/MM/yyyy");// porównaj czy nie jest null i wyświetl w dobrym formacie jak jest null to -
+                    var end = DateTime.Compare(experiment.End, new DateTime(0001, 01, 01)) == 0 ? "-" : experiment.End.ToString("dd/MM/yyyy");
                 <tr>
                     <td width="30%">
                         @experiment.Name<br>
