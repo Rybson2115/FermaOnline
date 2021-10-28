@@ -5,14 +5,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Files\3007\**" />
+    <Compile Remove="wwwroot\img\ExperimentImages\**" />
+    <Content Remove="Files\3007\**" />
+    <Content Remove="wwwroot\img\ExperimentImages\**" />
+    <EmbeddedResource Remove="Files\3007\**" />
+    <EmbeddedResource Remove="wwwroot\img\ExperimentImages\**" />
+    <None Remove="Files\3007\**" />
+    <None Remove="wwwroot\img\ExperimentImages\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Bootstrap.Datepicker" Version="1.8.0.1" />
     <PackageReference Include="Chart.js" Version="2.9.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.9">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.9">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -21,7 +32,7 @@
 
   <ItemGroup>
     <Folder Include="Data\" />
-    <Folder Include="wwwroot\img\ExperimentImages\" />
+    <Folder Include="Files\" />
   </ItemGroup>
 
   <ItemGroup>

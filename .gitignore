@@ -7,7 +7,6 @@
 node_modules/
 dist/
 
-#Szymcio doda³
 *.dll
 *.pdv
 *.cache

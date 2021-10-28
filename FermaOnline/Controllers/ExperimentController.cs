@@ -2,12 +2,14 @@
 using FermaOnline.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+
 
 namespace FermaOnline.Controllers
 {
@@ -17,7 +19,6 @@ namespace FermaOnline.Controllers
         public ExperimentController(ApplicationDbContext db)
         {
             _db = db;
-
         }
 
         //GET
@@ -36,36 +37,16 @@ namespace FermaOnline.Controllers
         //POST-Create
         [HttpPost]
         [ValidateAntiForgeryToken]//zabezpieczenie 
-        public IActionResult Create(Experiment formData, List<IFormFile> postedFiles)
+        public IActionResult Create(Experiment formData)
         {
-            if (ModelState.IsValid)
-            {
-                var imgList = new List<Image>();
-                Experiment ExperimentToAdd;
-                if (postedFiles.Count > 0)
-                {
-                    foreach (IFormFile postedFile in postedFiles)
-                    {
-                        string fileName = Path.GetFileName(postedFile.FileName);
-                        using (FileStream stream = new FileStream(Path.Combine("~/img/ExperimentImages/", fileName), FileMode.Create))
-                        {
-                            postedFile.CopyTo(stream);
-                        }
-                        var img = new Image(formData.Id, postedFile.FileName);
-                        _db.Image.Add(img);
-                        imgList.Add(img);
-                    }
-                ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, (int)formData.CageNumber, imgList); 
-                }
-            else
-                ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, (int)formData.CageNumber);
 
-                _db.Experiment.Add(ExperimentToAdd);
+            Experiment ExperimentToAdd;
+            ExperimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber,formData.Author);
 
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(formData);
+            _db.Experiment.Add(ExperimentToAdd);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
         //GET-Show
         public IActionResult Show(int id) //Wyswietla eksperyment
@@ -77,19 +58,20 @@ namespace FermaOnline.Controllers
                 _db.Experiment.Update(experiment);
                 _db.SaveChanges();
             }
-            
-            if (_db.Experiment.Find(id)==null)//sprawdza czy w bazie jest podane id
-                return NotFound();
-         
-                experiment.SurveysList = _db.Surveys.Where(s => s.ExperimentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
 
-                //pobierz cage > dla każdego survey pobierz każdy cage 
-                experiment.SurveysList.ForEach(s => s.Cages = _db.Cage.Where(c => c.SurveyId == s.SurveyId).ToList()); 
-           
-                //pobierz img 
-                experiment.Images = _db.Image.Where(i => i.ExperimentId == id).ToList();
-        
-           
+            if (_db.Experiment.Find(id) == null)//sprawdza czy w bazie jest podane id
+                return NotFound();
+
+            experiment.SurveysList = _db.Surveys.Where(s => s.ExperimentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
+
+            //pobierz cage > dla każdego survey pobierz każdy cage 
+            experiment.SurveysList.ForEach(s => s.Cages = _db.Cage.Where(c => c.SurveyId == s.SurveyId).ToList());
+
+            //pobierz Files 
+            experiment.Files = _db.Files.Where(i => i.ExperimentId == id).ToList();
+
+            ViewBag.IsFirstSurvay = experiment.SurveysList.Count == 0 ? true : false;
+            
             return View(experiment);
         }
 
@@ -99,12 +81,12 @@ namespace FermaOnline.Controllers
 
             if (id == null || id == 0)
                 return NotFound();
-           
+
             var ToDelete = _db.Experiment.Find(id);
-            
+
             if (ToDelete == null)
                 return NotFound();
-           
+
             return View(ToDelete);
 
         }
@@ -119,17 +101,23 @@ namespace FermaOnline.Controllers
                 return NotFound();
 
             var SurveysToDelete = _db.Surveys.Where(s => s.ExperimentId == ExperimetnToDelete.Id);
-           
+
             var CageToDelete = new List<CageSurvey>();
-            
+            var FilesToDelete = new List<FileModel>();
             //tworzenie listy cage do usunięcia dla wszystkich pomiarów do usuniecia dla każdego survey dodaj każdy cage do listy usuń 
             SurveysToDelete.ToList().ForEach(s => s.Cages.ForEach(c => CageToDelete.Add(_db.Cage.Find(c.CageId))));
-           
+            FilesToDelete = _db.Files.Where(i => i.ExperimentId == id).ToList();
+
+            var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{id}");
+            if (Directory.Exists(basePath))
+                Directory.Delete(basePath, true);
 
             _db.Surveys.RemoveRange(SurveysToDelete);
             _db.Cage.RemoveRange(CageToDelete);
             _db.Experiment.Remove(ExperimetnToDelete);
+            _db.Files.RemoveRange(FilesToDelete);
             _db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 
@@ -144,19 +132,73 @@ namespace FermaOnline.Controllers
 
             if (ToUpdate == null)
                 return NotFound();
+ 
 
             return View(ToUpdate);
 
+        }
+        public void AddFile(List<IFormFile> files,int id,bool fileType)
+        {
+            foreach (var file in files)
+            {
+                var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{id}");
+                bool basePathExists = System.IO.Directory.Exists(basePath);
+                if (!basePathExists) Directory.CreateDirectory(basePath);
+                var filePath = Path.Combine(basePath, file.FileName);
+                var FileType = fileType ? "Materials" : "Formula";
+                if (!System.IO.File.Exists(filePath))
+                {
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                    var fileModel = new FileModel
+                    {
+                        ExperimentId = id,
+                        FileType = FileType,
+                        Name = file.FileName,
+                        FilePath = filePath
+                    };
+                    _db.Files.Add(fileModel);
+                }
+            }
         }
 
         // POST UPDATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Experiment ToUpdate)
+        public IActionResult Update(Experiment ToUpdate, List<IFormFile> Formula, List<IFormFile> Materials, bool fileType, List<int> AreChecked)
         {
+
             if (ModelState.IsValid)
             {
-                _db.Experiment.Update(ToUpdate);
+
+                var Update = _db.Experiment.Find(ToUpdate.Id);
+                string visible = "";
+                
+                for (int i = 0; i < 9; i++)
+                    if (AreChecked.Contains(i))
+                        visible += "1";
+                    else
+                        visible += "0";
+
+
+
+                Update.Name = ToUpdate.Name;  
+                Update.Status = ToUpdate.Status;
+                Update.Description = ToUpdate.Description;
+                Update.ShortDescription = ToUpdate.ShortDescription;
+                Update.VisibleProperties = visible;
+                _db.Experiment.Update(Update);
+
+
+                if (Materials.Count > 0)
+                    AddFile(Materials, ToUpdate.Id, true);
+
+                if (Formula.Count > 0)
+                    AddFile(Formula, ToUpdate.Id, false);
+
+
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -164,6 +206,8 @@ namespace FermaOnline.Controllers
         }
 
     }
+
+
 }
 
 

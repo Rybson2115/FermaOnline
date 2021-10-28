@@ -10,20 +10,29 @@ using System.Threading.Tasks;
 
 namespace FermaOnline.Models
 {
-    public class Experiment
+    public class Experiment : PropertyChangedModel
     {
         [Key]
         public int Id { get; set; }
         public string Code { get; set; } //kod doświadczenia 
-        [Required]
-        [StringLength(256), MinLength(5)]
         public string Name { get; set; } //tutuł
-        public bool Status { get; set; }
-        [Required]
-        public string Species { get; set; }
-        [Required]
+        private bool _status { get; set; }
+        public bool Status
+        {
+            get { return _status; }
+            set { 
+                _status = value;
+                if (_status)
+                    End = new DateTime(0001, 01, 01);
+                else
+                    End = DateTime.Today;
+                
+                OnPropertyChanged();
+            }
+        }
+        public string Author { get; set; }
+        public string Species { get; set; }  
         public string Description { get; set; } // opis 
-        [Required]
         public string ShortDescription { get; set; } // streszczenie 
 
         [DataType(DataType.Date)]
@@ -33,42 +42,40 @@ namespace FermaOnline.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime End { get; set; }
-        
+ 
         [NotMapped]
         public List<float> CageFirstIndividualBodyWeight { get; set; }
- 
-
+        [NotMapped]
+        public List<FileModel> Files { get; set; }
+        
         public List<Survey> SurveysList { get; set; }
-        public List<Image> Images { get; set; }
-        [Required]
-        public int? CageNumber { get; set; }
+        public  string  VisibleProperties { get; set; }
+        public int CageNumber { get; set; }
         public Experiment()
         {
             Name = string.Empty;
             Status = false;//brak dodanych pomiarów nie rozpoczety
             Species = string.Empty;
             Description = string.Empty;
-            Start = new DateTime(0001, 01, 01, 00, 00, 00);//ta data jako null
-            End = new DateTime(0001, 01, 01, 00, 00, 00);
+            Start = new DateTime(0001, 01, 01);//ta data jako null
+            End = new DateTime(0001, 01, 01);
             SurveysList = null;
             CageFirstIndividualBodyWeight = new List<float>();
-            Images = new List<Image>();
             CageNumber = 0;
             Code = string.Empty;
             ShortDescription = string.Empty;
+            Author = string.Empty;
+            VisibleProperties = string.Empty;
         }
-        public Experiment(string name,string description, string shortDescription, string species,int cageNumber) : base()
+        public Experiment(string name,string description, string shortDescription, string species,int cageNumber, string author) : base()
         {
             Name = name;
             Description = description;
             Species = species;
             CageNumber = cageNumber;
             ShortDescription = shortDescription;
-        }
-        public Experiment(string name, string description, string shortDescription, string species,int cageNumber, List<Image> images) : this( name,  description, shortDescription,  species, cageNumber)
-        {
-            Images = images;
-        }
-
+            Author = author;
+            VisibleProperties = "000000000"; //"111111111"-wszystkie 
+        }                       
     }
 }

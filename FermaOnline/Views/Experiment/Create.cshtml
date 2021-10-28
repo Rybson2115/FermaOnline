@@ -1,9 +1,8 @@
-﻿@model FermaOnline.Models.Experiment
+﻿@model Experiment
 
 
 <form method="post" asp-action="Create">
     <div class="border p-3">
-        @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
         <div class="form-group row">
             <h2 class="text-black-50 pl-3">Add experiment</h2>
         </div>
@@ -14,43 +13,39 @@
                     <div class="col-4">
                         <label asp-for="Name"></label>
                         <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Author"></label>
+                        <input asp-for="Author" class="form-control" />
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
                         <label asp-for="ShortDescription"></label> <br />
                         <textarea class="form-control" asp-for="ShortDescription" rows="3"></textarea>
-                        <span asp-validation-for="ShortDescription" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
                         <label asp-for="Description"></label> <br />
                         <textarea class="form-control" asp-for="Description" rows="3"></textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row">
                     <div class="col-4">
                         <label asp-for="CageNumber"></label> <br />
-                        <input class="form-control" asp-for="CageNumber"> </input>
-                        <span asp-validation-for="CageNumber" class="text-danger"></span>
+                        <input class="form-control" asp-for="CageNumber">
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-4">
-                        <label class="form-label" for="postedFiles">Upload image </label>
-                        <input class="form-control" type="file" id="fileSelect" name="postedFiles" multiple />
-                    </div>
-                </div>
+
                 <div class="form-group row">
                     <div class="col-4">
                         <label asp-for="Species"></label> <br />
                         <input type="radio" asp-for="Species" value="Pig" />Pig<br />
                         <input type="radio" asp-for="Species" value="Poultry" />Poultry<br />
                         <input type="radio" asp-for="Species" value="Ruminants" />Ruminants<br />
-                        <span asp-validation-for="Species" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group row">
