@@ -34,10 +34,12 @@ namespace FermaOnline.Controllers
 
         //POST-Create
         [HttpPost]
-        public IActionResult Create(Survey formData)
+        public IActionResult Create(SurveyDTO formData)
         {
             if (ModelState.IsValid)
             {
+                Facades.ExperimentFacade.Create(formData);
+                
                 int id = formData.ExperimentId;
                 Experiment experiment = _db.Experiment.Find(id);
 
@@ -68,7 +70,7 @@ namespace FermaOnline.Controllers
                 }
                 _db.SaveChanges();
 
-                return RedirectToAction("Show", "Experiment", new { id = id });
+                return RedirectToAction("Show", "Experiment", new { id });
             }
             return View(formData);
         }
