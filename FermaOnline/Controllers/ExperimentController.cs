@@ -17,17 +17,11 @@ namespace FermaOnline.Controllers
 {
     public class ExperimentController : Controller
     {
-        private readonly ApplicationDbContext repository;//dostęp do bazy danych 
         private readonly ExperimentFacade facade;
-        public ExperimentController(ApplicationDbContext db)
-        {
-            repository = db;
-        }
         //GET
         public IActionResult Index() //lista experymentów
         {
-            IEnumerable<Experiment> experimentsList = repository.Experiment;//pobieranie danych z bazy 
-            return View(experimentsList);
+            return View(facade.Index());
         }
         //GET-Create
         public IActionResult Create()

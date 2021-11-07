@@ -23,6 +23,10 @@ namespace FermaOnline.Facades
             repository = db;
         }
 
+        public DbSet<Experiment> Index()
+        {
+            return repository.Experiment;
+        }
         public void Create(ExperimentDTO experimentDTO)
         {
             Experiment experimentToAdd = new(experimentDTO);
