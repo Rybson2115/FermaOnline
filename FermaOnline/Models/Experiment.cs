@@ -17,20 +17,7 @@ namespace FermaOnline.Models
         public int Id { get; set; }
         public string Code { get; set; } //kod doświadczenia 
         public string Name { get; set; } //tutuł
-        private bool _status { get; set; }
-        public bool Status
-        {
-            get { return _status; }
-            set { 
-                _status = value;
-                if (_status)
-                    End = new DateTime(0001, 01, 01);
-                else
-                    End = DateTime.Today;
-                
-                OnPropertyChanged();
-            }
-        }
+        public bool Status { get; set; }
         public string Author { get; set; }
         public string Species { get; set; }  
         public string Description { get; set; } // opis 

@@ -25,33 +25,15 @@ namespace FermaOnline.Models
         public float WeightGainFromStart { get; set; } //Przyrost od wstawienia, kg/dzień
         public float WeightGainFromLastSurvey { get; set; } //Przyrost od poprzedniego ważenia, kg/dzień
    
-        public CageSurvey()
+        public CageSurvey(CageSurveyDTO cageSurveyDTO)
         {
-            CageQuantity = 0;
-            GroupWeight = 0.0f;
-            DeathCount = 0;
-            IndividualBodyWeight = 0.0f;
-            DifferenceInBodyWeight = 0.0f;
-            WeightGainFromStart = 0.0f;
-            WeightGainFromLastSurvey = 0.0f;
-
-        }
-         public float GetIndividualBodyWeight()
-         {
-            return GroupWeight / CageQuantity;
-         }
-        public float GetDifferenceInBodyWeight(float LastIndividualBodyWeight)
-        {
-            return IndividualBodyWeight - LastIndividualBodyWeight;
-        }
-        public float GetWeightGainFromStart(int DaysFromFirstWeight,float FirstIndividualBodyWeight)
-        {
-            return (IndividualBodyWeight-FirstIndividualBodyWeight) / DaysFromFirstWeight;
-        }
-        public float GetWeightGainFromLastSurvey(float LastIndividualBodyWeight,int DaysFromFirstWeight, int LastDaysFromFirstWeight)
-        {
-            return (IndividualBodyWeight-LastIndividualBodyWeight) / (DaysFromFirstWeight - LastDaysFromFirstWeight);
+            CageQuantity = (int)cageSurveyDTO.CageQuantity;
+            GroupWeight = (int)cageSurveyDTO.GroupWeight;
+            DeathCount = cageSurveyDTO.DeathCount;
+            IndividualBodyWeight = cageSurveyDTO.IndividualBodyWeight;
+            DifferenceInBodyWeight = cageSurveyDTO.DifferenceInBodyWeight;
+            WeightGainFromStart = cageSurveyDTO.WeightGainFromStart;
+            WeightGainFromLastSurvey = cageSurveyDTO.WeightGainFromLastSurvey;
         }
     }
 }
-

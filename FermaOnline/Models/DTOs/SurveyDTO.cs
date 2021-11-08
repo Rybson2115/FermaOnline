@@ -42,7 +42,7 @@ namespace FermaOnline.Models
         public List<CageSurveyDTO> Cages { get; set; }
         private SurveyDTO LastSurvey { get; set; } //Ostatni pomiar
 
-        public SurveyDTO()
+        public SurveyDTO(Survey lastSurvey)
         {
             ExperimentId = 0;
             SurveyDate = new DateTime(0001, 01, 01, 00, 00, 00);
@@ -61,6 +61,7 @@ namespace FermaOnline.Models
             AverageWeightGainFromLastSurvey = 0.0f;
           
         }
+        public SurveyDTO() {}
         public SurveyDTO(int experymentId) : this()
         {
             ExperimentId = experymentId;
@@ -94,6 +95,15 @@ namespace FermaOnline.Models
             FeedIntakDaily = (float)Math.Round(GetFeedIntakDaily(), 2); 
             FeedConversionRatio = (float)Math.Round(GetFeedConversionRatio(), 2);  
             AverageWeightGainFromLastSurvey = (float)Math.Round(GetAverageWeightGainFromLastSurvey(), 2);  
+        }
+        public List<CageSurvey> CagesDTOToCages(List<CageSurveyDTO> cagesDTO)
+        {
+            List<CageSurvey> cages = new();
+            for(int i = 0; i > cagesDTO.Count(); i++)
+            {
+                cages.Add(new CageSurvey(cagesDTO[i]));
+            }
+            return cages;
         }
 
         private int GetDayOfLife()

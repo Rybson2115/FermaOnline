@@ -12,6 +12,7 @@ namespace FermaOnline.Controllers
     public class SurveyController : Controller
     {
         private readonly ApplicationDbContext _db;//dostęp do bazy danych  /ja bym to jakoś repo nazwał 
+        private readonly Facades.SurveyFacade facade;
         public SurveyController(ApplicationDbContext db)
         {
             _db = db;
@@ -38,39 +39,8 @@ namespace FermaOnline.Controllers
         {
             if (ModelState.IsValid)
             {
-                Facades.ExperimentFacade.Create(formData);
-                
-                int id = formData.ExperimentId;
-                Experiment experiment = _db.Experiment.Find(id);
-
-                if (_db.Surveys.Any(s => s.ExperimentId == id))
-                {
-                    Survey lastSurvey = _db.Surveys
-                                    .Where(s => s.ExperimentId == id)
-                                    .OrderByDescending(t => t.SurveyDate)
-                                    .FirstOrDefault();
-
-                    //pobranie cage dla lastSurvey 
-                    lastSurvey.Cages = _db.Cage.Where(c => c.SurveyId == lastSurvey.SurveyId).ToList();
-                    //pobieranie CageFirstIndividualBodyWeight
-                    experiment.CageFirstIndividualBodyWeight = _db.CFIBW.Where(f => f.ExperimentId == experiment.Id).Select(s => s.FirstIndividualBodyWeight).ToList();
-                    //dodanie survey do bazy 
-                    _db.Surveys.Add(new Survey(formData, lastSurvey, experiment.CageFirstIndividualBodyWeight, (int)experiment.CageNumber));
-                }
-                else
-                {
-                    formData.ExperimentId = id;
-                    var DataToAdd = new Survey(formData);
-                    experiment.Start = (DateTime)DataToAdd.SurveyDate;
-                    //dodanie CageFirstIndividualBodyWeight do bazy  
-                    DataToAdd.Cages.ForEach(c => _db.CFIBW.Add(new CageFirstIndividualBodyWeight(DataToAdd.ExperimentId, c.CageId, c.IndividualBodyWeight)));
-                    experiment.Status = true;
-                    _db.Surveys.Add(DataToAdd);
-                    _db.Experiment.Update(experiment);
-                }
-                _db.SaveChanges();
-
-                return RedirectToAction("Show", "Experiment", new { id });
+                int newId = facade.Create(formData);
+                return RedirectToAction("Show", "Experiment", new { newId });
             }
             return View(formData);
         }
