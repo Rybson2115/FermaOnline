@@ -50,36 +50,75 @@
                             </div>
                         </div>
                         <script>
-                            const Quantity = document.getElementById('AQuantity');
-                            const Weight = document.getElementById('AWeight');
+                            let DictValue = [];
+                            let DictKey = [];
+                            const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+                             @{
+                                 var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
+
+                                          @foreach (var d in dict)
+                                          {
+                                             @: DictKey.push("@d.Key");
+                                             @: DictValue.push(parseFloat(@d.Value));
+                                           }
+                                 @:const cageNumber=@ViewBag.CageNumber;
+                              }
+
+                            var Quantity = [];
+                            var Weight = [];
+                            var QuantityValue = [];
+                            var WeightValue = [];
+
+                            for (i = 0; i < cageNumber; i++) {
+
+                                Quantity[i] = document.getElementById(alphabet[i] + "Quantity")
+                                QuantityValue[i] = 0;
+                                Quantity[i].addEventListener('change', (event) => { QuantityValue[Quantity.indexOf(event.target)] = event.target.valueAsNumber;});
+                                Quantity[i].addEventListener('change', updateDayValue);
+
+                                Weight[i] = document.getElementById(alphabet[i] + "Weight")
+                                WeightValue[i] = 0;
+                                Weight[i].addEventListener('change', (event) => { WeightValue[Weight.indexOf(event.target)] = event.target.valueAsNumber;});
+                                Weight[i].addEventListener('change', updateDayValue);
+                            }
+
                             const Day = document.getElementById('Day');
-                            let QuantityValue, WeightValue;
 
-                            Quantity.addEventListener('change', updateQuantityValue);
-                            Quantity.addEventListener('change', updateDayValue);
-
-                            Weight.addEventListener('change', updateWeightValue);
-                            Weight.addEventListener('change', updateDayValue);
-
-                            function updateQuantityValue(e){
-                               QuantityValue = e.target.value;
-                            }
-
-                            function updateWeightValue(e) {
-                                WeightValue = e.target.value;
-                            }
 
                             function updateDayValue() {
-
+                           
                                 if (WeightValue && QuantityValue) {
-                                    var DayValue,Dict;
-                                    var IndyvidualBodyWeight = WeightValue / QuantityValue;
 
-                                    @*@{
-                                        @:DayValue= @FermaOnline.Models.TemplateCurve.CloseDayByValue(FermaOnline.Models.TemplateCurve.DefaultValuePig, IndyvidualBodyWeight); // nie można użyć zmiennej js w razor
+                                    var WeightValueSum = 0;
+                                    var QuantityValueSum = 0;
 
-                                    }*@
+                                    for (let i = 0; i < WeightValue.length; i++) {
+                                        WeightValueSum += WeightValue[i];
+                                    }
+                                       
+
+                                    for (let i = 0; i < QuantityValue.length; i++) {
+                                        QuantityValueSum +=  QuantityValue[i];
+                                       
+                                    }
+
+                                   
+                                    var IndyvidualBodyWeight = WeightValueSum / QuantityValueSum;
  
+                                    var ClosestValue = 0;
+                                    var smallestDiff = Math.abs(IndyvidualBodyWeight - DictValue[0]);
+
+
+                                    for (i = 1; i < DictValue.length; i++) {
+                                        currentDiff = Math.abs(IndyvidualBodyWeight - DictValue[i]);
+                                        if (currentDiff < smallestDiff) {
+                                            smallestDiff = currentDiff;
+                                            ClosestValue = i;
+                                        }
+                                    }
+
+                                    DayValue = DictKey[ClosestValue];
+
                                     Day.placeholder = DayValue;
                                 }
                                 else
