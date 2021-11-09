@@ -14,8 +14,7 @@
     .first {
         position: sticky;
         left: 0px;
-        background-color: white;
-       
+        background-color: rgb(201, 76, 76);
     } /*dopracować*/
 </style>
 
@@ -44,10 +43,10 @@
                         <p class="fst-italic">@TextSpecies @Model.Species</p>
                     }
                 </div>
-                <p class=".fs-1 text fw-bold">Abstract:</p>
+                <p class="fs-1 text ">Abstract:</p>
                 <p>@Model.ShortDescription</p>
 
-                <p class=".fs-1 text fw-bold">Description:</p>
+                <p class="fs-1 text ">Description:</p>
             </div>
         </div>
     </div>
@@ -170,7 +169,7 @@
                                 }
                             </tr>
                             @{string Visible = Model.VisibleProperties;
-                                @Visible[0];
+                               
 
                                 @if((char)Model.VisibleProperties[0] == '1')
                                 {
