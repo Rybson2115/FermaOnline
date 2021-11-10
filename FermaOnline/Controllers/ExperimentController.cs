@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -27,7 +29,52 @@ namespace FermaOnline.Controllers
             IEnumerable<Experiment> ExperimentsList = _db.Experiment;//pobieranie danych z bazy 
             return View(ExperimentsList);
         }
+     
+        public IActionResult UpdateTable(List<string> AreChecked) //lista experymentów
+        {
+            IEnumerable<Experiment> ExperimentsList = _db.Experiment;//pobieranie danych z bazy 
+            List<Experiment> Result = new List<Experiment>();
+            Expression    constant, StatusProp, SpeciesProp, StatusExpresion, SpeciesExpresion, expression;
+            var parameterExpression = Expression.Parameter(typeof(Experiment), "Experiment");
+            StatusProp = Expression.Property(parameterExpression, "Status");
+            SpeciesProp = Expression.Property(parameterExpression, "Species");
+            StatusExpresion = Expression.Equal(StatusProp, Expression.Constant(true));
+            SpeciesExpresion = null;
+            
+            for (int i = 0; i < AreChecked.Count; i++)
+            {
+             
+                switch (AreChecked[i])
+                {
+                    case "Active":
+                        StatusExpresion = Expression.Equal(StatusProp, Expression.Constant(true));
+                        break;
+                    case "Inactive":
+                        StatusExpresion = Expression.Equal(StatusProp, Expression.Constant(false));
+                        break;
+                    case "Pig":
+                        SpeciesExpresion = Expression.Equal(SpeciesProp, Expression.Constant("Pig"));
+                        break;
+                    case "Poultry":
+                        SpeciesExpresion = Expression.Equal(SpeciesProp, Expression.Constant("Poultry"));
+                        break;
+                    case "Ruminants":
+                        SpeciesExpresion = Expression.Equal(SpeciesProp, Expression.Constant("Ruminants"));
+                        break;
+                }
 
+      
+            }
+            if (AreChecked.Count != 1)
+            {
+                expression = Expression.And(StatusExpresion, SpeciesExpresion);
+                var lambda = Expression.Lambda<Func<Experiment, bool>>(expression, parameterExpression);
+                var compiledLambda = lambda.Compile();
+                 Result = ExperimentsList.Where(compiledLambda).ToList();
+            }
+
+            return  View("Index", Result );
+        }
         //GET-Create
         public IActionResult Create()
         {
@@ -167,7 +214,7 @@ namespace FermaOnline.Controllers
         // POST UPDATE
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Update(Experiment ToUpdate, List<IFormFile> Formula, List<IFormFile> Materials, bool fileType, List<int> AreChecked)
+        public IActionResult Update(Experiment ToUpdate, List<IFormFile> Formula, List<IFormFile> Materials,  List<int> AreChecked)
         {
 
             if (ModelState.IsValid)
@@ -176,7 +223,7 @@ namespace FermaOnline.Controllers
                 var Update = _db.Experiment.Find(ToUpdate.Id);
                 string visible = "";
                 
-                for (int i = 0; i < 9; i++)
+                for (int i = 0; i < AreChecked.Count; i++)
                     if (AreChecked.Contains(i))
                         visible += "1";
                     else
