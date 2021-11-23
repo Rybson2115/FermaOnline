@@ -1,7 +1,6 @@
 ﻿using FermaOnline.Data;
 using FermaOnline.Facades;
 using FermaOnline.Models;
-using FermaOnline.Models.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -17,11 +16,17 @@ namespace FermaOnline.Controllers
 {
     public class ExperimentController : Controller
     {
-        private readonly ExperimentFacade facade;
+        private readonly ApplicationDbContext _db;
+        private readonly ExperimentFacade experimentFacade;
+       public ExperimentController(ApplicationDbContext db)
+        {
+            _db = db;
+            this.experimentFacade = new ExperimentFacade(db);
+        }
         //GET
         public IActionResult Index() //lista experymentów
         {
-            return View(facade.Index());
+            return View(experimentFacade.Index());
         }
         //GET-Create
         public IActionResult Create()
@@ -31,15 +36,15 @@ namespace FermaOnline.Controllers
         //POST-Create
         [HttpPost]
         [ValidateAntiForgeryToken]//zabezpieczenie 
-        public IActionResult Create(ExperimentDTO formData)
+        public IActionResult Create(Experiment formData)
         {
-            facade.Create(formData);
+            experimentFacade.Create(formData);
             return RedirectToAction("Index");
         }
         //GET-Show
         public IActionResult Show(int id) //Wyswietla eksperyment
         {
-            var experiment = facade.Show(id);
+            var experiment = experimentFacade.Show(id);
             if (experiment == null)
                 return NotFound();
             ViewBag.IsFirstSurvay = experiment.SurveysList.Count == 0 ? true : false;
@@ -48,7 +53,7 @@ namespace FermaOnline.Controllers
         // GET Delete
         public IActionResult Delete(int? id)
         {
-            var toDelete = facade.Delete(id);
+            var toDelete = experimentFacade.Delete(id);
             if (toDelete == null)
                 return NotFound();
             return View(toDelete);
@@ -58,7 +63,7 @@ namespace FermaOnline.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
         {
-            bool deleted = facade.DeletePost(id);
+            bool deleted = experimentFacade.DeletePost(id);
             if(deleted == true)
                 return RedirectToAction("Index");
             return NotFound();
@@ -68,7 +73,7 @@ namespace FermaOnline.Controllers
         public IActionResult Update(int? id)
         {
 
-            var toUpdate = facade.Update(id);
+            var toUpdate = experimentFacade.Update(id);
             if (toUpdate == null)
                 return NotFound();
             return View(toUpdate);
@@ -79,7 +84,7 @@ namespace FermaOnline.Controllers
             bool fileType
             )
         {
-            facade.AddFile(files, id, fileType);
+            experimentFacade.AddFile(files, id, fileType);
         }
         // POST UPDATE
         [HttpPost]
@@ -93,7 +98,7 @@ namespace FermaOnline.Controllers
         {
             if (ModelState.IsValid)
             {
-                facade.Update(toUpdate, formula, materials, areChecked);
+                experimentFacade.Update(toUpdate, formula, materials, areChecked);
                 return RedirectToAction("Index");
             }
             return View(toUpdate);

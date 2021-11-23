@@ -1,6 +1,5 @@
 using FermaOnline.Data;
 using FermaOnline.Models;
-using FermaOnline.Models.DTOs;
 using System.Runtime.InteropServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,39 +16,44 @@ namespace FermaOnline.Facades
 {
     public class ExperimentFacade
     {
-        private readonly ApplicationDbContext repository;//dostęp do bazy danych 
+        private readonly IExperimentRepository experimentRepository;
+        private readonly ISurveyRepository surveyRepository;
+        private readonly ICageRepository cageRepository;
+        private readonly IFilesRepository filesRepository;
         public ExperimentFacade(ApplicationDbContext db)
         {
-            repository = db;
+            this.experimentRepository = new ExperimentRepository(db);
+            this.surveyRepository = new SurveyRepository(db);
+            this.cageRepository = new CageRepository(db);
+            this.filesRepository = new FilesRepository(db);
         }
-
-        public DbSet<Experiment> Index()
+        public IEnumerable<Experiment> Index()
         {
-            return repository.Experiment;
+            return experimentRepository.GetExperiments();
         }
-        public void Create(ExperimentDTO experimentDTO)
+        public void Create(Experiment formData)
         {
-            Experiment experimentToAdd = new(experimentDTO);
+            Experiment experimentToAdd = new(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber, formData.Author);
             if (experimentToAdd.Code == null)
             {
                 experimentToAdd.Code = $"{experimentToAdd.Id}/{experimentToAdd.Species}/{System.DateTime.Today.Year}";
             }
-            repository.Experiment.Add(experimentToAdd);
-            repository.SaveChanges();
+            experimentRepository.InsertExperiment(experimentToAdd);
+            experimentRepository.Save();
         }
 
         public Experiment Show(int id)
         {
-            var experiment = repository.Experiment.Find(id);//pobieranie danych z bazy 
+            var experiment = experimentRepository.GetExperimentByID(id);//pobieranie danych z bazy 
             if (experiment == null)
             {
                 return experiment;
             }
             else
             {
-                experiment.SurveysList = repository.Surveys.Where(s => s.ExperimentId == id).ToList();//dodanie pomiarów dla danego eksperymentu po id
-                experiment.SurveysList.ForEach(s => s.Cages = repository.Cage.Where(c => c.SurveyId == s.SurveyId).ToList());
-                experiment.Files = repository.Files.Where(i => i.ExperimentId == id).ToList();
+                experiment.SurveysList = surveyRepository.GetSurveysByExperimentID(id);//dodanie pomiarów dla danego eksperymentu po id
+                experiment.SurveysList.ForEach(s => s.Cages = cageRepository.GetCageBySurveyID(s.SurveyId));
+                experiment.Files = filesRepository.GetFilesByExperimentID(id);
 
                 return experiment;
             }
@@ -59,7 +63,7 @@ namespace FermaOnline.Facades
             Experiment experiment = null;
             if(id != null)
             {
-               experiment = repository.Experiment.Find(id);
+               experiment = experimentRepository.GetExperimentByID((int)id);
             }
             return experiment;
         }
@@ -68,26 +72,30 @@ namespace FermaOnline.Facades
             if (id == null)
                 return false;
 
-            var experimetnToDelete = repository.Experiment.Find(id);
+            var experimetnToDelete = experimentRepository.GetExperimentByID((int)id);
             if (experimetnToDelete == null)
                 return false;
 
-            var surveysToDelete = repository.Surveys.Where(s => s.ExperimentId == experimetnToDelete.Id);
+            var surveysToDelete = surveyRepository.GetSurveyByExperimentID((int)id);
             var cageToDelete = new List<CageSurvey>();
             var filesToDelete = new List<FileModel>();
             var basePath = Path.Combine(Directory.GetCurrentDirectory() + $"\\Files\\{id}");
 
-            surveysToDelete.ToList().ForEach(s => s.Cages.ForEach(c => cageToDelete.Add(repository.Cage.Find(c.CageId))));
-            filesToDelete = repository.Files.Where(i => i.ExperimentId == id).ToList();
+            surveysToDelete.ForEach(s => s.Cages.ForEach(c => cageToDelete.Add(cageRepository.GetCageByID(c.CageId))));
+            filesToDelete = filesRepository.GetFilesByExperimentID((int)id);
 
             if (Directory.Exists(basePath))
                 Directory.Delete(basePath, true);
 
-            repository.Surveys.RemoveRange(surveysToDelete);
-            repository.Cage.RemoveRange(cageToDelete);
-            repository.Experiment.Remove(experimetnToDelete);
-            repository.Files.RemoveRange(filesToDelete);
-            repository.SaveChanges();
+            surveyRepository.DeleteSurveys(surveysToDelete);
+            cageRepository.DeleteCages(cageToDelete);
+            experimentRepository.DeleteExperiment((int)id);
+            filesRepository.DeleteListFiles(filesToDelete);
+
+            experimentRepository.Save(); //prawdopodnie bedzie trzeba save
+            surveyRepository.Save();
+            cageRepository.Save();
+            filesRepository.Save();
 
             return true;
         }
@@ -96,7 +104,7 @@ namespace FermaOnline.Facades
             Experiment experiment = null;
             if (id != null)
             {
-                experiment = repository.Experiment.Find(id);
+                experiment = experimentRepository.GetExperimentByID((int)id);
             }
             return experiment;
         }
@@ -126,17 +134,18 @@ namespace FermaOnline.Facades
                         Name = file.FileName,
                         FilePath = filePath
                     };
-                    repository.Files.Add(fileModel);
+                    filesRepository.InsertFiles(fileModel);
                 }
             }
+            filesRepository.Save();
         }
-        public void Update(Experiment toUpdate,
+        public  void Update(Experiment toUpdate,
             List<IFormFile> formula,
             List<IFormFile> materials,
             List<int> areChecked
             )
         {
-            var update = repository.Experiment.Find(toUpdate.Id);
+            var update = experimentRepository.GetExperimentByID(toUpdate.Id);
             string visible = "";
 
             for (int i = 0; i < 9; i++)
@@ -150,7 +159,7 @@ namespace FermaOnline.Facades
             update.Description = toUpdate.Description;
             update.ShortDescription = toUpdate.ShortDescription;
             update.VisibleProperties = visible;
-            repository.Experiment.Update(update);
+            experimentRepository.UpdateExperiment(update);
 
             if (materials.Count > 0)
                 AddFile(materials, toUpdate.Id, true);
@@ -158,7 +167,7 @@ namespace FermaOnline.Facades
             if (formula.Count > 0)
                 AddFile(formula, toUpdate.Id, false);
 
-            repository.SaveChanges();
+            experimentRepository.Save();//prawdopodnie na kazdym repo!
         }
     }
 }

@@ -1,51 +1,95 @@
 using FermaOnline.Data;
 using FermaOnline.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace FermaOnline.Facades
 {
     public class SurveyFacade
     {
-        private readonly ApplicationDbContext repository;//dostęp do bazy danych 
+        private readonly ApplicationDbContext _db; //dostęp do bazy danych
+        private readonly ISurveyRepository surveyRepository;
+        private readonly IExperimentRepository experimentRepository;
+        private readonly ICageRepository cageRepository;
+        private readonly ICageFirstIndividualBodyWeightRepository cageFirstIndividualBodyWeightRepository;
+
         public SurveyFacade(ApplicationDbContext db)
         {
-            repository = db;
+            _db = db;
+            this.surveyRepository = new SurveyRepository(db);
+            this.experimentRepository = new ExperimentRepository(db);
+            this.cageRepository = new CageRepository(db);
+            this.cageFirstIndividualBodyWeightRepository = new CageFirstIndividualBodyWeightRepository(db);
         }
-
-        public int Create(SurveyDTO surveyDTO)
+        public void Create(Survey survey)
         {
-            int id = surveyDTO.ExperimentId;
-            Experiment experiment = repository.Experiment.Find(id);
+            Experiment experiment = experimentRepository.GetExperimentByID(survey.ExperimentId);
 
-            if (repository.Surveys.Any(s => s.ExperimentId == id))
+            if (surveyRepository.ExistSurveyInExperiment(survey.ExperimentId))
             {
-                Survey lastSurvey = repository.Surveys
-                                .Where(s => s.ExperimentId == id)
-                                .OrderByDescending(t => t.SurveyDate)
-                                .FirstOrDefault();
+                Survey lastSurvey = surveyRepository.GetLastSurvey(survey.ExperimentId);
 
                 //pobranie cage dla lastSurvey 
-                lastSurvey.Cages = repository.Cage.Where(c => c.SurveyId == lastSurvey.SurveyId).ToList();
+                lastSurvey.Cages = cageRepository.GetCageBySurveyID(lastSurvey.SurveyId);
                 //pobieranie CageFirstIndividualBodyWeight
-                experiment.CageFirstIndividualBodyWeight = repository.CFIBW.Where(f => f.ExperimentId == experiment.Id).Select(s => s.FirstIndividualBodyWeight).ToList();
+                experiment.CageFirstIndividualBodyWeight = cageFirstIndividualBodyWeightRepository.GetCFIBWByExperimentID(experiment.Id);
                 //dodanie survey do bazy 
-                SurveyDTO newSurveyDTO = new SurveyDTO(surveyDTO, new SurveyDTO(lastSurvey), experiment.CageFirstIndividualBodyWeight, (int)experiment.CageNumber);
-                repository.Surveys.Add(new Survey(newSurveyDTO));       
+                Survey newSurvey = new(survey, new Survey(lastSurvey), experiment.CageFirstIndividualBodyWeight, (int)experiment.CageNumber);
+                surveyRepository.InsertSurvey(new Survey(newSurvey));       
             }
             else
             {
-                surveyDTO.ExperimentId = id;
-                var DataToAdd = new Survey(surveyDTO);
+                survey.ExperimentId = survey.ExperimentId;
+                var DataToAdd = new Survey(survey);
                 experiment.Start = (DateTime)DataToAdd.SurveyDate;
                 //dodanie CageFirstIndividualBodyWeight do bazy  
-                DataToAdd.Cages.ForEach(c => repository.CFIBW.Add(new CageFirstIndividualBodyWeight(DataToAdd.ExperimentId, c.CageId, c.IndividualBodyWeight)));
+                DataToAdd.Cages.ForEach(c => cageFirstIndividualBodyWeightRepository.InsertCFIBW(new CageFirstIndividualBodyWeight(DataToAdd.ExperimentId, c.CageId, c.IndividualBodyWeight)));
                 experiment.Status = true;
-                repository.Surveys.Add(DataToAdd);
-                repository.Experiment.Update(experiment);
+                surveyRepository.InsertSurvey(DataToAdd);//repository.Surveys.Add(DataToAdd);
+                experimentRepository.UpdateExperiment(experiment); //repository.Experiment.Update(experiment);
             }
-            int surveyId = repository.SaveChanges(); //potencjalnie gnój
-            return surveyId;
+            surveyRepository.Save();        }
+        public Survey Delete(int? id)
+        {
+            Survey experiment = null;
+            if (id != null)
+            {
+                experiment = surveyRepository.GetSurveyByID((int)id);
+            }
+            return experiment;
+        }
+
+        public Survey DeletePost(int id)
+        {
+            var SurveysToDelete = surveyRepository.GetSurveyByID(id);
+
+            if (surveyRepository.GetSurveyByID(id) == null)
+                return SurveysToDelete;
+
+            var CageToDelete = cageRepository.GetCageBySurveyID(id);
+
+            cageRepository.DeleteCages(CageToDelete);
+            surveyRepository.DeleteSurvey(id);
+
+            cageRepository.Save();
+            surveyRepository.Save();
+
+            return SurveysToDelete;
+
+        }
+        public bool IsFirst(int id)
+        {
+            bool SurveyExistInThisExperiment = surveyRepository.ExistSurveyInExperiment(id);
+            return SurveyExistInThisExperiment;
+        }
+        public int GetCageNumber(int experimentId)
+        {
+            return experimentRepository.GetExperimentByID(experimentId).CageNumber;
+        }
+        public Experiment FindById(int id)
+        {
+            return experimentRepository.GetExperimentByID(id);
         }
     }
 }

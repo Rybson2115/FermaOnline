@@ -42,22 +42,91 @@ namespace FermaOnline.Models
         public List<CageSurvey> Cages { get; set; }
         private Survey LastSurvey { get; set; } //Ostatni pomiar
 
-        public Survey(SurveyDTO surveyDTO)
+        public Survey()
         {
-            ExperimentId = surveyDTO.ExperimentId;
-            SurveyDate = surveyDTO.SurveyDate;
-            DayOfLife = surveyDTO.DayOfLife;
-            AverageBodyWeight = surveyDTO.AverageBodyWeight;
-            LoculusQuantity = surveyDTO.LoculusQuantity;
-            GroupId = surveyDTO.GroupId;
-            DaysFromFirstWeight = surveyDTO.DaysFromFirstWeight;
-            LoculusFeedInTake = surveyDTO.LoculusFeedInTake;
-            FeedIntakeWeekly = surveyDTO.FeedIntakeWeekly;
-            FeedIntakDaily = surveyDTO.FeedIntakDaily;
-            FeedConversionRatio = surveyDTO.FeedConversionRatio;
-            AverageWeightGainFromCages =surveyDTO.AverageWeightGainFromCages;
-            Cages = surveyDTO.CagesDTOToCages(surveyDTO.Cages);
-            AverageWeightGainFromLastSurvey = surveyDTO.AverageWeightGainFromLastSurvey;
+            ExperimentId = 0;
+            SurveyDate = new DateTime(0001, 01, 01, 00, 00, 00);
+            DayOfLife = 0;
+            AverageBodyWeight = 0.0f;
+            LoculusQuantity = 0;
+            GroupId = 0;
+            DaysFromFirstWeight = 0;
+            LoculusFeedInTake = 0.0f;
+            FeedIntakeWeekly = 0.0f;
+            FeedIntakDaily = 0.0f;
+            FeedConversionRatio = 0.0f;
+            AverageWeightGainFromCages = 0.0f;
+            Cages = new List<CageSurvey>();
+
+            AverageWeightGainFromLastSurvey = 0.0f;
+
+        }
+        public Survey(int experymentId) : this()
+        {
+            ExperimentId = experymentId;
+        }
+        public Survey(Survey newSurvey) : this()
+        {
+            ExperimentId = newSurvey.ExperimentId;
+            SurveyDate = newSurvey.SurveyDate;
+            LoculusQuantity = newSurvey.LoculusQuantity;
+            Cages = newSurvey.Cages;
+            foreach (var cage in Cages)
+                cage.IndividualBodyWeight = (float)Math.Round(cage.GetIndividualBodyWeight(), 2);
+            DayOfLife = newSurvey.DayOfLife;
+            LoculusFeedInTake = (float)Math.Round((float)newSurvey.LoculusFeedInTake, 2);
+            AverageBodyWeight = (float)Math.Round(GetAverageBodyWeight(), 2);
+        }
+
+        public Survey(Survey newSurvey, Survey lastSurvey, List<float> cageFirstIndividualBodyWeight, int cageCount) : this(newSurvey)
+        {
+            LastSurvey = lastSurvey;
+            DayOfLife = GetDayOfLife();
+            DaysFromFirstWeight = GetDaysFromFirstWeight();
+            for (int i = 0; i < cageCount; i++)
+            {
+                Cages[i].DifferenceInBodyWeight = (float)Math.Round(Cages[i].GetDifferenceInBodyWeight(LastSurvey.Cages[i].IndividualBodyWeight), 2);
+                Cages[i].WeightGainFromLastSurvey = (float)Math.Round(Cages[i].GetWeightGainFromLastSurvey(LastSurvey.Cages[i].IndividualBodyWeight, DaysFromFirstWeight, LastSurvey.DaysFromFirstWeight), 2);
+                Cages[i].WeightGainFromStart = (float)Math.Round(Cages[i].GetWeightGainFromStart(DaysFromFirstWeight, cageFirstIndividualBodyWeight[i]), 2);
+            }
+            AverageWeightGainFromCages = (float)Math.Round(GetAverageWeightGain(), 2);
+            FeedIntakeWeekly = (float)Math.Round(GetFeedIntakeWeekly(), 2);
+            FeedIntakDaily = (float)Math.Round(GetFeedIntakDaily(), 2);
+            FeedConversionRatio = (float)Math.Round(GetFeedConversionRatio(), 2);
+            AverageWeightGainFromLastSurvey = (float)Math.Round(GetAverageWeightGainFromLastSurvey(), 2);
+        }
+
+        private int GetDayOfLife()
+        {
+            return (int)LastSurvey.DayOfLife + (int)((DateTime)SurveyDate - (DateTime)LastSurvey.SurveyDate).TotalDays;//Dzien zycia z ostatniego pomiaru + ilość dni między pomiarami 
+        }
+        private int GetDaysFromFirstWeight()
+        {
+            return LastSurvey.DaysFromFirstWeight + (int)((DateTime)SurveyDate - (DateTime)LastSurvey.SurveyDate).TotalDays;//Ilość dni od pierwszego ważenia z ostatniego pomiaru + ilość dni między pomiarami 
+        }
+        private float GetAverageBodyWeight()
+        {
+            return Cages.Sum(c => c.IndividualBodyWeight) / Cages.Count;
+        }
+        private float GetFeedIntakeWeekly()
+        {
+            return (float)LoculusFeedInTake - (float)LastSurvey.LoculusFeedInTake;
+        }
+        private float GetFeedIntakDaily()
+        {
+            return (float)(FeedIntakeWeekly / LoculusQuantity) / (DaysFromFirstWeight - LastSurvey.DaysFromFirstWeight);
+        }
+        private float GetAverageWeightGain()
+        {
+            return Cages.Sum(c => c.WeightGainFromStart) / Cages.Count;
+        }
+        private float GetFeedConversionRatio()
+        {
+            return (float)FeedIntakDaily / AverageWeightGainFromCages;
+        }
+        private float GetAverageWeightGainFromLastSurvey()
+        {
+            return Cages.Sum(c => c.WeightGainFromLastSurvey) / Cages.Count;
         }
     }
 }

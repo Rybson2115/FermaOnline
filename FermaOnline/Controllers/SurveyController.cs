@@ -1,4 +1,5 @@
 ﻿using FermaOnline.Data;
+using FermaOnline.Facades;
 using FermaOnline.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -11,74 +12,50 @@ namespace FermaOnline.Controllers
 {
     public class SurveyController : Controller
     {
-        private readonly ApplicationDbContext _db;//dostęp do bazy danych  /ja bym to jakoś repo nazwał 
-        private readonly Facades.SurveyFacade facade;
+        private readonly ApplicationDbContext _db;
+        private readonly SurveyFacade surveyFacade;
         public SurveyController(ApplicationDbContext db)
         {
             _db = db;
+            this.surveyFacade = new SurveyFacade(db);
         }
         public IActionResult Index()
         {
             return View();
         }
-
         //GET-Create
         public IActionResult Create(int id)
         {
-            //sprawdzenie czy dodajemy pierwsze doświadczenie 
-            bool SurveyExistInThisExperiment = _db.Surveys.Any(s => s.ExperimentId == id);
-            Experiment experiment = _db.Experiment.Find(id);
-            ViewBag.IsFirstSurvay = !SurveyExistInThisExperiment;
-            ViewBag.CageNumber = experiment.CageNumber;
+            ViewBag.IsFirstSurvay = !surveyFacade.IsFirst(id);
+            ViewBag.CageNumber = surveyFacade.GetCageNumber(id);
             return View();
         }
-
         //POST-Create
         [HttpPost]
-        public IActionResult Create(SurveyDTO formData)
+        public IActionResult Create(Survey formData)
         {
             if (ModelState.IsValid)
             {
-                int newId = facade.Create(formData);
-                return RedirectToAction("Show", "Experiment", new { newId });
+                //int newId = surveyFacade.Create(formData);
+                return RedirectToAction("Show", "Experiment"); //new { newId });
             }
             return View(formData);
         }
-
         public IActionResult Delete(int? id)
         {
-
-            if (id == null || id == 0)
+            var toDelete = surveyFacade.Delete(id);
+            if (toDelete == null)
                 return NotFound();
-
-            var ToDelete = _db.Surveys.Find(id);
-
-            if (ToDelete == null)
-                return NotFound();
-
-            return View(ToDelete);
-
+            return View(toDelete);
         }
-
-        // POST Delete
-     
+        // POST Delete  
         //[ValidateAntiForgeryToken]
         public IActionResult DeletePost(int id)  
         {
-            var SurveysToDelete = _db.Surveys.Find(id);
-          
+            var SurveysToDelete = surveyFacade.DeletePost(id);
+         
             if (SurveysToDelete == null)
                 return NotFound();
-
-            var CageToDelete = new List<CageSurvey>();
-            // SurveysToDelete.CagesIndex.ForEach(c => CageToDelete.Add(_db.Cage.Find(c.CageId))); //zrobić pobieranie cage 
-
-            CageToDelete = _db.Cage.Where(c => c.SurveyId == id).ToList();
-            
-            _db.Cage.RemoveRange(CageToDelete);
-            _db.Surveys.Remove(SurveysToDelete);
-            _db.SaveChanges();
-
             return RedirectToAction("Show", "Experiment", new { id = SurveysToDelete.ExperimentId });
         }
     }
