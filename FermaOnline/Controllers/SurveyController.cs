@@ -36,8 +36,8 @@ namespace FermaOnline.Controllers
         {
             if (ModelState.IsValid)
             {
-                //int newId = surveyFacade.Create(formData);
-                return RedirectToAction("Show", "Experiment"); //new { newId });
+                surveyFacade.Create(formData);
+                return RedirectToAction("Show", "Experiment", new { formData.ExperimentId });
             }
             return View(formData);
         }
