@@ -38,8 +38,12 @@ namespace FermaOnline.Controllers
         [ValidateAntiForgeryToken]//zabezpieczenie 
         public IActionResult Create(Experiment formData)
         {
-            experimentFacade.Create(formData);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                experimentFacade.Create(formData);
+                return RedirectToAction("Index");
+            }
+            return View(formData);
         }
         //GET-Show
         public IActionResult Show(int id) //Wyswietla eksperyment

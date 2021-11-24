@@ -15,6 +15,7 @@ namespace FermaOnline.Models
         [Key]
         public int Id { get; set; }
         public string Code { get; set; } //kod doświadczenia 
+        [Required]
         public string Name { get; set; } //tutuł
         private bool _status { get; set; }
         public bool Status
@@ -31,10 +32,14 @@ namespace FermaOnline.Models
                 OnPropertyChanged();
             }
         }
+        [Required]
         public string Author { get; set; }
+        [Required]
         public string Species { get; set; }
-        public string Description { get; set; } // opis 
-        public string ShortDescription { get; set; } // streszczenie 
+        [Required]
+        public string Description { get; set; }
+        [Required]
+        public string ShortDescription { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -51,6 +56,8 @@ namespace FermaOnline.Models
 
         public List<Survey> SurveysList { get; set; }
         public string VisibleProperties { get; set; }
+        [Required]
+        [Range(minimum:1, maximum: 20, ErrorMessage ="Zla wartosc")]
         public int CageNumber { get; set; }
         public Experiment()
         {
