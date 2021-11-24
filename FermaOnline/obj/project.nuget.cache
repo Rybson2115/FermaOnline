@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iHgxFCnFJSV9ZD6OFAk+VKi/30Pm06wiJbodut3k50no/4YKtBPnDCc86MHXS9Htf18TplX29yNtz274ipvNpw==",
+  "dgSpecHash": "Fz6M0Nn+UP6J/dGcrorxoem/xgPpEZPn77h7qQGTzKVp1JApoXlIKlJ26+gN5oIa/+AvFe41eOLCYy5KLPPwXA==",
   "success": true,
-  "projectFilePath": "X:\\Desktop\\Programowanie\\Inz\\Próba 3\\FermaOnline\\FermaOnline.csproj",
+  "projectFilePath": "X:\\Desktop\\Programowanie\\Inz\\InżFinal\\FermaOnline\\FermaOnline.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Kamil Matecki\\.nuget\\packages\\bootstrap.datepicker\\1.8.0.1\\bootstrap.datepicker.1.8.0.1.nupkg.sha512",
     "C:\\Users\\Kamil Matecki\\.nuget\\packages\\chart.js\\2.9.3\\chart.js.2.9.3.nupkg.sha512",
