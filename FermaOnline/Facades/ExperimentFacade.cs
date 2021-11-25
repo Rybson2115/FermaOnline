@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Web;
+using System;
 
 namespace FermaOnline.Facades
 {
@@ -33,11 +34,8 @@ namespace FermaOnline.Facades
         }
         public void Create(Experiment formData)
         {
-            Experiment experimentToAdd = new(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber, formData.Author);
-            if (experimentToAdd.Code == null)
-            {
-                experimentToAdd.Code = $"{experimentToAdd.Id}/{experimentToAdd.Species}/{System.DateTime.Today.Year}";
-            }
+            Experiment experimentToAdd = new Experiment(formData.Name, formData.Description, formData.ShortDescription, formData.Species, formData.CageNumber, formData.Author);
+
             experimentRepository.InsertExperiment(experimentToAdd);
             experimentRepository.Save();
         }
@@ -51,6 +49,12 @@ namespace FermaOnline.Facades
             }
             else
             {
+                if (experiment.Code == null)
+                {
+                    experiment.Code = $"{experiment.Id}/{experiment.Species}/{System.DateTime.Today.Year}";
+                    experimentRepository.UpdateExperiment(experiment);
+                    experimentRepository.Save();
+                }
                 experiment.SurveysList = surveyRepository.GetSurveysByExperimentID(id);//dodanie pomiarów dla danego eksperymentu po id
                 experiment.SurveysList.ForEach(s => s.Cages = cageRepository.GetCageBySurveyID(s.SurveyId));
                 experiment.Files = filesRepository.GetFilesByExperimentID(id);
@@ -153,7 +157,6 @@ namespace FermaOnline.Facades
                     visible += "1";
                 else
                     visible += "0";
-
             update.Name = toUpdate.Name;
             update.Status = toUpdate.Status;
             update.Description = toUpdate.Description;
@@ -167,7 +170,7 @@ namespace FermaOnline.Facades
             if (formula.Count > 0)
                 AddFile(formula, toUpdate.Id, false);
 
-            experimentRepository.Save();//prawdopodnie na kazdym repo!
+            experimentRepository.Save();
         }
     }
 }
