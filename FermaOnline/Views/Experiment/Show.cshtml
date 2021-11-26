@@ -317,7 +317,7 @@
                     </div>
                     <hr>
                     <div class="d-flex justify-content-between">
-                    <input type="checkbox" data-toggle="toggle" data-on="Line" data-off="Bar" data-onstyle="warning" data-offstyle="info" checked>
+                    <input type="checkbox" id="ChartType" data-toggle="toggle" data-on="Line" data-off="Bar" data-onstyle="warning" data-offstyle="info" checked>
                     <span class="fw-bold float-right"> BioDose own research @Model.Code.Substring(@Model.Code.Length - 4) </span>
                 </div>
                 </div>
@@ -335,7 +335,7 @@
             }
               var CageNumber=0;
         //konwersja danych z servera 
-            @{
+           @{
                 var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
                 @:CageNumber = @Model.CageNumber; 
                 @for(var i = 0; i < Model.SurveysList.Count(); i++)
@@ -347,8 +347,7 @@
                     @: Weight.push(parseFloat(@dict[@Model.SurveysList[i].DayOfLife])); 
                 
                 }
-            
-        }
+            }
       
    //zakres wartości
    var  MinMax =[];
@@ -359,20 +358,25 @@
    MinMax.push(ListOfData[i].at(-1));
    }
  
+
+ 
+   
+   
+
+
    //obiekt dataset 
      const data = {
   labels: Days,
   datasets: [{
       data: Weight,
       label: "Standard curve",
+      backgroundColor:"#ff0000",
       borderColor: "#ff0000",
       fill: false
     }]
     };
-
-   //inicjalizacja chart
-   var  chart = new Chart(document.getElementById('myChart'), {
-                type: 'line',
+    var config = {
+                type: 'line' ,
                 data: data,
                 options: {
                     title: {
@@ -382,14 +386,17 @@
                     scales: {
                         yAxes: [{
                             ticks: {
-                                max: Math.max(...MinMax),
-                                min: Math.min(...MinMax),
+                                max: Math.floor(Math.max(...MinMax)+2.0),
+                                min: Math.floor(Math.min(...MinMax)-1.0),
                                 stepSize: 0.5
                             }
                         }]
                     }
                 }
-            });
+            }
+          var context = document.getElementById('myChart')
+   //inicjalizacja chart
+   var  chart = new Chart(context,config );
        
         chart
         //dodawanie dataset 
@@ -399,13 +406,23 @@
       const newDataset = {
         label: 'Cage ' + alphabet[i],
         borderColor: "#" + ((1<<24)*Math.random() | 0).toString(16),
+        backgroundColor: "#" + ((1<<24)*Math.random() | 0).toString(16),
         fill: false,
         data: ListOfData[i],
       };
       chart.data.datasets.push(newDataset);
       chart.update();
-      console.log(i);
     }
+      const checkbox = document.getElementById('ChartType');
+      
+      checkbox.onchange  = function(element) {
+          chart.destroy();
+      config.type = checkbox.checked ? 'line':'bar';
+      chart = new Chart(context,config);
+      };
+   
+   
+   
 
         </script>
     }
