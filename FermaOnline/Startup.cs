@@ -45,13 +45,8 @@ namespace FermaOnline
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            //app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                      Path.Combine(env.ContentRootPath, "Files")),
-                RequestPath = "/Files"
-            });
+           app.UseStaticFiles();
+     
             app.UseRouting();
 
             app.UseAuthorization();

@@ -949,7 +949,6 @@ X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\FermaOnline.
 X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorAssemblyInfo.cache
 X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\FermaOnline.RazorAssemblyInfo.cs
 X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\staticwebassets\FermaOnline.StaticWebAssets.Manifest.cache
-X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\staticwebassets\FermaOnline.StaticWebAssets.xml
 X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\scopedcss\bundle\FermaOnline.styles.css
 X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\FermaOnline.TagHelpers.input.cache
 X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\FermaOnline.TagHelpers.output.cache

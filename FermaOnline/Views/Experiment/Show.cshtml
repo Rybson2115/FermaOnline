@@ -316,7 +316,7 @@
                         <canvas id="myChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
                     </div>
                     <hr>
-                    <span class="fw-bold float-right"> BioDose 2020 </span>
+                    <span class="fw-bold float-right"> BioDose own research @Model.Code.Substring(@Model.Code.Length - 4) </span>
                 </div>
 
             </div>
@@ -324,31 +324,35 @@
         <script>
            var Days = [];
             var Weight = [];
-
-            @{var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
-                var Weight = dict.Values.ToList();
-                //var Days = dict.Keys.ToList();
-
-                  @foreach (var survey in Model.SurveysList)
-                  {
-                     @: Days.push(@survey.DayOfLife);
-                     @: Weight.push(parseFloat(@dict[@survey.DayOfLife])); //trzeba coś wymyślić bo robi tu int zamiast float
+              var ListOfData = [];
+              var CageNumber=0;
+              var temp="";
+            @{
+                var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
+                
+             
+                @:CageNumber = @Model.CageNumber;
+                @foreach(var survey in Model.SurveysList)
+                  { 
+                    @: Days.push(@survey.DayOfLife);
+                    @: Weight.push(parseFloat(@dict[@survey.DayOfLife])); 
                    }
-
+            
         }
-
-            new Chart(document.getElementById('myChart'), {
+        console.log(CageNumber)
+     const data = {
+  labels: Days,
+  datasets: [{
+      data: Weight,
+      label: "Standard curve",
+      borderColor: "#3e95cd",
+      fill: false
+    }]
+    };
+    
+   var  chart = new Chart(document.getElementById('myChart'), {
                 type: 'line',
-                data: {
-                    labels: Days,
-                    datasets: [{
-                        data: Weight,
-                        label: "Standard curve",
-                        borderColor: "#3e95cd",
-                        fill: false
-                    }
-                    ]
-                },
+                data: data,
                 options: {
                     title: {
                         display: true,
@@ -365,6 +369,24 @@
                     }
                 }
             });
+       
+        chart
+
+    const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    for(var i = 0; i < CageNumber; i++){
+      const data = chart.data;
+      const newDataset = {
+        label: 'Cage ' + alphabet[i],
+        borderColor: "#" + ((1<<24)*Math.random() | 0).toString(16),
+        fill: false,
+        data: [7.73, 8.29,10.61],
+      };
+      chart.data.datasets.push(newDataset);
+      chart.update();
+      console.log(i);
+    }
+ 
+           
 
         </script>
     }
