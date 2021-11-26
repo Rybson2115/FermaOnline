@@ -316,40 +316,61 @@
                         <canvas id="myChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
                     </div>
                     <hr>
+                    <div class="d-flex justify-content-between">
+                    <input type="checkbox" data-toggle="toggle" data-on="Line" data-off="Bar" data-onstyle="warning" data-offstyle="info" checked>
                     <span class="fw-bold float-right"> BioDose own research @Model.Code.Substring(@Model.Code.Length - 4) </span>
                 </div>
-
+                </div>
             </div>
         }
         <script>
            var Days = [];
             var Weight = [];
-              var ListOfData = [];
+             
+            var ListOfData = [];
+             for (let i = 0; i < @Model.CageNumber; i++) {
+                for(let j = 0; j < @Model.SurveysList.Count(); j++) {
+                    ListOfData[i] = [];
+                }
+            }
               var CageNumber=0;
-              var temp="";
+        //konwersja danych z servera 
             @{
                 var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
+                @:CageNumber = @Model.CageNumber; 
+                @for(var i = 0; i < Model.SurveysList.Count(); i++)
+                {   
+                    for(var j = 0; j< Model.SurveysList[i].Cages.Count(); j++) {   
+                         @:ListOfData[@j][@i] = parseFloat(@Model.SurveysList[i].Cages[j].IndividualBodyWeight.ToString().Replace(",", "."));
+                    }
+                    @: Days.push(@Model.SurveysList[i].DayOfLife);
+                    @: Weight.push(parseFloat(@dict[@Model.SurveysList[i].DayOfLife])); 
                 
-             
-                @:CageNumber = @Model.CageNumber;
-                @foreach(var survey in Model.SurveysList)
-                  { 
-                    @: Days.push(@survey.DayOfLife);
-                    @: Weight.push(parseFloat(@dict[@survey.DayOfLife])); 
-                   }
+                }
             
         }
-        console.log(CageNumber)
+      
+   //zakres wartości
+   var  MinMax =[];
+   MinMax.push(Weight.at(0))
+   MinMax.push(Weight.at(-1))
+   for(var i = 0; i < CageNumber; i++){
+   MinMax.push(ListOfData[i].at(0));
+   MinMax.push(ListOfData[i].at(-1));
+   }
+ 
+   //obiekt dataset 
      const data = {
   labels: Days,
   datasets: [{
       data: Weight,
       label: "Standard curve",
-      borderColor: "#3e95cd",
+      borderColor: "#ff0000",
       fill: false
     }]
     };
-    
+
+   //inicjalizacja chart
    var  chart = new Chart(document.getElementById('myChart'), {
                 type: 'line',
                 data: data,
@@ -361,8 +382,8 @@
                     scales: {
                         yAxes: [{
                             ticks: {
-                                max: Weight.at(-1),
-                                min: 5,
+                                max: Math.max(...MinMax),
+                                min: Math.min(...MinMax),
                                 stepSize: 0.5
                             }
                         }]
@@ -371,7 +392,7 @@
             });
        
         chart
-
+        //dodawanie dataset 
     const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
     for(var i = 0; i < CageNumber; i++){
       const data = chart.data;
@@ -379,14 +400,12 @@
         label: 'Cage ' + alphabet[i],
         borderColor: "#" + ((1<<24)*Math.random() | 0).toString(16),
         fill: false,
-        data: [7.73, 8.29,10.61],
+        data: ListOfData[i],
       };
       chart.data.datasets.push(newDataset);
       chart.update();
       console.log(i);
     }
- 
-           
 
         </script>
     }
