@@ -17,10 +17,10 @@ namespace FermaOnline.Models
         [DataType(DataType.Date)]
         [Required]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime? SurveyDate { get; set; }//Data pomiaru
+        public DateTime SurveyDate { get; set; }//Data pomiaru
         [Required]
         [DisplayName("Day of life")]
-        public int? DayOfLife { get; set; }//Dzień życia zwierzęcia 
+        public int DayOfLife { get; set; }//Dzień życia zwierzęcia 
         public float AverageBodyWeight { get; set; } //Średnia masa ciała kg/szt 
         [Required]
         [DisplayName("Loculus quantity")]
@@ -29,12 +29,12 @@ namespace FermaOnline.Models
         public int DaysFromFirstWeight { get; set; }  //Ilość dni od pierwszego ważenia
         [Required]
         [DisplayName("Loculus feed intake")]
-        public float? LoculusFeedInTake { get; set; } // Pobranie paszy przez komorę
+        public float LoculusFeedInTake { get; set; } // Pobranie paszy przez komorę
         [DisplayName("Feed intake weekly")]
         public float FeedIntakeWeekly { get; set; } //Pobranie paszy, kg/tydzień na komorę
         [Required]
         [DisplayName("Feed intak daily")]
-        public float? FeedIntakDaily { get; set; } //Pobranie paszy, kg/dzien na komorę
+        public float FeedIntakDaily { get; set; } //Pobranie paszy, kg/dzien na komorę
         public float FeedConversionRatio { get; set; } // Wykorzystanie paszy, kg/kg
         public float AverageWeightGainFromCages { get; set; } //Średni przyrost z 2 klatek, kg/dzień
         public float AverageWeightGainFromLastSurvey { get; set; } //Średni przyrost z 2 klatek, od ost ważenia, kg/dzień
