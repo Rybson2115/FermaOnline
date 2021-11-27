@@ -143,7 +143,7 @@ namespace FermaOnline.Facades
             }
             filesRepository.Save();
         }
-        public  void Update(Experiment toUpdate,
+        public void Update(Experiment toUpdate,
             List<IFormFile> formula,
             List<IFormFile> materials,
             List<int> areChecked
@@ -157,6 +157,7 @@ namespace FermaOnline.Facades
                     visible += "1";
                 else
                     visible += "0";
+
             update.Name = toUpdate.Name;
             update.Status = toUpdate.Status;
             update.Description = toUpdate.Description;

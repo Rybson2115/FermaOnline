@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -79,7 +80,8 @@ namespace FermaOnline.Controllers
 
             var toUpdate = experimentFacade.Update(id);
             if (toUpdate == null)
-                return NotFound();
+                return NotFound(); 
+
             return View(toUpdate);
         }
         public void AddFile(
@@ -100,12 +102,17 @@ namespace FermaOnline.Controllers
             List<int> areChecked
             )
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid) // to wywala Index was outside the bounds of the array., może ręczna walidacja?
+            //{
                 experimentFacade.Update(toUpdate, formula, materials, areChecked);
                 return RedirectToAction("Index");
-            }
-            return View(toUpdate);
+            //}
+            //else
+            //{
+            //    var errors = ModelState.Values.First().Errors.First();
+            //    throw new ArgumentException(errors.ToString());
+            //    return View(ModelState.Values.SelectMany(v => v.Errors));
+            //}
         }
     }
 }

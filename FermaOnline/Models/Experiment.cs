@@ -83,7 +83,7 @@ namespace FermaOnline.Models
             CageNumber = cageNumber;
             ShortDescription = shortDescription;
             Author = author;
-            VisibleProperties = "000000000"; //"111111111"-wszystkie 
+            VisibleProperties = "111111111"; //"111111111"-wszystkie 
         }
     }
 }

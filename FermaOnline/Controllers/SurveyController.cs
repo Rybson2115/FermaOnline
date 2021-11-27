@@ -37,8 +37,9 @@ namespace FermaOnline.Controllers
             if (ModelState.IsValid)
             {
                 surveyFacade.Create(formData);
-                return RedirectToAction("Show", "Experiment", new { formData.ExperimentId });
+                return RedirectToAction("Show", "Experiment", new {id = formData.ExperimentId} );
             }
+            ViewBag.CageNumber = surveyFacade.GetCageNumber(formData.ExperimentId);
             return View(formData);
         }
         public IActionResult Delete(int? id)
