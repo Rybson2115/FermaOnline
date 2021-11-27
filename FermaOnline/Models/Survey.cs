@@ -20,16 +20,16 @@ namespace FermaOnline.Models
         public DateTime? SurveyDate { get; set; }//Data pomiaru
         [Required]
         [DisplayName("Day of life")]
-        public int? DayOfLife { get; set; }//Dzień życia zwierzęcia 
+        public int DayOfLife { get; set; }//Dzień życia zwierzęcia 
         public float AverageBodyWeight { get; set; } //Średnia masa ciała kg/szt 
         [Required]
         [DisplayName("Loculus quantity")]
-        public int? LoculusQuantity { get; set; } //Liczba sztuk na komorze
+        public int LoculusQuantity { get; set; } //Liczba sztuk na komorze
         public int GroupId { get; set; } //id grupy zwierząt 
         public int DaysFromFirstWeight { get; set; }  //Ilość dni od pierwszego ważenia
         [Required]
         [DisplayName("Loculus feed intake")]
-        public float? LoculusFeedInTake { get; set; } // Pobranie paszy przez komorę
+        public float LoculusFeedInTake { get; set; } // Pobranie paszy przez komorę
         [DisplayName("Feed intake weekly")]
         public float FeedIntakeWeekly { get; set; } //Pobranie paszy, kg/tydzień na komorę
         [Required]

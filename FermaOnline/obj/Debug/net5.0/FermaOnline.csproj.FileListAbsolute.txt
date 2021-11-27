@@ -670,7 +670,6 @@ C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline
 C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\ref\FermaOnline.dll
 C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.pdb
 C:\Users\Rybson\Desktop\FermaOnline-20210710T130126Z-001\FermaOnline\FermaOnline\obj\Debug\net5.0\FermaOnline.genruntimeconfig.cache
-C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.csprojAssemblyReference.cache
 C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.AssemblyInfoInputs.cache
 C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.AssemblyInfo.cs
@@ -977,3 +976,5 @@ X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\ref\FermaOnl
 X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\FermaOnline.pdb
 X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\FermaOnline.genruntimeconfig.cache
 X:\Desktop\Programowanie\Inz\InżFinal\FermaOnline\obj\Debug\net5.0\FermaOnline.csproj.AssemblyReference.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\FermaOnline.csproj.AssemblyReference.cache
+C:\Users\Rybson\Source\Repos\ferma-online3\FermaOnline\obj\Debug\net5.0\Razor\Views\File\Delete.cshtml.g.cs
