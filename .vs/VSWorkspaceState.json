@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\FermaOnline"
+    "\\FermaOnline",
+    "\\FermaOnline\\Views",
+    "\\FermaOnline\\Views\\Experiment"
   ],
-  "SelectedNode": "\\FermaOnline.sln",
+  "SelectedNode": "\\FermaOnline\\Views\\Experiment\\Show.cshtml",
   "PreviewInSolutionExplorer": false
 }

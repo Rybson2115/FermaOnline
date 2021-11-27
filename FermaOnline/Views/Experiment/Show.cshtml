@@ -14,8 +14,7 @@
     .first {
         position: sticky;
         left: 0px;
-        background-color: white;
-       
+        background-color: rgb(201, 76, 76);
     } /*dopracować*/
 </style>
 
@@ -44,10 +43,10 @@
                         <p class="fst-italic">@TextSpecies @Model.Species</p>
                     }
                 </div>
-                <p class=".fs-1 text fw-bold">Abstract:</p>
+                <p class="fs-1 text ">Abstract:</p>
                 <p>@Model.ShortDescription</p>
 
-                <p class=".fs-1 text fw-bold">Description:</p>
+                <p class="fs-1 text ">Description:</p>
             </div>
         </div>
     </div>
@@ -170,7 +169,7 @@
                                 }
                             </tr>
                             @{string Visible = Model.VisibleProperties;
-                                @Visible[0];
+                               
 
                                 @if((char)Model.VisibleProperties[0] == '1')
                                 {
@@ -317,39 +316,68 @@
                         <canvas id="myChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
                     </div>
                     <hr>
-                    <span class="fw-bold float-right"> BioDose 2020 </span>
+                    <div class="d-flex justify-content-between">
+                    <input type="checkbox" id="ChartType" data-toggle="toggle" data-on="Line" data-off="Bar" data-onstyle="warning" data-offstyle="info" checked>
+                    <span class="fw-bold float-right"> BioDose own research @Model.Code.Substring(@Model.Code.Length - 4) </span>
                 </div>
-
+                </div>
             </div>
         }
         <script>
            var Days = [];
             var Weight = [];
-
-            @{var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
-                var Weight = dict.Values.ToList();
-                //var Days = dict.Keys.ToList();
-
-                  @foreach (var survey in Model.SurveysList)
-                  {
-                     @: Days.push(@survey.DayOfLife);
-                     @: Weight.push(parseFloat(@dict[@survey.DayOfLife])); //trzeba coś wymyślić bo robi tu int zamiast float
-                   }
-
-        }
-
-            new Chart(document.getElementById('myChart'), {
-                type: 'line',
-                data: {
-                    labels: Days,
-                    datasets: [{
-                        data: Weight,
-                        label: "Standard curve",
-                        borderColor: "#3e95cd",
-                        fill: false
+             
+            var ListOfData = [];
+             for (let i = 0; i < @Model.CageNumber; i++) {
+                for(let j = 0; j < @Model.SurveysList.Count(); j++) {
+                    ListOfData[i] = [];
+                }
+            }
+              var CageNumber=0;
+        //konwersja danych z servera 
+           @{
+                var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
+                @:CageNumber = @Model.CageNumber; 
+                @for(var i = 0; i < Model.SurveysList.Count(); i++)
+                {   
+                    for(var j = 0; j< Model.SurveysList[i].Cages.Count(); j++) {   
+                         @:ListOfData[@j][@i] = parseFloat(@Model.SurveysList[i].Cages[j].IndividualBodyWeight.ToString().Replace(",", "."));
                     }
-                    ]
-                },
+                    @: Days.push(@Model.SurveysList[i].DayOfLife);
+                    @: Weight.push(parseFloat(@dict[@Model.SurveysList[i].DayOfLife])); 
+                
+                }
+            }
+      
+   //zakres wartości
+   var  MinMax =[];
+   MinMax.push(Weight.at(0))
+   MinMax.push(Weight.at(-1))
+   for(var i = 0; i < CageNumber; i++){
+   MinMax.push(ListOfData[i].at(0));
+   MinMax.push(ListOfData[i].at(-1));
+   }
+ 
+
+ 
+   
+   
+
+
+   //obiekt dataset 
+     const data = {
+  labels: Days,
+  datasets: [{
+      data: Weight,
+      label: "Standard curve",
+      backgroundColor:"#ff0000",
+      borderColor: "#ff0000",
+      fill: false
+    }]
+    };
+    var config = {
+                type: 'bar' ,
+                data: data,
                 options: {
                     title: {
                         display: true,
@@ -358,14 +386,46 @@
                     scales: {
                         yAxes: [{
                             ticks: {
-                                max: Weight.at(-1),
-                                min: 5,
+                                max: Math.floor(Math.max(...MinMax)+2.0),
+                                min: Math.floor(Math.min(...MinMax)-1.0),
                                 stepSize: 0.5
                             }
                         }]
                     }
                 }
-            });
+            }
+          var context = document.getElementById('myChart')
+   //inicjalizacja chart
+   var  chart = new Chart(context,config );
+      //Zapewnienie miejsca na bar 
+      chart.destroy();
+      config.type ='line';
+      chart = new Chart(context,config );
+      chart
+        //dodawanie dataset 
+    const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+    for(var i = 0; i < CageNumber; i++){
+      const data = chart.data;
+      const newDataset = {
+        label: 'Cage ' + alphabet[i],
+        borderColor: "#" + ((1<<24)*Math.random() | 0).toString(16),
+        backgroundColor: "#" + ((1<<24)*Math.random() | 0).toString(16),
+        fill: false,
+        data: ListOfData[i],
+      };
+      config.data.datasets.push(newDataset);
+      chart.update();
+    }
+      const checkbox = document.getElementById('ChartType');
+      
+      checkbox.onchange  = function(element) {
+          chart.destroy();
+      config.type = checkbox.checked ? 'line':'bar';
+      chart = new Chart(context,config);
+      };
+   
+   
+   
 
         </script>
     }

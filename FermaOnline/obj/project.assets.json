@@ -7244,11 +7244,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "X:\\Desktop\\Programowanie\\Inz\\Próba 3\\FermaOnline\\FermaOnline.csproj",
+      "projectUniqueName": "X:\\Desktop\\Programowanie\\Inz\\InżFinal\\FermaOnline\\FermaOnline.csproj",
       "projectName": "FermaOnline",
-      "projectPath": "X:\\Desktop\\Programowanie\\Inz\\Próba 3\\FermaOnline\\FermaOnline.csproj",
+      "projectPath": "X:\\Desktop\\Programowanie\\Inz\\InżFinal\\FermaOnline\\FermaOnline.csproj",
       "packagesPath": "C:\\Users\\Kamil Matecki\\.nuget\\packages\\",
-      "outputPath": "X:\\Desktop\\Programowanie\\Inz\\Próba 3\\FermaOnline\\obj\\",
+      "outputPath": "X:\\Desktop\\Programowanie\\Inz\\InżFinal\\FermaOnline\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -7329,7 +7329,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.208\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
