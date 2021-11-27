@@ -15,25 +15,31 @@ namespace FermaOnline.Models
         [Key]
         public int Id { get; set; }
         public string Code { get; set; } //kod doświadczenia 
+        [Required]
         public string Name { get; set; } //tutuł
         private bool _status { get; set; }
         public bool Status
         {
             get { return _status; }
-            set { 
+            set
+            {
                 _status = value;
                 if (_status)
                     End = new DateTime(0001, 01, 01);
                 else
                     End = DateTime.Today;
-                
+
                 OnPropertyChanged();
             }
         }
+        [Required]
         public string Author { get; set; }
-        public string Species { get; set; }  
-        public string Description { get; set; } // opis 
-        public string ShortDescription { get; set; } // streszczenie 
+        [Required]
+        public string Species { get; set; }
+        [Required]
+        public string Description { get; set; }
+        [Required]
+        public string ShortDescription { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
@@ -42,14 +48,16 @@ namespace FermaOnline.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime End { get; set; }
- 
+
         [NotMapped]
         public List<float> CageFirstIndividualBodyWeight { get; set; }
         [NotMapped]
         public List<FileModel> Files { get; set; }
-        
+
         public List<Survey> SurveysList { get; set; }
-        public  string  VisibleProperties { get; set; }
+        public string VisibleProperties { get; set; }
+        [Required]
+        [Range(minimum:1, maximum: 20, ErrorMessage ="Zla wartosc")]
         public int CageNumber { get; set; }
         public Experiment()
         {
@@ -67,7 +75,7 @@ namespace FermaOnline.Models
             Author = string.Empty;
             VisibleProperties = string.Empty;
         }
-        public Experiment(string name,string description, string shortDescription, string species,int cageNumber, string author) : base()
+        public Experiment(string name, string description, string shortDescription, string species, int cageNumber, string author) : base()
         {
             Name = name;
             Description = description;
@@ -75,7 +83,7 @@ namespace FermaOnline.Models
             CageNumber = cageNumber;
             ShortDescription = shortDescription;
             Author = author;
-            VisibleProperties = "000000000"; //"111111111"-wszystkie 
-        }                       
+            VisibleProperties = "111111111"; //"111111111"-wszystkie 
+        }
     }
 }
