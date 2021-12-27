@@ -34,7 +34,7 @@ namespace FermaOnline
                     options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(
                         _ => "This field is required.");
                 });
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Szymcio")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Kamil")));
             services.AddControllersWithViews();
         }
 

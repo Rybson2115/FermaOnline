@@ -19,7 +19,7 @@ namespace FermaOnline.Models
         [Required]
         [DisplayName("Group weight")]
         public float GroupWeight { get; set; } //Masa ciała grupy klatki, kg/grupę
-        public int DeathCount { get; set; }
+        public int DeathCount { get; set; } //mortality zmiertelnosc w klatce od ostatnego wazenia 
         public float IndividualBodyWeight { get; set; } // Masa ciała sztuki, kg/szt.
         public float DifferenceInBodyWeight { get; set; } // Różnica w wadze, kg/tydzień
         public float WeightGainFromStart { get; set; } //Przyrost od wstawienia, kg/dzień
@@ -51,6 +51,9 @@ namespace FermaOnline.Models
         public float GetWeightGainFromLastSurvey(float LastIndividualBodyWeight, int DaysFromFirstWeight, int LastDaysFromFirstWeight)
         {
             return (IndividualBodyWeight - LastIndividualBodyWeight) / (DaysFromFirstWeight - LastDaysFromFirstWeight);
+        }
+        public int GetMortality(int LastSurvayCageQuantity) {
+            return (LastSurvayCageQuantity - CageQuantity);
         }
     }
 }

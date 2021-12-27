@@ -25,7 +25,6 @@ namespace FermaOnline.Models
         [Required]
         [DisplayName("Loculus quantity")]
         public int LoculusQuantity { get; set; } //Liczba sztuk na komorze
-        public int GroupId { get; set; } //id grupy zwierząt 
         public int DaysFromFirstWeight { get; set; }  //Ilość dni od pierwszego ważenia
         [Required]
         [DisplayName("Loculus feed intake")]
@@ -49,7 +48,6 @@ namespace FermaOnline.Models
             DayOfLife = 0;
             AverageBodyWeight = 0.0f;
             LoculusQuantity = 0;
-            GroupId = 0;
             DaysFromFirstWeight = 0;
             LoculusFeedInTake = 0.0f;
             FeedIntakeWeekly = 0.0f;
@@ -88,6 +86,7 @@ namespace FermaOnline.Models
                 Cages[i].DifferenceInBodyWeight = (float)Math.Round(Cages[i].GetDifferenceInBodyWeight(LastSurvey.Cages[i].IndividualBodyWeight), 2);
                 Cages[i].WeightGainFromLastSurvey = (float)Math.Round(Cages[i].GetWeightGainFromLastSurvey(LastSurvey.Cages[i].IndividualBodyWeight, DaysFromFirstWeight, LastSurvey.DaysFromFirstWeight), 2);
                 Cages[i].WeightGainFromStart = (float)Math.Round(Cages[i].GetWeightGainFromStart(DaysFromFirstWeight, cageFirstIndividualBodyWeight[i]), 2);
+                Cages[i].DeathCount = LastSurvey.Cages[i].DeathCount + Cages[i].GetMortality(LastSurvey.Cages[i].CageQuantity);
             }
             AverageWeightGainFromCages = (float)Math.Round(GetAverageWeightGain(), 2);
             FeedIntakeWeekly = (float)Math.Round(GetFeedIntakeWeekly(), 2);

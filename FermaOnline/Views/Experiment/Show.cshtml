@@ -308,7 +308,54 @@
         {
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Charts</h6>
+                    <h5 class="card-title">Charts</h5>
+                    <ul class="nav nav-tabs card-header-tabs" id="myTab" data-bs-tabs="tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="true" data-bs-toggle="tab" id="weightGainCard" href="#weightGain">Weight Gain</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" id="mortalityCard" href="#mortality">Mortality</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" id="treatmentyCard" href="#treatment">Treatment</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" id="fcrCard" href="#fcr">FCR</a>
+                        </li>
+                         @if ((char)Model.VisibleProperties[5] == '1'){
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" id="feedIntakeCard" href="#feedIntake">Feed Intake</a>
+                        </li>
+                        }
+                    </ul>
+                </div>
+                <form class="card-body tab-content">
+                    <div class="tab-pane active" id="weightGain">
+                        <canvas id="weightGainChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
+                    </div>
+                    <div class="tab-pane" id="mortality">
+                     <canvas id="mortalityChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
+                      </div>
+                    <div class="tab-pane" id="treatment">
+                      <canvas id="treatmentChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
+                      </div>
+                    <div class="tab-pane" id="fcr">
+                      <canvas id="fcrChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
+                      </div>
+                    <div class="tab-pane chart-line" id="feedIntake">
+                     <canvas id="feedIntakeChart" width="620" height="400" style="display: block; height: 320px; width: 496px;" class="chartjs-render-monitor"> </canvas>
+                      </div>
+                      <hr>
+                    <div class="d-flex justify-content-between">
+                        <input type="checkbox" id="ChartType" data-toggle="toggle" data-on="Line" data-off="Bar" data-onstyle="warning" data-offstyle="info" checked>
+                        <span class="fw-bold float-right"> BioDose own research @Model.Code.Substring(@Model.Code.Length - 4) </span>
+                    </div>
+                </form>
+               </div>
+           
+             
+
+            @*     <h6 class="m-0 font-weight-bold text-primary">Charts</h6>
                 </div>
                 <div class="card-body">
                     <div class="chart-line">
@@ -320,51 +367,54 @@
                     <input type="checkbox" id="ChartType" data-toggle="toggle" data-on="Line" data-off="Bar" data-onstyle="warning" data-offstyle="info" checked>
                     <span class="fw-bold float-right"> BioDose own research @Model.Code.Substring(@Model.Code.Length - 4) </span>
                 </div>
-                </div>
-            </div>
-        }
-        <script>
+ </div>
+            </div>*@
+  }
+
+<script>
+     var CurrentCard = 'weightGainCard'; 
+      
+        const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
            var Days = [];
             var Weight = [];
-             
-            var ListOfData = [];
+        
+            var CageWeight = [];
+             var CageMortality = [];
+
              for (let i = 0; i < @Model.CageNumber; i++) {
                 for(let j = 0; j < @Model.SurveysList.Count(); j++) {
-                    ListOfData[i] = [];
+                    CageWeight[i] = [];
+                    CageMortality[i] = [];
                 }
             }
               var CageNumber=0;
-        //konwersja danych z servera 
+        //konwersja danych z serwera 
            @{
                 var dict = FermaOnline.Models.TemplateCurve.DefaultValuePig;
                 @:CageNumber = @Model.CageNumber; 
                 @for(var i = 0; i < Model.SurveysList.Count(); i++)
                 {   
                     for(var j = 0; j< Model.SurveysList[i].Cages.Count(); j++) {   
-                         @:ListOfData[@j][@i] = parseFloat(@Model.SurveysList[i].Cages[j].IndividualBodyWeight.ToString().Replace(",", "."));
+                         @:CageWeight[@j][@i] = parseFloat(@Model.SurveysList[i].Cages[j].IndividualBodyWeight.ToString().Replace(",", "."));
+                         @:CageMortality[@j][@i] = @Model.SurveysList[i].Cages[j].DeathCount;
                     }
-                    @: Days.push(@Model.SurveysList[i].DayOfLife);
+                     @: Days.push(@Model.SurveysList[i].DayOfLife);
                     @: Weight.push(parseFloat(@dict[@Model.SurveysList[i].DayOfLife])); 
                 
                 }
             }
-      
-   //zakres wartości
-   var  MinMax =[];
-   MinMax.push(Weight.at(0))
-   MinMax.push(Weight.at(-1))
-   for(var i = 0; i < CageNumber; i++){
-   MinMax.push(ListOfData[i].at(0));
-   MinMax.push(ListOfData[i].at(-1));
-   }
+@* 
+    class Chart {
+  constructor(title, ChartData,MinMax,context,type) {
+    this.title = title;
+    this.ChartData = ChartData;
+     this.MinMax = MinMax;
+     this.context=context;
+     this.type=type;
+  }
+  var config,chart;
  
-
- 
-   
-   
-
-
-   //obiekt dataset 
+  //obiekt dataset 
      const data = {
   labels: Days,
   datasets: [{
@@ -375,13 +425,20 @@
       fill: false
     }]
     };
-    var config = {
-                type: 'bar' ,
+
+  // Getter
+  get show() { //wyświetl
+    return this.liczPole();
+  }
+  // Method
+  add() {
+   config = {
+                type: 'line' ,
                 data: data,
                 options: {
                     title: {
                         display: true,
-                        text: 'Weight gain over time (G/DAYS)'
+                        text: title
                     },
                     scales: {
                         yAxes: [{
@@ -394,16 +451,13 @@
                     }
                 }
             }
-          var context = document.getElementById('myChart')
-   //inicjalizacja chart
-   var  chart = new Chart(context,config );
-      //Zapewnienie miejsca na bar 
-      chart.destroy();
-      config.type ='line';
-      chart = new Chart(context,config );
-      chart
+   config.type = chartType;
+  chart.update();
+  
+ //inicjalizacja chart
+     chart = new Chart(context,config );
         //dodawanie dataset 
-    const alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+
     for(var i = 0; i < CageNumber; i++){
       const data = chart.data;
       const newDataset = {
@@ -411,21 +465,111 @@
         borderColor: "#" + ((1<<24)*Math.random() | 0).toString(16),
         backgroundColor: "#" + ((1<<24)*Math.random() | 0).toString(16),
         fill: false,
-        data: ListOfData[i],
+        data: ChartData,
       };
       config.data.datasets.push(newDataset);
       chart.update();
     }
-      const checkbox = document.getElementById('ChartType');
-      
-      checkbox.onchange  = function(element) {
-          chart.destroy();
+
+    return chart
+  }
+    update() {
+    chart.destroy();
       config.type = checkbox.checked ? 'line':'bar';
       chart = new Chart(context,config);
+    return chart;
+  }
+}
+  
+*@
+
+function WeightGainChart(chartType) {
+    
+   //zakres wartości
+   var  MinMax =[];
+   MinMax.push(Weight.at(0))
+   MinMax.push(Weight.at(-1))
+   for(var i = 0; i < CageNumber; i++){
+   MinMax.push(CageWeight[i].at(0));
+   MinMax.push(CageWeight[i].at(-1));
+   }
+  var title='Weight gain over time (G/DAYS)'
+
+   //obiekt dataset 
+     const data = {
+  labels: Days,
+  datasets: [{
+      data: Weight,
+      label: "Standard curve",
+      backgroundColor:"#ff0000",
+      borderColor: "#ff0000",
+      fill: false
+    }]
+    };
+   
+    var config = {
+                type: 'bar' ,
+                data: data,
+                options: {
+                    title: {
+                        display: true,
+                        text: title
+                    },
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                max: Math.floor(Math.max(...MinMax)+2.0),
+                                min: Math.floor(Math.min(...MinMax)-1.0),
+                                stepSize: 0.5
+                            }
+                        }]
+                    }
+                }
+            }
+ var context = document.getElementById('weightGainChart') 
+  config.type = chartType;
+  chart.update();
+  
+ //inicjalizacja chart
+   var  chart = new Chart(context,config );
+
+      //dodawanie dataset 
+
+    for(var i = 0; i < CageNumber; i++){
+      const data = chart.data;
+      const newDataset = {
+        label: 'Cage ' + alphabet[i],
+        borderColor: "#" + ((1<<24)*Math.random() | 0).toString(16),
+        backgroundColor: "#" + ((1<<24)*Math.random() | 0).toString(16),
+        fill: false,
+        data: CageWeight[i],
       };
-   
-   
-   
+      config.data.datasets.push(newDataset);
+      chart.update();
+    }
+ }
+
+function Charts(CurrentCard,type){
+     switch (CurrentCard) {
+      case 'weightGainCard':
+         WeightGainChart(type); //tu robimy update
+        break;
+      case value2:
+     
+        break;
+ 
+    }
+}
+//tworzenie charts
+    Charts(CurrentCard,'line');
+ 
+      const checkbox = document.getElementById('ChartType');
+      checkbox.onchange  = function(element) {Charts(CurrentCard,checkbox.checked ? 'line':'bar');};
+
+      document.getElementById('weightGainCard').onclick =function(element) {Charts(CurrentCard,type);};
+      
+
+
 
         </script>
     }
